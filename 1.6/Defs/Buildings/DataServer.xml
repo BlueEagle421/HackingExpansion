@@ -41,7 +41,7 @@
             </li>
             <li Class="CompProperties_Facility">
                 <statOffsets>
-                    <ResearchSpeedFactor>0.1</ResearchSpeedFactor>
+                    <ResearchSpeedFactor>0.08</ResearchSpeedFactor>
                 </statOffsets>
                 <maxSimultaneous>2</maxSimultaneous>
                 <maxDistance>6</maxDistance>
