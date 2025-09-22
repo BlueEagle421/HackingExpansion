@@ -120,7 +120,7 @@ public class CompDataSourceProtected : CompDataSource
         sb.AppendLine(base.CompInspectStringExtra());
 
         string hacksetText = _hacksetDef == null ? "None".Translate() : _hacksetDef.LabelCap.Colorize(Color.red);
-        sb.AppendLine("Security hackset: " + hacksetText);
+        sb.AppendLine("USH_HE_SecurityHackset".Translate() + ": " + hacksetText);
 
         return sb.ToString().Trim();
     }
