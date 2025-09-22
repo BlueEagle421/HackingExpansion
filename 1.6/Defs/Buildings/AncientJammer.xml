@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>USH_AncientJammer</defName>
+        <label>ancient jammer</label>
+        <description>.</description>
+        <fillPercent>0.20</fillPercent>
+        <graphicData>
+            <texPath>Things/Building/AncientJammer</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(1.5,3.5)</drawSize>
+            <addTopAltitudeBias>true</addTopAltitudeBias>
+            <shadowData>
+                <volume>(0.3, 0.7, 0.3)</volume>
+                <offset>(0, 0, 0)</offset>
+            </shadowData>
+        </graphicData>
+        <rotatable>false</rotatable>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <altitudeLayer>BuildingOnTop</altitudeLayer>
+        <costList>
+            <Steel>40</Steel>
+            <ComponentIndustrial>4</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <MaxHitPoints>200</MaxHitPoints>
+            <Mass>6</Mass>
+        </statBases>
+        <size>(1,1)</size>
+    </ThingDef>
+
+</Defs>
