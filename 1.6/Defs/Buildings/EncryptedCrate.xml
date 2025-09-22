@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <ThingDef ParentName="CrateBase">
+        <defName>USH_EncryptedCrate</defName>
+        <label>encrypted crate</label>
+        <description>.</description>
+        <graphicData>
+            <texPath>Things/Building/EncryptedCrate_Closed</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(1,1)</drawSize>
+        </graphicData>
+        <size>(1, 1)</size>
+        <fillPercent>0.2</fillPercent>
+        <statBases>
+            <MaxHitPoints>120</MaxHitPoints>
+        </statBases>
+        <rotatable>false</rotatable>
+        <comps>
+            <li Class="CompProperties_Hackable">
+                <defence>39000</defence>
+                <effectHacking>HackingTerminal</effectHacking>
+                <lockoutDurationHoursRange>6~18</lockoutDurationHoursRange>
+                <showProgressAfterHackCompletion>false</showProgressAfterHackCompletion>
+                <notHackedInspectString>Hack to open.</notHackedInspectString>
+                <intellectualSkillPrerequisite>4</intellectualSkillPrerequisite>
+                <hackedMessage>{HACKER_labelShort} has finished hacking {SUBJECT_labelNoParenthesisDef}.</hackedMessage>
+            </li>
+            <li Class="CompProperties_EmptyStateGraphic">
+                <graphicData>
+                    <texPath>Things/Building/EncryptedCrate_Open</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <drawSize>(1,1)</drawSize>
+                </graphicData>
+            </li>
+            <li Class="CompProperties_Glower">
+                <glowRadius>3</glowRadius>
+                <glowColor>(150,150,150,0)</glowColor>
+            </li>
+            <li Class="CompProperties_LootSpawn">
+                <contents>MapGen_AncientTempleContents</contents>
+            </li>
+        </comps>
+        <tickerType>Normal</tickerType>
+    </ThingDef>
+
+</Defs>
