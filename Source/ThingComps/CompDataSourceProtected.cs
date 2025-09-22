@@ -115,7 +115,9 @@ public class CompDataSourceProtected : CompDataSource
 
     public override string CompInspectStringExtra()
     {
-        StringBuilder sb = new(base.CompInspectStringExtra());
+        StringBuilder sb = new();
+
+        sb.AppendLine(base.CompInspectStringExtra());
 
         string hacksetText = _hacksetDef == null ? "None".Translate() : _hacksetDef.LabelCap.Colorize(Color.red);
         sb.AppendLine("Security hackset: " + hacksetText);
