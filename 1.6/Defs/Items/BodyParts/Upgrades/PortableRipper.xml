@@ -4,7 +4,7 @@
     <ThingDef ParentName="USH_AdvancedCyberlinkUpgradeBase">
         <defName>USH_VirtualDataRipper</defName>
         <label>virtual data ripper</label>
-        <description>An implant that allows hackers installing virtual data rippers in electronic devices.\n\nIt can be self-installed without surgery.</description>
+        <description>An implant that allows hackers to install virtual data rippers in electronic devices.\n\nIt can be self-installed without surgery.</description>
         <descriptionHyperlinks>
             <HediffDef>USH_InstalledVirtualDataRipper</HediffDef>
         </descriptionHyperlinks>
