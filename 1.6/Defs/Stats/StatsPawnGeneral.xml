@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <StatDef Abstract="True" Name="USH_HackerStatBase">
-        <workerClass>USH_HE.StatWorker_Hacker</workerClass>
-        <category>USH_Hacker</category>
+    <StatDef>
+        <defName>USH_RemoteHackingDistance</defName>
+        <label>remote hacking distance</label>
+        <description>How far away an electronic device can be during remote hacking.</description>
+        <category>PawnWork</category>
         <defaultBaseValue>0</defaultBaseValue>
         <minValue>0</minValue>
         <showOnAnimals>false</showOnAnimals>
         <showOnHumanlikes>true</showOnHumanlikes>
         <showOnMechanoids>false</showOnMechanoids>
-        <displayPriorityInCategory>2000</displayPriorityInCategory>
+        <displayPriorityInCategory>4508</displayPriorityInCategory>
         <showIfUndefined>true</showIfUndefined>
-    </StatDef>
-
-    <StatDef ParentName="USH_HackerStatBase">
-        <defName>USH_RemoteHackingDistance</defName>
-        <label>remote hacking distance</label>
-        <description>How far away an electronic device can be during remote hacking.</description>
     </StatDef>
 
 </Defs>

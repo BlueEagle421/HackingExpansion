@@ -5,6 +5,7 @@
         <defName>USH_Hacker</defName>
         <label>Hacking</label>
         <displayOrder>106</displayOrder>
+        <displayAllByDefault>true</displayAllByDefault>
     </StatCategoryDef>
 
 </Defs>
