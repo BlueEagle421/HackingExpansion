@@ -83,4 +83,28 @@
         <worksWithPod>true</worksWithPod>
     </USH_HE.HackingOutcomeDef>
 
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_PowerDrainBug</defName>
+        <label>power drain bug</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_PowerDrainBug</workerClass>
+        <weight>1</weight>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_EMIVirus</defName>
+        <label>EMI virus</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_EMIVirus</workerClass>
+        <weight>0.6</weight>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_ShortCircuitExec</defName>
+        <label>short circuit exec</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_ShortCircuitExec</workerClass>
+        <weight>1</weight>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
 </Defs>

@@ -14,6 +14,7 @@
             <li>USH_EMPPulse</li>
             <li>USH_HullBreach</li>
             <li>USH_EMPExplosion</li>
+            <li>USH_PowerDrainBug</li>
         </hackingOutcomes>
     </USH_HE.HacksetDef>
 
@@ -27,6 +28,8 @@
         <hackingOutcomes>
             <li>USH_Berserk</li>
             <li>USH_CyberspaceComa</li>
+            <li>USH_EMIVirus</li>
+            <li>USH_ShortCircuitExec</li>
         </hackingOutcomes>
     </USH_HE.HacksetDef>
 

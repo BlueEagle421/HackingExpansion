@@ -222,3 +222,85 @@ public class HackingOutcomeWorker_LethalCyberspaceNecrosis(HackingOutcomeDef _de
         pod?.EjectContents();
     }
 }
+
+public class HackingOutcomeWorker_PowerDrainBug(HackingOutcomeDef _def)
+    : HackingOutcomeWorker(_def)
+{
+    public override AcceptanceReport CanApplyOnPawn(Pawn hacker)
+    {
+        if (!hacker.TryGetHoldingCyberpod(out var pod))
+            return false;
+
+        if (pod.PowerComp?.PowerNet is not PowerNet powerNet)
+            return false;
+
+        if (powerNet.batteryComps?.Any() != true)
+            return false;
+
+        return base.CanApplyOnPawn(hacker);
+    }
+
+    public override void ApplyOutcome(Pawn hacker, Thing caster)
+    {
+        base.ApplyOutcome(hacker, caster);
+
+        if (!hacker.TryGetHoldingCyberpod(out var pod))
+            return;
+
+        DrawPowerFromNet(pod.PowerComp?.PowerNet);
+    }
+
+    private void DrawPowerFromNet(PowerNet powerNet)
+    {
+        if (powerNet == null)
+            return;
+
+        foreach (CompPowerBattery battery in powerNet.batteryComps)
+            battery.DrawPower(battery.StoredEnergy);
+    }
+}
+
+public class HackingOutcomeWorker_EMIVirus(HackingOutcomeDef _def)
+    : HackingOutcomeWorker(_def)
+{
+    private IntRange _durationTicksRange = new(2500, 2500 * 2); //1, 2 hours 
+
+    public override AcceptanceReport CanApplyOnPawn(Pawn hacker)
+    {
+        if (!hacker.TryGetHoldingCyberpod(out var pod))
+            return false;
+
+        return base.CanApplyOnPawn(hacker);
+    }
+
+    public override void ApplyOutcome(Pawn hacker, Thing caster)
+    {
+        base.ApplyOutcome(hacker, caster);
+
+        caster.Map.GameConditionManager
+            .RegisterCondition(GameConditionMaker
+            .MakeCondition(GameConditionDefOf.EMIField, _durationTicksRange.RandomInRange));
+    }
+}
+
+public class HackingOutcomeWorker_ShortCircuitExec(HackingOutcomeDef _def)
+    : HackingOutcomeWorker(_def)
+{
+    public override AcceptanceReport CanApplyOnPawn(Pawn hacker)
+    {
+        if (!hacker.TryGetHoldingCyberpod(out var pod))
+            return false;
+
+        return base.CanApplyOnPawn(hacker);
+    }
+
+    public override void ApplyOutcome(Pawn hacker, Thing caster)
+    {
+        base.ApplyOutcome(hacker, caster);
+
+        if (!hacker.TryGetHoldingCyberpod(out var pod))
+            return;
+
+        ShortCircuitUtility.DoShortCircuit(pod);
+    }
+}
