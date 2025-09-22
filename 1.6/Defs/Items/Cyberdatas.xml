@@ -21,7 +21,7 @@
             <Mass>0.8</Mass>
             <Flammability>0.6</Flammability>
             <DeteriorationRate>2.0</DeteriorationRate>
-            <MarketValue>60</MarketValue>
+            <MarketValue>50</MarketValue>
         </statBases>
         <intricate>true</intricate>
         <thingCategories>
@@ -48,11 +48,11 @@
             <texPath>Things/Item/AdvancedCyberdata</texPath>
         </graphicData>
         <statBases>
-            <MarketValue>150</MarketValue>
+            <MarketValue>170</MarketValue>
         </statBases>
         <modExtensions Inherit="False">
             <li Class="USH_HE.RippableExtension">
-                <hackWorkAmount>5400</hackWorkAmount>
+                <hackWorkAmount>13500</hackWorkAmount>
                 <maxPerDataSourceRange>2~5</maxPerDataSourceRange>
             </li>
         </modExtensions>
