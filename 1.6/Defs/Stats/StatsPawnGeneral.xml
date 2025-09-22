@@ -19,12 +19,4 @@
         <description>How far away an electronic device can be during remote hacking.</description>
     </StatDef>
 
-    <!-- <StatDef ParentName="USH_HackerStatBase">
-        <defName>USH_SubconsciousHackTargets</defName>
-        <label>subconscious hack targets</label>
-        <description>How many targets this hacker can handle independently during subconscious hacking.</description>
-        <defaultBaseValue>0</defaultBaseValue>
-        <minValue>0</minValue>
-    </StatDef> -->
-
 </Defs>
