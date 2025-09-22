@@ -4,7 +4,7 @@
     <ThingDef Name="USH_Cyberdata" ParentName="ResourceBase">
         <defName>USH_Cyberdata</defName>
         <label>cyberdata</label>
-        <description>A special device that can storage instructions, codes, drivers, malicious software and other programs.\n\nIt can be extracted from various electronics using a dedicated ripper device.</description>
+        <description>A special device that can store instructions, code, drivers, malicious software, and other programs.\n\nIt can be extracted from various electronics using a dedicated ripper device.</description>
         <descriptionHyperlinks>
             <ThingDef>USH_DataRipper</ThingDef>
         </descriptionHyperlinks>
@@ -43,7 +43,7 @@
     <ThingDef ParentName="USH_Cyberdata">
         <defName>USH_AdvancedCyberdata</defName>
         <label>advanced cyberdata</label>
-        <description>A spacer device with remarkable storage capacity and processing power meant to contain specific information about a hackable device. With an onboard data analysis module it organizes and summarizes collected knowledge.\n\nIt can be extracted from various electronics using a dedicated ripper device.</description>
+        <description>A spacer device with remarkable storage capacity and an onboard data analysis module that organizes and summarizes collected knowledge.\n\nIt can be extracted from various electronics using a dedicated ripper device.</description>
         <graphicData>
             <texPath>Things/Item/AdvancedCyberdata</texPath>
         </graphicData>
