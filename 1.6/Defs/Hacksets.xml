@@ -5,7 +5,7 @@
         <defName>USH_OutdatedFirewall</defName>
         <label>outdated firewall</label>
         <description>An old software often used in industrial societies for protection within the cyberspace.</description>
-        <minDefense>1</minDefense>
+        <minDefense>6500</minDefense>
         <stealthMultiplier>1</stealthMultiplier>
         <weight>0.2</weight> <!-- meant to be rare in more advanced hackables -->
         <hackingOutcomes>
