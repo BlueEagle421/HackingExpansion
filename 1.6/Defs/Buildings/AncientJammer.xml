@@ -4,7 +4,7 @@
     <ThingDef ParentName="BuildingBase">
         <defName>USH_AncientJammer</defName>
         <label>ancient jammer</label>
-        <description>.</description>
+        <description>An ancient piece of hacking technology worn out by time. You can barely see lights flickering from it.</description>
         <fillPercent>0.20</fillPercent>
         <graphicData>
             <texPath>Things/Building/AncientJammer</texPath>
