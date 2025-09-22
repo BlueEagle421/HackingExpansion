@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <USH_HE.HackingOutcomeDef Abstract="True" Name="USH_HackingOutcomeBase">
+        <effecterDef>USH_HackingOutcome</effecterDef>
+        <weight>1</weight>
+        <doMessage>false</doMessage>
+        <worksWithPod>false</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_CyberspaceNausea</defName>
+        <label>cyberspace nausea</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_GiveNausea</workerClass>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_CyberspaceLockOut</defName>
+        <label>cyberspace lock out</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_GiveLockOut</workerClass>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_EMPPulse</defName>
+        <label>EMP pulse</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_EMPPulse</workerClass>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_HullBreach</defName>
+        <label>hull breach</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_HullBreach</workerClass>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_EMPExplosion</defName>
+        <label>EMP explosion</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_EMPExplosion</workerClass>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_Berserk</defName>
+        <label>berserk</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_Berserk</workerClass>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_CyberspaceComa</defName>
+        <label>cyberspace coma</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_GiveComa</workerClass>
+        <weight>0.8</weight>
+        <doMessage>true</doMessage>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_BrainFry</defName>
+        <label>brain fry</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_BrainFry</workerClass>
+        <weight>0.6</weight>
+        <doMessage>true</doMessage>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_CyberspaceNecrosis</defName>
+        <label>cyberspace necrosis</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_CyberspaceNecrosis</workerClass>
+        <weight>0.6</weight>
+        <doMessage>true</doMessage>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_LethalCyberspaceNecrosis</defName>
+        <label>lethal cyberspace necrosis</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_LethalCyberspaceNecrosis</workerClass>
+        <weight>0.4</weight>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+</Defs>

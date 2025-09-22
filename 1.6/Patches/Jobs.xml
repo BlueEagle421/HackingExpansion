@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>*/JobDef[defName="Hack"]/driverClass</xpath>
+        <value>
+            <driverClass>USH_HE.JobDriver_RemoteHack</driverClass>
+        </value>
+    </Operation>
+
+</Patch>

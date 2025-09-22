@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef Name="USH_CoprocessorBase" ParentName="BuildingBase" Abstract="True">
+        <graphicData>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2,2)</drawSize>
+            <shadowData>
+                <volume>(0.65, 1, 0.65)</volume>
+            </shadowData>
+            <drawRotated>false</drawRotated>
+            <allowFlip>false</allowFlip>
+        </graphicData>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <rotatable>false</rotatable>
+        <castEdgeShadows>false</castEdgeShadows>
+        <defaultPlacingRot>South</defaultPlacingRot>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <thingCategories>
+            <li>BuildingsMisc</li>
+        </thingCategories>
+        <fillPercent>0.3</fillPercent>
+        <statBases>
+            <MaxHitPoints>120</MaxHitPoints>
+            <WorkToBuild>4000</WorkToBuild>
+            <Mass>12</Mass>
+            <Beauty>0</Beauty>
+            <Flammability>0.2</Flammability>
+        </statBases>
+        <size>(1,1)</size>
+        <designationCategory>Misc</designationCategory>
+        <uiIconScale>0.8</uiIconScale>
+        <placeWorkers>
+            <li>PlaceWorker_ShowFacilitiesConnections</li>
+        </placeWorkers>
+    </ThingDef>
+
+    <ThingDef ParentName="USH_CoprocessorBase">
+        <defName>USH_OptimizationCoprocessor</defName>
+        <label>optimization coprocessor</label>
+        <description>A cyberpod subsystem with exceptional computing power, used to optimize hacking algorithms. It boosts the pod's hacking speed.\n\nThree coprocessors of this type can link to a pod.</description>
+        <graphicData>
+            <texPath>Things/Building/OptimizationCoprocessor</texPath>
+        </graphicData>
+        <costList>
+            <Steel>30</Steel>
+            <USH_OptimizationModule>1</USH_OptimizationModule>
+        </costList>
+        <comps>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>100</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Facility">
+                <statOffsets>
+                    <USH_HackingSpeedMultiplier>0.15</USH_HackingSpeedMultiplier>
+                </statOffsets>
+                <maxSimultaneous>3</maxSimultaneous>
+            </li>
+        </comps>
+        <researchPrerequisites>
+            <li>USH_CybertechMachinery</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+    <ThingDef ParentName="USH_CoprocessorBase">
+        <defName>USH_JammerCoprocessor</defName>
+        <label>jammer coprocessor</label>
+        <description>A cyberpod subsystem designed to disrupt hostile cybersignals, thereby increasing the device's stealth.\n\nThree coprocessors of this type can link to a pod.</description>
+        <graphicData>
+            <texPath>Things/Building/JammerCoprocessor</texPath>
+        </graphicData>
+        <costList>
+            <Steel>30</Steel>
+            <USH_JammerKit>1</USH_JammerKit>
+        </costList>
+        <comps>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>100</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Facility">
+                <statOffsets>
+                    <USH_HackingStealthMultiplier>0.1</USH_HackingStealthMultiplier>
+                </statOffsets>
+                <maxSimultaneous>3</maxSimultaneous>
+            </li>
+        </comps>
+        <researchPrerequisites>
+            <li>USH_CybertechMachinery</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+    <ThingDef ParentName="USH_CoprocessorBase">
+        <defName>USH_VitalityCoprocessor</defName>
+        <label>vitality coprocessor</label>
+        <description>A specialized computation and nutrient-storage device designed to keep hackers inside cyberpods alive. It places the body in a state of suspended animation.\n\nOnly one can connect to a pod.</description>
+        <graphicData>
+            <texPath>Things/Building/VitalityCoprocessor</texPath>
+        </graphicData>
+        <costList>
+            <Steel>30</Steel>
+            <USH_AdvancedCyberdata>5</USH_AdvancedCyberdata>
+            <ComponentSpacer>4</ComponentSpacer>
+        </costList>
+        <comps>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>250</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Facility">
+                <maxSimultaneous>1</maxSimultaneous>
+            </li>
+        </comps>
+        <researchPrerequisites>
+            <li>USH_CybertechMachinery</li>
+            <li>Cryptosleep</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+</Defs>

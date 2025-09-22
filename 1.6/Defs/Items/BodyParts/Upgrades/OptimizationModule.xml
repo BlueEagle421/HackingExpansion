@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="USH_CyberlinkUpgradeBase">
+        <defName>USH_OptimizationModule</defName>
+        <label>optimization module</label>
+        <description>An implant which increases hacker's speed.\n\nThis implant can be installed up to 3 times to increase its effect. To go higher, a more advanced module must be used. It can be self-installed without surgery.</description>
+        <descriptionHyperlinks>
+            <HediffDef>USH_InstalledOptimizationModule</HediffDef>
+        </descriptionHyperlinks>
+        <statBases>
+            <MaxInstallCount>3</MaxInstallCount>
+        </statBases>
+        <costList>
+            <USH_Cyberdata>2</USH_Cyberdata>
+            <ComponentIndustrial>4</ComponentIndustrial>
+            <Uranium>5</Uranium>
+        </costList>
+        <recipeMaker>
+            <researchPrerequisite>USH_BasicCybertech</researchPrerequisite>
+        </recipeMaker>
+        <comps>
+            <li Class="USH_HE.CompProperties_UsableExpanded">
+                <useJob>UseItem</useJob>
+                <useLabel>Implant {0_label}</useLabel>
+                <userMustHaveAnyHediff>
+                    <li>USH_InstalledCyberlink</li>
+                    <li>USH_InstalledAdvancedCyberlink</li>
+                </userMustHaveAnyHediff>
+            </li>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledOptimizationModule</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <maxSeverity>3</maxSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <ThingDef ParentName="USH_AdvancedCyberlinkUpgradeBase">
+        <defName>USH_AdvancedOptimizationModule</defName>
+        <label>optimization module (advanced)</label>
+        <description>An implant which increases hacker's speed.\n\nThis implant can be installed up to 3 times to increase its effect and requires an advanced cyberlink to function. It can be self-installed without surgery.</description>
+        <descriptionHyperlinks>
+            <HediffDef>USH_InstalledOptimizationModule</HediffDef>
+        </descriptionHyperlinks>
+        <statBases>
+            <MaxInstallCount>3</MaxInstallCount>
+        </statBases>
+        <costList>
+            <USH_AdvancedCyberdata>3</USH_AdvancedCyberdata>
+            <ComponentSpacer>1</ComponentSpacer>
+            <Plasteel>15</Plasteel>
+        </costList>
+        <recipeMaker>
+            <researchPrerequisite>USH_AdvancedCybertech</researchPrerequisite>
+        </recipeMaker>
+        <comps>
+            <li Class="CompProperties_Usable">
+                <compClass>CompUsableImplant</compClass>
+                <useJob>UseItem</useJob>
+                <useLabel>Implant {0_label}</useLabel>
+                <userMustHaveHediff>USH_InstalledAdvancedCyberlink</userMustHaveHediff>
+            </li>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledOptimizationModule</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef>
+        <defName>USH_InstalledOptimizationModule</defName>
+        <hediffClass>Hediff_Level</hediffClass>
+        <label>optimization module</label>
+        <description>An implant which increases hacker's speed.</description>
+        <descriptionHyperlinks>
+            <ThingDef>USH_OptimizationModule</ThingDef>
+        </descriptionHyperlinks>
+        <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+        <isBad>false</isBad>
+        <priceImpact>true</priceImpact>
+        <initialSeverity>1</initialSeverity> <!-- Severity is bound to level of implant -->
+        <minSeverity>0</minSeverity>
+        <maxSeverity>6</maxSeverity>
+        <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+        <levelIsQuantity>true</levelIsQuantity>
+        <duplicationAllowed>false</duplicationAllowed>
+        <stages>
+            <li>
+                <minSeverity>1</minSeverity>
+                <statOffsets>
+                    <HackingSpeed>0.09</HackingSpeed>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>2</minSeverity>
+                <statOffsets>
+                    <HackingSpeed>0.18</HackingSpeed>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>3</minSeverity>
+                <statOffsets>
+                    <HackingSpeed>0.27</HackingSpeed>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>4</minSeverity>
+                <statOffsets>
+                    <HackingSpeed>0.36</HackingSpeed>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>5</minSeverity>
+                <statOffsets>
+                    <HackingSpeed>0.45</HackingSpeed>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>6</minSeverity>
+                <statOffsets>
+                    <HackingSpeed>0.54</HackingSpeed>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+</Defs>

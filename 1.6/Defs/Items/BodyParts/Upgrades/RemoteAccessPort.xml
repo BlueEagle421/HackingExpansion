@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="USH_CyberlinkUpgradeBase">
+        <defName>USH_RemoteAccessPort</defName>
+        <label>remote access port</label>
+        <description>An implant which increases a hacker's remote hacking distance.\n\nThis implant can be installed up to 1 time to increase its effect. To go higher, a more advanced port must be used. It can be self-installed without surgery.</description>
+        <descriptionHyperlinks>
+            <HediffDef>USH_InstalledRemoteAccessPort</HediffDef>
+        </descriptionHyperlinks>
+        <costList>
+            <USH_Cyberdata>5</USH_Cyberdata>
+            <ComponentIndustrial>6</ComponentIndustrial>
+            <Uranium>10</Uranium>
+        </costList>
+        <statBases>
+            <MaxInstallCount>1</MaxInstallCount>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>USH_BasicCybertech</researchPrerequisite>
+        </recipeMaker>
+        <comps>
+            <li Class="USH_HE.CompProperties_UsableExpanded">
+                <useJob>UseItem</useJob>
+                <useLabel>Implant {0_label}</useLabel>
+                <userMustHaveAnyHediff>
+                    <li>USH_InstalledCyberlink</li>
+                    <li>USH_InstalledAdvancedCyberlink</li>
+                </userMustHaveAnyHediff>
+            </li>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledRemoteAccessPort</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <maxSeverity>1</maxSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <ThingDef ParentName="USH_AdvancedCyberlinkUpgradeBase">
+        <defName>USH_AdvancedRemoteAccessPort</defName>
+        <label>remote access port (advanced)</label>
+        <description>An implant which increases a hacker's remote hacking distance.\n\nThis implant can be installed up to 2 times to increase its effect and requires an advanced cyberlink to function. It can be self-installed without surgery.</description>
+        <descriptionHyperlinks>
+            <HediffDef>USH_InstalledRemoteAccessPort</HediffDef>
+        </descriptionHyperlinks>
+        <costList>
+            <PowerfocusChip MayRequire="Ludeon.RimWorld.Biotech">1</PowerfocusChip>
+            <USH_AdvancedCyberdata>5</USH_AdvancedCyberdata>
+            <ComponentSpacer>3</ComponentSpacer>
+            <Plasteel>10</Plasteel>
+        </costList>
+        <statBases>
+            <MaxInstallCount>2</MaxInstallCount>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>USH_AdvancedCybertech</researchPrerequisite>
+        </recipeMaker>
+        <comps>
+            <li Class="CompProperties_Usable">
+                <compClass>CompUsableImplant</compClass>
+                <useJob>UseItem</useJob>
+                <useLabel>Implant {0_label}</useLabel>
+                <userMustHaveHediff>USH_InstalledAdvancedCyberlink</userMustHaveHediff>
+            </li>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledRemoteAccessPort</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>1</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef>
+        <defName>USH_InstalledRemoteAccessPort</defName>
+        <hediffClass>Hediff_Level</hediffClass>
+        <descriptionHyperlinks>
+            <ThingDef>USH_RemoteAccessPort</ThingDef>
+        </descriptionHyperlinks>
+        <label>remote access port</label>
+        <description>.</description>
+        <descriptionShort>.</descriptionShort>
+        <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+        <isBad>false</isBad>
+        <priceImpact>true</priceImpact>
+        <initialSeverity>1</initialSeverity> <!-- Severity is bound to level of implant -->
+        <minSeverity>0</minSeverity>
+        <maxSeverity>3</maxSeverity>
+        <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+        <levelIsQuantity>true</levelIsQuantity>
+        <duplicationAllowed>false</duplicationAllowed>
+        <stages>
+            <li>
+                <minSeverity>1</minSeverity>
+                <statOffsets>
+                    <USH_RemoteHackingDistance>7.9</USH_RemoteHackingDistance>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>2</minSeverity>
+                <statOffsets>
+                    <USH_RemoteHackingDistance>13.9</USH_RemoteHackingDistance>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>3</minSeverity>
+                <statOffsets>
+                    <USH_RemoteHackingDistance>19.9</USH_RemoteHackingDistance>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+</Defs>

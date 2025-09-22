@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>USH_Cyberpod</defName>
+        <label>cyberpod</label>
+        <description>A specialized capsule with built-in neural ports for use by hackers with cyberlinks. It can help establish very high synchronization levels with cyberspace, allowing long-range hacking; however, it is more sensitive to interference, reducing base hacking speed and stealth.</description>
+        <thingClass>USH_HE.Building_Cyberpod</thingClass>
+        <containedPawnsSelectable>true</containedPawnsSelectable>
+        <drawerType>RealtimeOnly</drawerType>
+        <graphicData>
+            <texPath>Things/Building/Cyberpod/ShipCryptosleepCasket</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3, 3)</drawSize>
+            <shadowData>
+                <volume>(0.83, 0.3, 1.7)</volume>
+            </shadowData>
+        </graphicData>
+        <researchPrerequisites>
+            <li>USH_CybertechMachinery</li>
+        </researchPrerequisites>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <pathCost>42</pathCost>
+        <blockWind>true</blockWind>
+        <fillPercent>0.5</fillPercent>
+        <canOverlapZones>false</canOverlapZones>
+        <statBases>
+            <WorkToBuild>3200</WorkToBuild>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Flammability>0.5</Flammability>
+
+            <USH_HackingSpeedMultiplier>0.3</USH_HackingSpeedMultiplier>
+            <USH_HackingStealthMultiplier>0.6</USH_HackingStealthMultiplier>
+        </statBases>
+        <tickerType>Normal</tickerType>
+        <size>(1,2)</size>
+        <designationCategory>Misc</designationCategory>
+        <uiOrder>2050</uiOrder>
+        <hasInteractionCell>true</hasInteractionCell>
+        <interactionCellOffset>(1,0,0)</interactionCellOffset>
+        <defaultPlacingRot>South</defaultPlacingRot>
+        <building>
+            <ai_chillDestination>false</ai_chillDestination>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+            <isPlayerEjectable>true</isPlayerEjectable>
+        </building>
+        <costList>
+            <Steel>180</Steel>
+            <Uranium>5</Uranium>
+            <USH_Cyberdata>12</USH_Cyberdata>
+            <ComponentIndustrial>4</ComponentIndustrial>
+        </costList>
+        <comps>
+            <li Class="CompProperties_EmptyStateGraphic">
+                <graphicData>
+                    <texPath>Things/Building/Cyberpod/ShipCryptosleepCasketOpenDoor</texPath>
+                    <graphicClass>Graphic_Multi</graphicClass>
+                    <drawSize>(3, 3)</drawSize>
+                </graphicData>
+                <alwaysDrawParent>false</alwaysDrawParent>
+            </li>
+            <li Class="CompProperties_Stunnable">
+                <affectedDamageDefs>
+                    <li>Stun</li>
+                    <li>EMP</li>
+                </affectedDamageDefs>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>200</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Breakdownable" />
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>2.66</explosiveRadius>
+                <explosiveDamageType>Flame</explosiveDamageType>
+            </li>
+            <li Class="CompProperties_AffectedByFacilities">
+                <linkableFacilities>
+                    <li>USH_OptimizationCoprocessor</li>
+                    <li>USH_JammerCoprocessor</li>
+                    <li>USH_VitalityCoprocessor</li>
+                </linkableFacilities>
+            </li>
+        </comps>
+        <placeWorkers>
+            <li>PlaceWorker_ShowFacilitiesConnections</li>
+            <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+        </placeWorkers>
+        <inspectorTabs>
+            <li>ITab_ContentsCasket</li>
+        </inspectorTabs>
+        <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+        <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <JobDef>
+        <defName>USH_EnterCyberpod</defName>
+        <driverClass>USH_HE.JobDriver_EnterCyberpod</driverClass>
+        <reportString>entering cyberpod.</reportString>
+        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+
+    <StatDef>
+        <defName>USH_HackingSpeedMultiplier</defName>
+        <label>hacking speed multiplier</label>
+        <description>This value represents the multiplier of hacking speed while using the cyberpod.</description>
+        <category>Building</category>
+        <defaultBaseValue>1</defaultBaseValue>
+        <minValue>0</minValue>
+        <maxValue>1</maxValue>
+        <toStringStyle>PercentZero</toStringStyle>
+        <showIfUndefined>false</showIfUndefined>
+        <displayPriorityInCategory>3000</displayPriorityInCategory>
+    </StatDef>
+
+    <StatDef>
+        <defName>USH_HackingStealthMultiplier</defName>
+        <label>hacking stealth multiplier</label>
+        <description>This value represents the multiplier of stealth while using the cyberpod.</description>
+        <category>Building</category>
+        <defaultBaseValue>1</defaultBaseValue>
+        <minValue>0</minValue>
+        <maxValue>1</maxValue>
+        <toStringStyle>PercentZero</toStringStyle>
+        <showIfUndefined>false</showIfUndefined>
+        <displayPriorityInCategory>3000</displayPriorityInCategory>
+    </StatDef>
+
+</Defs>

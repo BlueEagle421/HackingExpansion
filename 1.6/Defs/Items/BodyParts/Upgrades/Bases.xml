@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef Abstract="True" Name="USH_CyberlinkUpgradeBase" ParentName="USH_CyberlinkBodyPartBase">
+        <statBases>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Beauty>-4</Beauty>
+            <Mass>1</Mass>
+            <MarketValue>1200</MarketValue>
+            <DeteriorationRate>0</DeteriorationRate>
+            <WorkToMake>3200</WorkToMake>
+        </statBases>
+        <graphicData>
+            <texPath>Things/Item/CyberlinkUpgrade</texPath>
+        </graphicData>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+        </comps>
+        <rotatable>false</rotatable>
+        <tradeability>Sellable</tradeability>
+    </ThingDef>
+
+    <ThingDef Abstract="True" Name="USH_AdvancedCyberlinkUpgradeBase" ParentName="USH_CyberlinkUpgradeBase">
+        <statBases>
+            <WorkToMake>4800</WorkToMake>
+        </statBases>
+        <graphicData>
+            <texPath>Things/Item/AdvancedCyberlinkUpgrade</texPath>
+        </graphicData>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>8</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+
+</Defs>

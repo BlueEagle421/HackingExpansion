@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>USH_Turret_MechhiveDisruptor</defName>
+        <label>mechhive disruptor</label>
+        <description>A stationary turret that emits disruptive signals to targeted mechanoids through cyberspace. It can lower synchronization between mechs and their hive minds, degrading multiple capabilities.</description>
+        <thingClass>Building_TurretGun</thingClass>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <graphicData>
+            <texPath>Things/Building/TurretDisruptor_Base</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2,2)</drawSize>
+            <damageData>
+                <rect>(0.2,0.2,0.6,0.6)</rect>
+            </damageData>
+            <shadowData>
+                <volume>(0.27,0.25,0.27)</volume>
+                <offset>(0,0,0)</offset>
+            </shadowData>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <uiIconPath>Things/Building/MechhiveDisruptorIcon</uiIconPath>
+        <uiIconScale>0.90</uiIconScale>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <altitudeLayer>Building</altitudeLayer>
+        <stealable>false</stealable>
+        <rotatable>false</rotatable>
+        <thingCategories>
+            <li>BuildingsSecurity</li>
+        </thingCategories>
+        <statBases>
+            <MaxHitPoints>150</MaxHitPoints>
+            <Flammability>0.7</Flammability>
+            <WorkToBuild>1800</WorkToBuild>
+            <Mass>8</Mass>
+            <Beauty>-10</Beauty>
+        </statBases>
+        <tickerType>Normal</tickerType>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>250</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Breakdownable" />
+            <li Class="CompProperties_Glower">
+                <glowRadius>3</glowRadius>
+                <glowColor>(240,240,228,0)</glowColor>
+            </li>
+        </comps>
+        <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
+        <fillPercent>0.4</fillPercent>
+        <hasTooltip>true</hasTooltip>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <costStuffCount>50</costStuffCount>
+        <costList>
+            <Steel>60</Steel>
+            <USH_AdvancedCyberdata>2</USH_AdvancedCyberdata>
+            <ComponentSpacer>1</ComponentSpacer>
+        </costList>
+        <designationCategory>Security</designationCategory>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>USH_Gun_MechhiveDisruptor</turretGunDef>
+            <turretBurstCooldownTime>0.17</turretBurstCooldownTime>
+        </building>
+        <specialDisplayRadius>24.9</specialDisplayRadius>
+        <placeWorkers>
+            <li>PlaceWorker_TurretTop</li>
+        </placeWorkers>
+        <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+        <researchPrerequisites>
+            <li>USH_CybertechMachinery</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseWeaponTurret">
+        <defName>USH_Gun_MechhiveDisruptor</defName>
+        <label>disruptor processor</label>
+        <description>The main processor of the disruptor.</description>
+        <graphicData>
+            <texPath>Things/Building/MechhiveDisruptor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.9</drawSize>
+        </graphicData>
+        <statBases>
+            <RangedWeapon_Cooldown>0.17</RangedWeapon_Cooldown>
+            <DeteriorationRate>0</DeteriorationRate>
+            <Mass>5</Mass>
+            <Flammability>0</Flammability>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>USH_HE.Verb_Disrupt</verbClass>
+                <range>24.9</range>
+                <muzzleFlashScale>0</muzzleFlashScale>
+                <drawAimPie>false</drawAimPie>
+                <requireLineOfSight>false</requireLineOfSight>
+            </li>
+        </verbs>
+        <modExtensions>
+            <li Class="USH_HE.DisruptorExtension">
+                <hediffDef>USH_Disrupted</hediffDef>
+                <effecterDef>USH_Disrupt</effecterDef>
+                <effectDurationTicks>120</effectDurationTicks>
+            </li>
+        </modExtensions>
+    </ThingDef>
+
+</Defs>

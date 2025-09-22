@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>*/StatDef[defName="HackingSpeed"]/category</xpath>
+        <value>
+            <category>USH_Hacker</category>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>*/StatDef[defName="HackingStealth"]/category</xpath>
+        <value>
+            <category>USH_Hacker</category>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/StatDef[defName="MaxInstallCount"]</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+                <StatDef>
+                    <defName>MaxInstallCount</defName>
+                    <label>max install count</label>
+                    <description>How many times this can be installed. Each additional installation increases or upgrades the base effect.</description>
+                    <category>Basics</category>
+                    <defaultBaseValue>0</defaultBaseValue>
+                    <minValue>0</minValue>
+                    <toStringStyle>Integer</toStringStyle>
+                    <hideAtValue>0</hideAtValue>
+                    <displayPriorityInCategory>4020</displayPriorityInCategory>
+                    <forInformationOnly>true</forInformationOnly>
+                </StatDef>
+            </value>
+        </nomatch>
+    </Operation>
+
+</Patch>

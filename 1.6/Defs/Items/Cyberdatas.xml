@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <ThingDef Name="USH_Cyberdata" ParentName="ResourceBase">
+        <defName>USH_Cyberdata</defName>
+        <label>cyberdata</label>
+        <description>A special device that can storage instructions, codes, drivers, malicious software and other programs.\n\nIt can be extracted from various electronics using a dedicated ripper device.</description>
+        <descriptionHyperlinks>
+            <ThingDef>USH_DataRipper</ThingDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>Things/Item/Cyberdata</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <soundInteract>Metal_Drop</soundInteract>
+        <soundDrop>Standard_Drop</soundDrop>
+        <stackLimit>50</stackLimit>
+        <healthAffectsPrice>false</healthAffectsPrice>
+        <statBases>
+            <MaxHitPoints>60</MaxHitPoints>
+            <Mass>0.8</Mass>
+            <Flammability>0.6</Flammability>
+            <DeteriorationRate>2.0</DeteriorationRate>
+            <MarketValue>60</MarketValue>
+        </statBases>
+        <intricate>true</intricate>
+        <thingCategories>
+            <li>Manufactured</li>
+        </thingCategories>
+        <tradeTags>
+            <li>ExoticMisc</li>
+        </tradeTags>
+        <tradeability>Sellable</tradeability>
+        <allowedArchonexusCount>5</allowedArchonexusCount>
+        <modExtensions>
+            <li Class="USH_HE.RippableExtension">
+                <hackWorkAmount>2100</hackWorkAmount>
+                <maxPerDataSourceRange>8~16</maxPerDataSourceRange>
+            </li>
+        </modExtensions>
+    </ThingDef>
+
+    <ThingDef ParentName="USH_Cyberdata">
+        <defName>USH_AdvancedCyberdata</defName>
+        <label>advanced cyberdata</label>
+        <description>A spacer device with remarkable storage capacity and processing power meant to contain specific information about a hackable device. With an onboard data analysis module it organizes and summarizes collected knowledge.\n\nIt can be extracted from various electronics using a dedicated ripper device.</description>
+        <graphicData>
+            <texPath>Things/Item/AdvancedCyberdata</texPath>
+        </graphicData>
+        <statBases>
+            <MarketValue>150</MarketValue>
+        </statBases>
+        <modExtensions Inherit="False">
+            <li Class="USH_HE.RippableExtension">
+                <hackWorkAmount>5400</hackWorkAmount>
+                <maxPerDataSourceRange>2~5</maxPerDataSourceRange>
+            </li>
+        </modExtensions>
+    </ThingDef>
+
+</Defs>

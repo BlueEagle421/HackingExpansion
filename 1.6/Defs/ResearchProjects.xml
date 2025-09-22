@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <ResearchProjectDef>
+        <defName>USH_BasicCybertech</defName>
+        <label>basic cybertech</label>
+        <description>Technology used for more efficient hacking. In order to obtain cyberdata you need to craft a data ripper.</description>
+        <baseCost>800</baseCost>
+        <techLevel>Industrial</techLevel>
+        <prerequisites>
+            <li>Machining</li>
+        </prerequisites>
+        <researchViewX>6.00</researchViewX>
+        <researchViewY>5.50</researchViewY>
+        <generalRules>
+            <rulesStrings>
+                <li>subject->cybertech</li>
+
+                <li>subject_story->designed software at a cyber security company</li>
+
+                <li>subject_gerund->hacking electronics</li>
+            </rulesStrings>
+        </generalRules>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef>
+        <defName>USH_CybertechMachinery</defName>
+        <label>cybertech machinery</label>
+        <description>Technology describing usage of neural ports in machines.</description>
+        <baseCost>1000</baseCost>
+        <techLevel>Industrial</techLevel>
+        <prerequisites>
+            <li>USH_BasicCybertech</li>
+        </prerequisites>
+        <researchViewX>7.00</researchViewX>
+        <researchViewY>5.50</researchViewY>
+        <generalRules>
+            <rulesStrings>
+                <li>subject->cybertech machinery</li>
+
+                <li>subject_story->designed hardware at a cyber security company</li>
+
+                <li>subject_gerund->hacking electronics</li>
+            </rulesStrings>
+        </generalRules>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef>
+        <defName>USH_AdvancedCybertech</defName>
+        <label>advanced cybertech</label>
+        <description>Advanced technology teaching complex hacking methods.</description>
+        <baseCost>2000</baseCost>
+        <techLevel>Spacer</techLevel>
+        <prerequisites>
+            <li>USH_CybertechMachinery</li>
+        </prerequisites>
+        <researchViewX>8.00</researchViewX>
+        <researchViewY>5.50</researchViewY>
+        <generalRules>
+            <rulesStrings>
+                <li>subject->advanced cybertech</li>
+
+                <li>subject_story->studied conscious AI's at a cyber security company</li>
+
+                <li>subject_gerund->hacking electronics</li>
+            </rulesStrings>
+        </generalRules>
+    </ResearchProjectDef>
+
+</Defs>

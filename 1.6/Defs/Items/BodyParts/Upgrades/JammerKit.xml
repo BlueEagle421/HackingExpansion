@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="USH_CyberlinkUpgradeBase">
+        <defName>USH_JammerKit</defName>
+        <label>jammer kit</label>
+        <description>An implant which increases hacker's stealth.\n\nThis implant can be installed up to 3 times to increase its effect. To go higher, a more advanced jammer must be used. It can be self-installed without surgery.</description>
+        <descriptionHyperlinks>
+            <HediffDef>USH_InstalledJammerKit</HediffDef>
+        </descriptionHyperlinks>
+        <statBases>
+            <MaxInstallCount>3</MaxInstallCount>
+        </statBases>
+        <costList>
+            <USH_Cyberdata>5</USH_Cyberdata>
+            <ComponentIndustrial>4</ComponentIndustrial>
+        </costList>
+        <recipeMaker>
+            <researchPrerequisite>USH_BasicCybertech</researchPrerequisite>
+        </recipeMaker>
+        <comps>
+            <li Class="USH_HE.CompProperties_UsableExpanded">
+                <useJob>UseItem</useJob>
+                <useLabel>Implant {0_label}</useLabel>
+                <userMustHaveAnyHediff>
+                    <li>USH_InstalledCyberlink</li>
+                    <li>USH_InstalledAdvancedCyberlink</li>
+                </userMustHaveAnyHediff>
+            </li>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <maxSeverity>3</maxSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <ThingDef ParentName="USH_AdvancedCyberlinkUpgradeBase">
+        <defName>USH_AdvancedJammerKit</defName>
+        <label>jammer kit (advanced)</label>
+        <description>An implant which increases hacker's stealth.\n\nThis implant can be installed up to 3 times to increase its effect and requires an advanced cyberlink to function. It can be self-installed without surgery.</description>
+        <descriptionHyperlinks>
+            <HediffDef>USH_InstalledJammerKit</HediffDef>
+        </descriptionHyperlinks>
+        <statBases>
+            <MaxInstallCount>3</MaxInstallCount>
+        </statBases>
+        <costList>
+            <USH_AdvancedCyberdata>2</USH_AdvancedCyberdata>
+            <ComponentSpacer>2</ComponentSpacer>
+            <Plasteel>12</Plasteel>
+        </costList>
+        <recipeMaker>
+            <researchPrerequisite>USH_AdvancedCybertech</researchPrerequisite>
+        </recipeMaker>
+        <comps>
+            <li Class="CompProperties_Usable">
+                <compClass>CompUsableImplant</compClass>
+                <useJob>UseItem</useJob>
+                <useLabel>Implant {0_label}</useLabel>
+                <userMustHaveHediff>USH_InstalledAdvancedCyberlink</userMustHaveHediff>
+            </li>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef>
+        <defName>USH_InstalledJammerKit</defName>
+        <hediffClass>Hediff_Level</hediffClass>
+        <label>jammer kit</label>
+        <description>An implant which increases hacker's stealth.</description>
+        <descriptionHyperlinks>
+            <ThingDef>USH_JammerKit</ThingDef>
+        </descriptionHyperlinks>
+        <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+        <isBad>false</isBad>
+        <priceImpact>true</priceImpact>
+        <initialSeverity>1</initialSeverity> <!-- Severity is bound to level of implant -->
+        <minSeverity>0</minSeverity>
+        <maxSeverity>6</maxSeverity>
+        <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+        <levelIsQuantity>true</levelIsQuantity>
+        <duplicationAllowed>false</duplicationAllowed>
+        <stages>
+            <li>
+                <minSeverity>1</minSeverity>
+                <statOffsets>
+                    <HackingStealth>12</HackingStealth>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>2</minSeverity>
+                <statOffsets>
+                    <HackingStealth>24</HackingStealth>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>3</minSeverity>
+                <statOffsets>
+                    <HackingStealth>36</HackingStealth>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>4</minSeverity>
+                <statOffsets>
+                    <HackingStealth>48</HackingStealth>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>5</minSeverity>
+                <statOffsets>
+                    <HackingStealth>60</HackingStealth>
+                </statOffsets>
+            </li>
+            <li>
+                <minSeverity>6</minSeverity>
+                <statOffsets>
+                    <HackingStealth>72</HackingStealth>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+</Defs>

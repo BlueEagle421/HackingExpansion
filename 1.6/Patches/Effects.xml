@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>*/EffecterDef[defName="HackingTerminal"]/children/li[subEffecterClass="SubEffecter_SprayerChance"]/spawnLocType</xpath>
+        <value>
+            <spawnLocType>OnTarget</spawnLocType>
+        </value>
+    </Operation>
+
+</Patch>

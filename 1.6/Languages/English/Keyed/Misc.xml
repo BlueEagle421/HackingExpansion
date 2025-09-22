@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+    <USH_HE_IncompatibleHediff>Already has {HEDIFF}</USH_HE_IncompatibleHediff>
+    <USH_HE_ConfirmInstallCyberlinkIntellectual>A hacker must be capable of intellectual tasks to operate.\n\nAre you sure you want to continue?</USH_HE_ConfirmInstallCyberlinkIntellectual>
+    <USH_HE_MustHaveAnyHediff>Must have any of: {HEDIFFS}</USH_HE_MustHaveAnyHediff>
+    <USH_HE_CommandChooseToHack>Choose target to hack</USH_HE_CommandChooseToHack>
+    <USH_HE_CommandChooseDataSource>Choose hackable data source</USH_HE_CommandChooseDataSource>
+
+    <USH_HE_CannotInstall>Cannot install</USH_HE_CannotInstall>
+    <USH_HE_NoNewData>Already being ripped</USH_HE_NoNewData>
+
+    <USH_HE_CommandChooseDataOutput>Choose data ripping output</USH_HE_CommandChooseDataOutput>
+    <USH_HE_CommandChooseDataOutputDesc>Select what should be outputted as a result of hacking this device.</USH_HE_CommandChooseDataOutputDesc>
+
+    <USH_HE_OrderHackTarget>Hack target</USH_HE_OrderHackTarget>
+    <USH_HE_OrderHackTargetDesc>Select a target to be hacked by this hacker.</USH_HE_OrderHackTargetDesc>
+    <USH_HE_AlreadyHacked>Already hacked</USH_HE_AlreadyHacked>
+    <USH_HE_InstallDataRipper>Install data ripper</USH_HE_InstallDataRipper>
+
+    <USH_HE_HackPoints>hacking work amount</USH_HE_HackPoints>
+    <USH_HE_DataRippingProgress>Data ripping progress</USH_HE_DataRippingProgress>
+
+    <USH_HE_HackingBerserkReason>Caused by hacking {0}.</USH_HE_HackingBerserkReason>
+    <USH_HE_OutcomeMessage>{HACKSET} has caused {OUTCOME} on {PAWN}.</USH_HE_OutcomeMessage>
+
+    <USH_HE_SecurityHackset>Security hackset</USH_HE_SecurityHackset>
+    <USH_HE_SecurityHacksetDesc>What kind of hackset protects this device during hacking.</USH_HE_SecurityHacksetDesc>
+    <USH_HE_HackActionsProbabilities>Hack actions with probabilities</USH_HE_HackActionsProbabilities>
+    <USH_HE_HackActions>Hack actions</USH_HE_HackActions>
+    <USH_HE_HackActionsHacksetDesc>What hack actions are contained in this type of hackset.</USH_HE_HackActionsHacksetDesc>
+
+    <USH_HE_CyberpodGuestsNotAllowed>Temporary faction members not allowed.</USH_HE_CyberpodGuestsNotAllowed>
+    <USH_HE_EnterCyberpod>Enter cyberpod</USH_HE_EnterCyberpod>
+
+    <USH_HE_CommandIgnoreAutoHack>Toggle ignore auto hack</USH_HE_CommandIgnoreAutoHack>
+    <USH_HE_CommandIgnoreAutoHackDesc>If enabled the hacker will automatically target all hackable devices ignoring their auto hack toggle.</USH_HE_CommandIgnoreAutoHackDesc>
+
+    <USH_HE_CommandStartWaking>Start waking up</USH_HE_CommandStartWaking>
+    <USH_HE_CommandStartWakingDesc>Slowly and safely disconnects contained hacker from the cyberspace and automatically ejects him after completion.</USH_HE_CommandStartWakingDesc>
+
+    <USH_HE_CommandStopWaking>Cancel waking up</USH_HE_CommandStopWaking>
+    <USH_HE_CommandStopWakingDesc>Cancel waking up procedure.</USH_HE_CommandStopWakingDesc>
+
+    <USH_HE_Hacking>Hacking {THING} ({PROGRESS})</USH_HE_Hacking>
+    <USH_HE_WakingUpProgress>Waking up: {TIME}</USH_HE_WakingUpProgress>
+
+    <USH_HE_CannotUseNotHacker>Cannot use: No cyberlink</USH_HE_CannotUseNotHacker>
+    <USH_HE_RipperInstalled>Ripper installed</USH_HE_RipperInstalled>
+
+    <USH_HE_CyberspaceLetterLabel>He's beginning to believe...</USH_HE_CyberspaceLetterLabel>
+    <USH_HE_CyberspaceLetter>{PAWN} with an installed cyberlink started hacking {BUILDING}, which is protected by {HACKSET}. It means that the hacker is now vulnerable to new cyberthreats and can trigger special security responses with a chance depending on the hacker’s stealth.\n\nColonists not connected to cyberspace by a link will not be affected, so you should always consider who is hacking devices with more advanced and possibly lethal security hacksets.\n\nAnd remember: there is no spoon.</USH_HE_CyberspaceLetter>
+
+</LanguageData>

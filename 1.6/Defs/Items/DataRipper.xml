@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="ResourceBase">
+        <defName>USH_DataRipper</defName>
+        <label>data ripper</label>
+        <description>An electronic device meant to be installed on hackable hardware. It can then slowly intercept data flow during the hacking process.</description>
+        <thingClass>ThingWithComps</thingClass>
+        <descriptionHyperlinks>
+            <ThingDef>USH_Cyberdata</ThingDef>
+            <ThingDef>USH_AdvancedCyberdata</ThingDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>Things/Item/DataRipper</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <resourceReadoutPriority>Middle</resourceReadoutPriority>
+        <useHitPoints>true</useHitPoints>
+        <statBases>
+            <MaxHitPoints>80</MaxHitPoints>
+            <Mass>0.2</Mass>
+            <DeteriorationRate>1.0</DeteriorationRate>
+            <Flammability>0.2</Flammability>
+        </statBases>
+        <recipeMaker>
+            <recipeUsers>
+                <li>TableMachining</li>
+            </recipeUsers>
+            <useIngredientsForColor>false</useIngredientsForColor>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+            <researchPrerequisite>USH_BasicCybertech</researchPrerequisite>
+            <displayPriority>650</displayPriority>
+        </recipeMaker>
+        <costList>
+            <Uranium>15</Uranium>
+            <ComponentIndustrial>3</ComponentIndustrial>
+        </costList>
+        <techLevel>Industrial</techLevel>
+        <stackLimit>10</stackLimit>
+        <thingCategories>
+            <li>ItemsMisc</li>
+        </thingCategories>
+        <comps>
+            <li Class="USH_HE.CompProperties_DataRipper">
+                <rippableThings>
+                    <li>USH_Cyberdata</li>
+                    <li>USH_AdvancedCyberdata</li>
+                </rippableThings>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <JobDef>
+        <defName>USH_InstallDataRipper</defName>
+        <driverClass>USH_HE.JobDriver_InstallDataRipper</driverClass>
+        <reportString>installing data ripper on TargetA.</reportString>
+        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+
+    <JobDef>
+        <defName>USH_InstallVirtualDataRipper</defName>
+        <driverClass>USH_HE.JobDriver_InstallVirtualDataRipper</driverClass>
+        <reportString>installing data ripper on TargetA.</reportString>
+        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+
+</Defs>

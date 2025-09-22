@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <DamageDef>
+        <defName>USH_CyberNecrosis</defName>
+        <label>cyber necrosis</label>
+        <externalViolence>true</externalViolence>
+        <hediff>USH_CyberNecrosis</hediff>
+        <overkillPctToDestroyPart>0.4~1.0</overkillPctToDestroyPart>
+    </DamageDef>
+
+    <HediffDef ParentName="InjuryBase">
+        <defName>USH_CyberNecrosis</defName>
+        <label>cyber necrosis</label>
+        <labelNoun>a cyber necrosis</labelNoun>
+        <description>A cyber necrosis caused by an encounter in cyberspace.</description>
+        <initialSeverity>8</initialSeverity>
+        <comps>
+            <li Class="HediffCompProperties_TendDuration">
+                <labelTendedWell>bandaged</labelTendedWell>
+                <labelTendedWellInner>sutured</labelTendedWellInner>
+                <labelSolidTendedWell>set</labelSolidTendedWell>
+            </li>
+            <li Class="HediffCompProperties_Infecter">
+                <infectionChance>0.15</infectionChance>
+            </li>
+            <li Class="HediffCompProperties_GetsPermanent">
+                <permanentLabel>cyber necrosis scar</permanentLabel>
+            </li>
+        </comps>
+        <injuryProps>
+            <painPerSeverity>0.0125</painPerSeverity>
+            <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+            <bleedRate>0.12</bleedRate>
+            <canMerge>false</canMerge>
+            <destroyedLabel>Destroyed by cyber necrosis</destroyedLabel>
+            <destroyedOutLabel>Destroyed by cyber necrosis</destroyedOutLabel>
+        </injuryProps>
+    </HediffDef>
+
+</Defs>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <USH_HE.HacksetDef Name="USH_OutdatedFirewall">
+        <defName>USH_OutdatedFirewall</defName>
+        <label>outdated firewall</label>
+        <description>An old software often used in industrial societies for protection within the cyberspace.</description>
+        <minDefense>1</minDefense>
+        <stealthMultiplier>1</stealthMultiplier>
+        <weight>0.2</weight> <!-- meant to be rare in more advanced hackables -->
+        <hackingOutcomes>
+            <li>USH_CyberspaceNausea</li>
+            <li>USH_CyberspaceLockOut</li>
+            <li>USH_EMPPulse</li>
+            <li>USH_HullBreach</li>
+            <li>USH_EMPExplosion</li>
+        </hackingOutcomes>
+    </USH_HE.HacksetDef>
+
+    <USH_HE.HacksetDef Name="USH_ICE" ParentName="USH_OutdatedFirewall">
+        <defName>USH_ICE</defName>
+        <label>ICE</label>
+        <description>A modern security system meant to protect systems from intrusions in the cyberspace.</description>
+        <minDefense>30000</minDefense>
+        <stealthMultiplier>1</stealthMultiplier>
+        <weight>0.8</weight>
+        <hackingOutcomes>
+            <li>USH_Berserk</li>
+            <li>USH_CyberspaceComa</li>
+        </hackingOutcomes>
+    </USH_HE.HacksetDef>
+
+    <USH_HE.HacksetDef Name="USH_CoreCommandICE" ParentName="USH_ICE">
+        <defName>USH_CoreCommandICE</defName>
+        <label>core-command ICE</label>
+        <description>An emergency type of ICE often found in complex and costly electronics that offers more robust protection.</description>
+        <minDefense>39000</minDefense>
+        <stealthMultiplier>0.65</stealthMultiplier>
+        <weight>1.5</weight> <!-- meant to be common in more advanced hackables -->
+        <hackingOutcomes>
+            <li>USH_BrainFry</li>
+            <li>USH_CyberspaceNecrosis</li>
+        </hackingOutcomes>
+    </USH_HE.HacksetDef>
+
+    <USH_HE.HacksetDef Name="USH_BlackICE" ParentName="USH_CoreCommandICE">
+        <defName>USH_BlackICE</defName>
+        <label>black ICE</label>
+        <description>An illegal type of ICE capable of killing cyberspace intruders. It's banned under the imperial law.</description>
+        <minDefense>39000</minDefense>
+        <stealthMultiplier>0.4</stealthMultiplier>
+        <weight>0.3</weight>
+        <hackingOutcomes>
+            <li>USH_LethalCyberspaceNecrosis</li>
+        </hackingOutcomes>
+    </USH_HE.HacksetDef>
+
+</Defs>
