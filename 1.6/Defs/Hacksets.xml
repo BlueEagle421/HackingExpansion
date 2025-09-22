@@ -5,7 +5,7 @@
         <defName>USH_OutdatedFirewall</defName>
         <label>outdated firewall</label>
         <description>An old software often used in industrial societies for protection within the cyberspace.</description>
-        <minDefense>6500</minDefense>
+        <minDefense>200</minDefense>
         <stealthMultiplier>1</stealthMultiplier>
         <weight>0.2</weight> <!-- meant to be rare in more advanced hackables -->
         <hackingOutcomes>
@@ -21,7 +21,7 @@
         <defName>USH_ICE</defName>
         <label>ICE</label>
         <description>A modern security system meant to protect systems from intrusions in the cyberspace.</description>
-        <minDefense>30000</minDefense>
+        <minDefense>6000</minDefense>
         <stealthMultiplier>1</stealthMultiplier>
         <weight>0.8</weight>
         <hackingOutcomes>
@@ -34,7 +34,7 @@
         <defName>USH_CoreCommandICE</defName>
         <label>core-command ICE</label>
         <description>An emergency type of ICE often found in complex and costly electronics that offers more robust protection.</description>
-        <minDefense>39000</minDefense>
+        <minDefense>30000</minDefense>
         <stealthMultiplier>0.65</stealthMultiplier>
         <weight>1.5</weight> <!-- meant to be common in more advanced hackables -->
         <hackingOutcomes>
@@ -47,7 +47,7 @@
         <defName>USH_BlackICE</defName>
         <label>black ICE</label>
         <description>An illegal type of ICE capable of killing cyberspace intruders. It's banned under the imperial law.</description>
-        <minDefense>39000</minDefense>
+        <minDefense>30000</minDefense>
         <stealthMultiplier>0.4</stealthMultiplier>
         <weight>0.3</weight>
         <hackingOutcomes>
