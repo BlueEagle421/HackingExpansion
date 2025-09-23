@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <GenStepDef>
+        <defName>USH_AncientCyberdeck</defName>
+        <order>1600</order><!-- after fogged -->
+        <genStep Class="USH_HE.GenStep_AncientCyberdeck">
+            <count>1</count>
+            <validators>
+                <li Class="ScattererValidator_Buildable">
+                    <radius>4</radius>
+                    <affordance>Heavy</affordance>
+                </li>
+                <li Class="ScattererValidator_NoNonNaturalEdifices">
+                    <radius>4</radius>
+                </li>
+                <li Class="ScattererValidator_AvoidSpecialThings" />
+            </validators>
+            <fallbackValidators>
+                <li Class="ScattererValidator_Buildable">
+                    <radius>3</radius>
+                    <affordance>Heavy</affordance>
+                </li>
+            </fallbackValidators>
+            <allowRoofed>false</allowRoofed>
+            <minEdgeDistPct>0.166667</minEdgeDistPct>
+            <minDistToPlayerStartPct>0.166667</minDistToPlayerStartPct>
+            <allowFoggedPositions>false</allowFoggedPositions>
+            <onlyOnStartingMap>true</onlyOnStartingMap>
+        </genStep>
+    </GenStepDef>
+
+</Defs>

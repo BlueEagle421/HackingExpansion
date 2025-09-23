@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>*/MapGeneratorDef[defName="Base_Player"]/genSteps</xpath>
+        <value>
+            <li>USH_AncientCyberdeck</li>
+        </value>
+    </Operation>
+
+</Patch>

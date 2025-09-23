@@ -25,4 +25,7 @@ public static class USH_DefOf
     public static ThingDef USH_VitalityCoprocessor;
     public static ThingDef USH_DataRipper;
     public static ThingDef USH_Cyberlink;
+    public static ThingDef USH_AncientCyberdeck;
+    public static ThingDef USH_AncientJammer;
+    public static ThingDef USH_EncryptedCrate;
 }

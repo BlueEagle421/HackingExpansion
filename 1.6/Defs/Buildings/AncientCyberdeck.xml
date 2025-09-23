@@ -2,8 +2,6 @@
 <Defs>
 
     <ThingDef Name="USH_AncientCyberdeckBase" ParentName="BuildingBase" Abstract="True">
-        <label>ancient terminal</label>
-        <description>An ancient computer terminal. It can be hacked to reveal long-forgotten information.</description>
         <noRightClickDraftAttack>true</noRightClickDraftAttack>
         <graphicData>
             <graphicClass>Graphic_Multi</graphicClass>
@@ -34,22 +32,6 @@
         </statBases>
         <passability>PassThroughOnly</passability>
         <pathCost>50</pathCost>
-        <comps>
-            <li Class="CompProperties_ThrownFleckEmitter">
-                <fleck>TerminalScreenLensFlare</fleck>
-                <offsetMin>(-0.3,0,0.35)</offsetMin>
-                <offsetMax>(0.3,0,0.35)</offsetMax>
-                <emissionInterval>90</emissionInterval>
-                <scale>1~1.1</scale>
-                <colorA>(0,235,31,255)</colorA>
-                <colorB>(0,235,31,255)</colorB>
-            </li>
-            <li Class="CompProperties_Glower">
-                <glowRadius>2</glowRadius>
-                <glowColor>(0,235,31,0)</glowColor>
-            </li>
-        </comps>
-        <tickerType>Normal</tickerType>
     </ThingDef>
 
 
