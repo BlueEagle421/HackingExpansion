@@ -62,6 +62,12 @@
                 <glowRadius>2</glowRadius>
                 <glowColor>(214,46,31,0)</glowColor>
             </li>
+            <li Class="CompProperties_ProximityLetter">
+                <radius>8</radius>
+                <letterDef>PositiveEvent</letterDef>
+                <letterLabel>Ancient cyberdeck</letterLabel>
+                <letterText>{PAWN_nameDef} has noticed an ancient cyberdeck nearby.\n\nIt appears to be used recently and left in a hurry.</letterText>
+            </li>
         </comps>
         <tickerType>Normal</tickerType>
     </ThingDef>
