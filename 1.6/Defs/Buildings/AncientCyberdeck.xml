@@ -62,7 +62,7 @@
             <graphicClass>Graphic_Multi</graphicClass>
         </graphicData>
         <comps Inherit="False">
-            <li Class="CompProperties_Hackable">
+            <li Class="USH_HE.CompProperties_AncientCyberdeckHackable">
                 <defence>15000</defence>
                 <effectHacking>HackingTerminal</effectHacking>
                 <notHackedInspectString>Hack to open.</notHackedInspectString>
