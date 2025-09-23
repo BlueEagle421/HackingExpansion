@@ -72,7 +72,7 @@ public class CompDataSourceProtected : CompDataSource
         if (_hacksetDef == null)
             return false;
 
-        if (hacker?.IsHacker() == false)
+        if (hacker == null || !hacker.IsHacker())
             return false;
 
         WorldComp.TryToDoLetter(hacker, parent, _hacksetDef);

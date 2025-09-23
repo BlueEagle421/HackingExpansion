@@ -82,10 +82,21 @@ public class GenStep_AncientCyberdeck : GenStep_Scatterer
 
     private void GenNearby(IntVec3 loc, Map map, ThingDef def)
     {
-        if (!CellFinder.TryFindRandomCellNear(loc, map, NEARBY_RADIUS, c => c.Standable(map), out var pos))
+        if (!CellFinder.TryFindRandomCellNear(loc, map, NEARBY_RADIUS, c => CellValidator(map, c, loc), out var pos))
             return;
 
         Thing t = ThingMaker.MakeThing(def);
         GenSpawn.Spawn(t, pos, map);
+    }
+
+    private bool CellValidator(Map map, IntVec3 c, IntVec3 centerPos)
+    {
+        if (!c.Standable(map))
+            return false;
+
+        if (c.DistanceTo(centerPos) <= 1)
+            return false;
+
+        return true;
     }
 }
