@@ -38,7 +38,7 @@
     <ThingDef ParentName="USH_AncientCyberdeckBase">
         <defName>USH_AncientCyberdeck</defName>
         <label>ancient cyberdeck</label>
-        <description>An ancient cyberdeck mostly worn out, but with well-preserved inner contents. Hack it to open it's internal neural port.</description>
+        <description>An ancient cyberdeck mostly worn out, but with well-preserved inner contents. Hack it to access it's internal neural port.</description>
         <graphicData>
             <texPath>Things/Building/AncientCyberdeck/AncientCyberdeck</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
@@ -47,7 +47,7 @@
             <li Class="USH_HE.CompProperties_AncientCyberdeckHackable">
                 <defence>15000</defence>
                 <effectHacking>HackingTerminal</effectHacking>
-                <notHackedInspectString>Hack to open.</notHackedInspectString>
+                <notHackedInspectString>Hack to open neural port.</notHackedInspectString>
             </li>
             <li Class="CompProperties_ThrownFleckEmitter">
                 <fleck>TerminalScreenLensFlare</fleck>
