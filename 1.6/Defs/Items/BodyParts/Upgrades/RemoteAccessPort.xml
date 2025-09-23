@@ -80,8 +80,7 @@
             <ThingDef>USH_RemoteAccessPort</ThingDef>
         </descriptionHyperlinks>
         <label>remote access port</label>
-        <description>.</description>
-        <descriptionShort>.</descriptionShort>
+        <description>An implant which increases a hacker's remote hacking distance.</description>
         <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
         <isBad>false</isBad>
         <priceImpact>true</priceImpact>
