@@ -16,7 +16,7 @@ public static class CyberUtils
         get
         {
             _cachedCyberlinkHediffs ??= [.. DefDatabase<HediffDef>.AllDefsListForReading
-                .Where(x => x.hediffClass.IsAssignableFrom(typeof(Hediff_Cyberlink)))];
+                .Where(x => typeof(Hediff_Cyberlink).IsAssignableFrom(x.hediffClass))];
 
             return _cachedCyberlinkHediffs;
         }
