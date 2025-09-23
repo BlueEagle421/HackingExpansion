@@ -38,10 +38,84 @@
                 <glowColor>(53,203,237,0)</glowColor>
             </li>
             <li Class="CompProperties_LootSpawn">
-                <contents>MapGen_AncientTempleContents</contents>
+                <contents>USH_RewardEncryptedCrate</contents>
             </li>
         </comps>
         <tickerType>Normal</tickerType>
     </ThingDef>
+
+    <ThingSetMakerDef>
+        <defName>USH_RewardEncryptedCrate</defName>
+        <root Class="ThingSetMaker_Sum">
+            <resolveInOrder>true</resolveInOrder>
+            <options>
+                <li>
+                    <thingSetMaker Class="ThingSetMaker_RandomOption">
+                        <options>
+                            <li>
+                                <weight>1</weight>
+                                <thingSetMaker Class="ThingSetMaker_Count">
+                                    <fixedParams>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>USH_Cyberdata</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <countRange>3~6</countRange>
+                                    </fixedParams>
+                                </thingSetMaker>
+                            </li>
+                        </options>
+                    </thingSetMaker>
+                </li>
+                <li>
+                    <thingSetMaker Class="ThingSetMaker_RandomOption">
+                        <options>
+
+                            <li>
+                                <weight>1</weight>
+                                <thingSetMaker Class="ThingSetMaker_Count">
+                                    <fixedParams>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>Silver</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <countRange>50~100</countRange>
+                                    </fixedParams>
+                                </thingSetMaker>
+                            </li>
+                            <li>
+                                <weight>1</weight>
+                                <thingSetMaker Class="ThingSetMaker_Count">
+                                    <fixedParams>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>ComponentIndustrial</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <countRange>2~5</countRange>
+                                    </fixedParams>
+                                </thingSetMaker>
+                            </li>
+                            <li>
+                                <weight>0.5</weight>
+                                <thingSetMaker Class="ThingSetMaker_Count">
+                                    <fixedParams>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>Steel</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <countRange>20~40</countRange>
+                                    </fixedParams>
+                                </thingSetMaker>
+                            </li>
+                        </options>
+                    </thingSetMaker>
+                </li>
+            </options>
+        </root>
+    </ThingSetMakerDef>
 
 </Defs>
