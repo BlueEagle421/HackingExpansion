@@ -11,7 +11,7 @@
             <li>Machining</li>
         </prerequisites>
         <researchViewX>6.00</researchViewX>
-        <researchViewY>5.50</researchViewY>
+        <researchViewY>5.40</researchViewY>
         <generalRules>
             <rulesStrings>
                 <li>subject->cybertech</li>
@@ -33,7 +33,7 @@
             <li>USH_BasicCybertech</li>
         </prerequisites>
         <researchViewX>7.00</researchViewX>
-        <researchViewY>5.50</researchViewY>
+        <researchViewY>5.40</researchViewY>
         <generalRules>
             <rulesStrings>
                 <li>subject->cybertech machinery</li>
@@ -55,7 +55,7 @@
             <li>USH_CybertechMachinery</li>
         </prerequisites>
         <researchViewX>8.00</researchViewX>
-        <researchViewY>5.50</researchViewY>
+        <researchViewY>5.40</researchViewY>
         <generalRules>
             <rulesStrings>
                 <li>subject->advanced cybertech</li>
