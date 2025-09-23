@@ -3,8 +3,8 @@
 
     <ThingDef ParentName="BuildingBase">
         <defName>USH_AncientJammer</defName>
-        <label>ancient jammer remains</label>
-        <description>An ancient base of a metallic structure worn out by time.</description>
+        <label>ancient tower remains</label>
+        <description>An ancient base of a metallic structure worn out by time. </description>
         <fillPercent>0.20</fillPercent>
         <graphicData>
             <texPath>Things/Building/AncientJammer</texPath>
