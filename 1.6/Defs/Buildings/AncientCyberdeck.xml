@@ -38,7 +38,7 @@
     <ThingDef ParentName="USH_AncientCyberdeckBase">
         <defName>USH_AncientCyberdeck</defName>
         <label>ancient cyberdeck</label>
-        <description>An ancient cyberdeck mostly worn out, but with well-preserved inner contents. Hack it to open it's small internal latch.</description>
+        <description>An ancient cyberdeck mostly worn out, but with well-preserved inner contents. Hack it to open it's internal neural port.</description>
         <graphicData>
             <texPath>Things/Building/AncientCyberdeck/AncientCyberdeck</texPath>
             <graphicClass>Graphic_Multi</graphicClass>
