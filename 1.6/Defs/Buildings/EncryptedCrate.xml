@@ -4,7 +4,7 @@
     <ThingDef ParentName="CrateBase">
         <defName>USH_EncryptedCrate</defName>
         <label>encrypted crate</label>
-        <description>.</description>
+        <description>An old container encrypted by a skilled hacker to protect its precious contents.</description>
         <graphicData>
             <texPath>Things/Building/EncryptedCrate_Closed</texPath>
             <graphicClass>Graphic_Single</graphicClass>
