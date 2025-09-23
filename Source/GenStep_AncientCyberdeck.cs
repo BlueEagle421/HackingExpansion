@@ -8,6 +8,7 @@ public class GenStep_AncientCyberdeck : GenStep_Scatterer
     private const int NEARBY_RADIUS = 3;
     private const int TERRAIN_SIZE = 30;
     private const int CLEAR_RADIUS = 5;
+    private const int MIN_CENTER_DISTANCE = 2;
     private static readonly IntRange _bloodFilthRange = new(2, 4);
     private static readonly IntRange _steelSlagRange = new(2, 4);
     private static readonly IntRange _ancientCrateRange = new(1, 3);
@@ -94,7 +95,7 @@ public class GenStep_AncientCyberdeck : GenStep_Scatterer
         if (!c.Standable(map))
             return false;
 
-        if (c.DistanceTo(centerPos) <= 1)
+        if (c.DistanceTo(centerPos) <= MIN_CENTER_DISTANCE)
             return false;
 
         return true;
