@@ -4,7 +4,7 @@
     <ThingDef ParentName="USH_CyberlinkUpgradeBase">
         <defName>USH_JammerKit</defName>
         <label>jammer kit</label>
-        <description>An implant which increases hacker's stealth.\n\nThis implant can be installed up to 3 times to increase its effect. To go higher, a more advanced jammer must be used. It can be self-installed without surgery.</description>
+        <description>An implant which increases hacker's stealth.\n\nThis implant can be installed up to 3 times to increase its effect. To go higher, a more advanced jammer must be used.\n\nIt can be self-installed without surgery.</description>
         <descriptionHyperlinks>
             <HediffDef>USH_InstalledJammerKit</HediffDef>
         </descriptionHyperlinks>
@@ -39,7 +39,7 @@
     <ThingDef ParentName="USH_AdvancedCyberlinkUpgradeBase">
         <defName>USH_AdvancedJammerKit</defName>
         <label>jammer kit (advanced)</label>
-        <description>An implant which increases hacker's stealth.\n\nThis implant can be installed up to 3 times to increase its effect and requires an advanced cyberlink to function. It can be self-installed without surgery.</description>
+        <description>An implant which increases hacker's stealth.\n\nThis implant can be installed up to 3 times to increase its effect and requires an advanced cyberlink to function.\n\nIt can be self-installed without surgery.</description>
         <descriptionHyperlinks>
             <HediffDef>USH_InstalledJammerKit</HediffDef>
         </descriptionHyperlinks>
