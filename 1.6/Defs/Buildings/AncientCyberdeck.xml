@@ -55,12 +55,12 @@
                 <offsetMax>(0.3,0,0.35)</offsetMax>
                 <emissionInterval>90</emissionInterval>
                 <scale>1~1.1</scale>
-                <colorA>(214,46,31,255)</colorA>
-                <colorB>(214,46,31,255)</colorB>
+                <colorA>(53,203,237,255)</colorA>
+                <colorB>(53,203,237,255)</colorB>
             </li>
             <li Class="CompProperties_Glower">
-                <glowRadius>2</glowRadius>
-                <glowColor>(214,46,31,0)</glowColor>
+                <glowRadius>4</glowRadius>
+                <glowColor>(53,203,237,0)</glowColor>
             </li>
             <li Class="CompProperties_ProximityLetter">
                 <radius>8</radius>

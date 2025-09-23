@@ -35,7 +35,7 @@
             </li>
             <li Class="CompProperties_Glower">
                 <glowRadius>3</glowRadius>
-                <glowColor>(150,150,150,0)</glowColor>
+                <glowColor>(53,203,237,0)</glowColor>
             </li>
             <li Class="CompProperties_LootSpawn">
                 <contents>MapGen_AncientTempleContents</contents>
