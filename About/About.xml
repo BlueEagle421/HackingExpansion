@@ -3,7 +3,8 @@
   <name>Ushankas Hacking Expansion</name>
   <author>Ushanka</author>
   <packageId>Ushanka.HackingExpansion</packageId>
-  <description>.</description>
+  <description>A content expansion focused on enhancing hacking mechanics. It will allow you to unlock superior technologies and become a master hacker, while also introducing new threats and challenges.\n\nIt's inspired by popular pop culture works like the Matrix series and William Gibson books.\n\nThe mod is designed to fit seamlessly with the base game, and I’ve done my best to balance it accordingly.\n\nAs always, all suggestions about balance and content are very welcome. I can’t promise to implement them all, but I love reading your creative ideas.
+  </description>
   <supportedVersions>
     <li>1.6</li>
   </supportedVersions>
