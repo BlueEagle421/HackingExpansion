@@ -33,12 +33,13 @@
             <skillRequirements>
                 <Crafting>6</Crafting>
             </skillRequirements>
-            <researchPrerequisite>USH_BasicCybertech</researchPrerequisite>
+            <researchPrerequisite>USH_AdvancedCybertech</researchPrerequisite>
             <displayPriority>650</displayPriority>
         </recipeMaker>
         <costList>
-            <Uranium>15</Uranium>
-            <ComponentIndustrial>3</ComponentIndustrial>
+            <USH_DataRipper>1</USH_DataRipper>
+            <USH_AdvancedCyberdata>1</USH_AdvancedCyberdata>
+            <SubcoreRegular MayRequire="Ludeon.RimWorld.Biotech">1</SubcoreRegular>
         </costList>
         <techLevel>Industrial</techLevel>
         <stackLimit>10</stackLimit>
