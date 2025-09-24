@@ -85,6 +85,9 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
 
     private static bool ShouldTurretBeHackable(ThingDef thingDef)
     {
+        if (!HE_Mod.Settings.EnableTurretsHacking.Value)
+            return false;
+
         if (thingDef.building?.turretGunDef == null)
             return false;
 
@@ -111,6 +114,9 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
     private static bool ShouldMechBeHackable(PawnKindDef kindDef)
     {
         var raceProps = kindDef.race.race;
+
+        if (!HE_Mod.Settings.EnableMechHacking.Value)
+            return false;
 
         if (raceProps == null)
             return false;
