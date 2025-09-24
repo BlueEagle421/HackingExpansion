@@ -49,6 +49,13 @@
     </USH_HE.HackingOutcomeDef>
 
     <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
+        <defName>USH_WanderPsychotic</defName>
+        <label>psychosis</label>
+        <workerClass>USH_HE.HackingOutcomeWorker_WanderPsychotic</workerClass>
+        <worksWithPod>true</worksWithPod>
+    </USH_HE.HackingOutcomeDef>
+
+    <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
         <defName>USH_CyberspaceComa</defName>
         <label>cyberspace coma</label>
         <workerClass>USH_HE.HackingOutcomeWorker_GiveComa</workerClass>

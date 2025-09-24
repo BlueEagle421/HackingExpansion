@@ -121,7 +121,21 @@ public class HackingOutcomeWorker_Berserk(HackingOutcomeDef _def)
         base.ApplyOutcome(hacker, caster);
 
         var mental = hacker.mindState?.mentalStateHandler;
-        mental?.TryStartMentalState(MentalStateDefOf.Berserk, "USH_HE_HackingBerserkReason".Translate(caster.Label));
+        var reasonText = "USH_HE_MentalStateReason".Translate(caster.Label);
+        mental?.TryStartMentalState(MentalStateDefOf.Berserk, reasonText);
+    }
+}
+
+public class HackingOutcomeWorker_WanderPsychotic(HackingOutcomeDef _def)
+    : HackingOutcomeWorker(_def)
+{
+    public override void ApplyOutcome(Pawn hacker, Thing caster)
+    {
+        base.ApplyOutcome(hacker, caster);
+
+        var mental = hacker.mindState?.mentalStateHandler;
+        var reasonText = "USH_HE_MentalStateReason".Translate(caster.Label);
+        mental?.TryStartMentalState(MentalStateDefOf.Wander_Psychotic, reasonText);
     }
 }
 

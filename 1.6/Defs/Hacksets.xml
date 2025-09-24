@@ -26,7 +26,6 @@
         <stealthMultiplier>1</stealthMultiplier>
         <weight>0.8</weight>
         <hackingOutcomes>
-            <li>USH_Berserk</li>
             <li>USH_CyberspaceComa</li>
             <li>USH_EMIVirus</li>
             <li>USH_ShortCircuitExec</li>
@@ -41,7 +40,7 @@
         <stealthMultiplier>0.65</stealthMultiplier>
         <weight>1.5</weight> <!-- meant to be common in more advanced hackables -->
         <hackingOutcomes>
-            <li>USH_BrainFry</li>
+            <li>USH_Berserk</li>
             <li>USH_CyberspaceNecrosis</li>
         </hackingOutcomes>
     </USH_HE.HacksetDef>
@@ -54,6 +53,7 @@
         <stealthMultiplier>0.4</stealthMultiplier>
         <weight>0.3</weight>
         <hackingOutcomes>
+            <li>USH_BrainFry</li>
             <li>USH_LethalCyberspaceNecrosis</li>
         </hackingOutcomes>
     </USH_HE.HacksetDef>

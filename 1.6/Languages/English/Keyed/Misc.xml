@@ -21,7 +21,7 @@
     <USH_HE_HackPoints>hacking work amount</USH_HE_HackPoints>
     <USH_HE_DataRippingProgress>Data ripping progress</USH_HE_DataRippingProgress>
 
-    <USH_HE_HackingBerserkReason>Caused by hacking {0}.</USH_HE_HackingBerserkReason>
+    <USH_HE_MentalStateReason>Caused by hacking {0}.</USH_HE_MentalStateReason>
     <USH_HE_OutcomeMessage>{HACKSET} has caused {OUTCOME} on {PAWN}.</USH_HE_OutcomeMessage>
 
     <USH_HE_SecurityHackset>Security hackset</USH_HE_SecurityHackset>
