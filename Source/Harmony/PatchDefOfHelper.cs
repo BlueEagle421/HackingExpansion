@@ -123,7 +123,7 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         if (kindDef.race.HasComp<CompHackable>())
             return false;
 
-        if (!raceProps.IsMechanoid && raceProps.IsDrone)
+        if (!raceProps.IsMechanoid && !raceProps.IsDrone)
             return false;
 
         return true;
