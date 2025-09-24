@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace USH_HE;
@@ -45,19 +47,30 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
                     (def.comps ??= []).Add(TurretPropsToAdd(def));
                     (def.comps ??= []).Add(new CompProperties_DataSourceProtected());
                 }
-
-                if (ShouldMechBeHackable(def))
-                {
-                    (def.comps ??= []).Add(MechPropsToAdd(def));
-                    (def.comps ??= []).Add(new CompProperties_DataSourceProtected());
-                }
             }
             catch
             {
                 _omittedDefNames.Add(def.defName);
             }
         }
+
+        foreach (var kindDef in DefDatabase<PawnKindDef>.AllDefsListForReading)
+        {
+            try
+            {
+                if (ShouldMechBeHackable(kindDef))
+                {
+                    (kindDef.race.comps ??= []).Add(MechPropsToAdd(kindDef));
+                    (kindDef.race.comps ??= []).Add(new CompProperties_DataSourceProtected());
+                }
+            }
+            catch
+            {
+                _omittedDefNames.Add(kindDef.defName);
+            }
+        }
     }
+
 
     private static bool ShouldBeDataSource(ThingDef def)
     {
@@ -92,11 +105,14 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         return hasPower && empStunnable;
     }
 
-    private static bool ShouldMechBeHackable(ThingDef thingDef)
+    private static bool ShouldMechBeHackable(PawnKindDef kindDef)
     {
-        var race = thingDef.race;
+        var race = kindDef.race.race;
 
         if (race == null)
+            return false;
+
+        if (kindDef.race.HasComp<CompHackable>())
             return false;
 
         if (!race.IsMechanoid && race.IsDrone)
@@ -108,13 +124,26 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
     private static CompProperties_TurretHackable TurretPropsToAdd(ThingDef thingDef)
         => new()
         {
-            defence = thingDef.building.combatPower * 2 * 60,
+            defence = GetTurretDefence(thingDef) * 60,
         };
 
-    private static CompProperties_MechanoidHackable MechPropsToAdd(ThingDef thingDef)
+    private static float GetTurretDefence(ThingDef thingDef)
+    {
+        float cost = thingDef.CostList.Sum(x => x.count * x.thingDef.BaseMarketValue);
+        cost += thingDef.CostStuffCount * 2; //assuming cheap resource
+
+        cost /= 2; //balancing
+
+        //rounded for readability
+        if (cost > 1000)
+            return ((int)Mathf.Round(cost / 100.0f)) * 100;
+
+        return ((int)Mathf.Round(cost / 10.0f)) * 10;
+    }
+
+    private static CompProperties_MechanoidHackable MechPropsToAdd(PawnKindDef kindDef)
         => new()
         {
-            defence = 600,
+            defence = kindDef.combatPower * 2 * 60,
         };
-
 }
