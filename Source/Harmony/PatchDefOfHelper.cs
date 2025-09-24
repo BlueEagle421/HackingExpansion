@@ -24,11 +24,11 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         }
         catch (Exception ex)
         {
-            Log.Warning($"[Hacking Expansion] unexpected error in RebindAllDefOfs postfix. The overclock feature is disabled: {ex}");
+            Log.Warning($"[Hacking Expansion] unexpected error in RebindAllDefOfs postfix. Hackables patch failed: {ex}");
         }
 
         if (!_omittedDefNames.NullOrEmpty())
-            Log.Message("[Hacking Expansion] Thing defs omitted as data sources: " + string.Join(", ", _omittedDefNames));
+            Log.Message("[Hacking Expansion] Defs omitted while patching hackables: " + string.Join(", ", _omittedDefNames));
     }
 
     private static void PatchAllDefs()
@@ -101,10 +101,9 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         var compStunnable = thingDef.GetCompProperties<CompProperties_Stunnable>();
 
         bool isStunnable = compStunnable != null;
-        bool damagesNotNull = compStunnable.affectedDamageDefs != null;
+        bool damagesNotNull = isStunnable && compStunnable.affectedDamageDefs != null;
 
         bool empStunnable =
-            isStunnable &&
             damagesNotNull &&
             compStunnable.affectedDamageDefs.Contains(DamageDefOf.EMP);
 
