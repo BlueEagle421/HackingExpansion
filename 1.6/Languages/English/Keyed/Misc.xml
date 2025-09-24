@@ -9,6 +9,10 @@
 
     <USH_HE_CannotInstall>Cannot install</USH_HE_CannotInstall>
     <USH_HE_NoNewData>Already being ripped</USH_HE_NoNewData>
+    <USH_HE_AlreadyBroken>Already broken</USH_HE_AlreadyBroken>
+    <USH_HE_NeedsBlackICE>No black ICE</USH_HE_NeedsBlackICE>
+
+    <USH_HE_DisabledOutcomes>Disabled</USH_HE_DisabledOutcomes>
 
     <USH_HE_CommandChooseDataOutput>Choose data ripping output</USH_HE_CommandChooseDataOutput>
     <USH_HE_CommandChooseDataOutputDesc>Select what should be outputted as a result of hacking this device.</USH_HE_CommandChooseDataOutputDesc>
@@ -17,7 +21,7 @@
     <USH_HE_OrderHackTargetDesc>Select a target to be hacked by this hacker.</USH_HE_OrderHackTargetDesc>
     <USH_HE_AlreadyHacked>Already hacked</USH_HE_AlreadyHacked>
     <USH_HE_InstallDataRipper>Install data ripper</USH_HE_InstallDataRipper>
-    <USH_HE_InstallICEBreaker>Install ICE breaker</USH_HE_InstallICEBreaker>
+    <USH_HE_InstallICEBreaker>Install black ICE breaker</USH_HE_InstallICEBreaker>
 
     <USH_HE_HackPoints>hacking work amount</USH_HE_HackPoints>
     <USH_HE_DataRippingProgress>Data ripping progress</USH_HE_DataRippingProgress>
@@ -48,11 +52,15 @@
 
     <USH_HE_CannotUseNotHacker>Cannot use: No cyberlink</USH_HE_CannotUseNotHacker>
     <USH_HE_RipperInstalled>Ripper installed</USH_HE_RipperInstalled>
+    <USH_HE_ICEBreakerInstalled>black ICE broken</USH_HE_ICEBreakerInstalled>
 
     <USH_HE_CyberspaceLetterLabel>He's beginning to believe...</USH_HE_CyberspaceLetterLabel>
     <USH_HE_CyberspaceLetter>{PAWN} with an installed cyberlink started hacking {BUILDING}, which is protected by {HACKSET}. It means that the hacker is now vulnerable to new cyberthreats and can trigger special security responses with a chance depending on the hacker’s stealth.\n\nColonists not connected to cyberspace by a link will not be affected, so you should always consider who is hacking devices with more advanced and possibly lethal security hacksets.\n\nAnd remember: there is no spoon.</USH_HE_CyberspaceLetter>
 
     <USH_HE_RaidLetterLabel>Raid incoming!</USH_HE_RaidLetterLabel>
     <USH_HE_RaidLetter>It looks like the hacker who previously used the cyberdeck somehow angered {FACTION}, and they are now coming to this location. It’s possible that they’ve been trying to track down the hacker for months, or even longer.\n\nThey will arrive soon.</USH_HE_RaidLetter>
+
+    <USH_HE_BreakerFailLetterLabel>Black ICE response</USH_HE_BreakerFailLetterLabel>
+    <USH_HE_BreakerFailLetter>The security system responded to ICE breaker and defended itself by installing a self destruction protocol in the device. It resulted in an explosion.</USH_HE_BreakerFailLetter>
 
 </LanguageData>

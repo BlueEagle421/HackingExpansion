@@ -71,6 +71,7 @@
         <weight>0.6</weight>
         <doMessage>true</doMessage>
         <worksWithPod>true</worksWithPod>
+        <disabledByBreaker>true</disabledByBreaker>
     </USH_HE.HackingOutcomeDef>
 
     <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">
@@ -88,6 +89,7 @@
         <workerClass>USH_HE.HackingOutcomeWorker_LethalCyberspaceNecrosis</workerClass>
         <weight>0.4</weight>
         <worksWithPod>true</worksWithPod>
+        <disabledByBreaker>true</disabledByBreaker>
     </USH_HE.HackingOutcomeDef>
 
     <USH_HE.HackingOutcomeDef ParentName="USH_HackingOutcomeBase">

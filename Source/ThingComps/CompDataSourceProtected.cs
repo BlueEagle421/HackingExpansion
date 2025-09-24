@@ -23,8 +23,6 @@ public class CompDataSourceProtected : CompDataSource
 
     private bool _installedICEBreaker;
 
-    private const float ICE_BREAKER_FAIL_CHANCE = 0.02f;
-
     private WorldComponent_HacksetsLetter _worldComp;
     private WorldComponent_HacksetsLetter WorldComp
     {
@@ -109,7 +107,10 @@ public class CompDataSourceProtected : CompDataSource
     public AcceptanceReport CanAcceptICEBreaker(CompICEBreaker compICEBreaker)
     {
         if (_installedICEBreaker)
-            return "Already installed";
+            return "USH_HE_AlreadyBroken".Translate();
+
+        if (_hacksetDef != USH_DefOf.USH_BlackICE)
+            return "USH_HE_NeedsBlackICE".Translate();
 
         return true;
     }
@@ -119,18 +120,34 @@ public class CompDataSourceProtected : CompDataSource
         if (_installedICEBreaker)
             return;
 
-        if (Rand.Chance(ICE_BREAKER_FAIL_CHANCE))
+        if (Rand.Chance(compICEBreaker.Props.failChance))
         {
-            GenExplosion.DoExplosion(parent.Position, parent.Map, 3.9f, DamageDefOf.Bomb, null);
-
-            //TO DO: LETTER
-
+            ICEBreakerFail(compICEBreaker);
             return;
         }
 
-        CompHackable.Hack(CompHackable.defence * 0.1f);
+        USH_DefOf.USH_HackingOutcome.SpawnMaintained(parent.Position, parent.Map);
+
+        float fadeTicks = 4f;
+        var content = "USH_HE_ICEBreakerInstalled".Translate().Colorize(Color.red);
+        MoteMaker.ThrowText(parent.DrawPos, parent.Map, content, fadeTicks);
 
         _installedICEBreaker = true;
+    }
+
+    private void ICEBreakerFail(CompICEBreaker compICEBreaker)
+    {
+        GenExplosion.DoExplosion(
+            parent.Position,
+            parent.Map,
+            compICEBreaker.Props.failExplosionRadius,
+            DamageDefOf.Bomb,
+            null);
+
+        string label = "USH_HE_BreakerFailLetterLabel".Translate();
+        string content = "USH_HE_BreakerFailLetter".Translate();
+
+        Find.LetterStack.ReceiveLetter(label, content, LetterDefOf.NegativeEvent, new LookTargets(parent));
     }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats()
@@ -170,8 +187,8 @@ public class CompDataSourceProtected : CompDataSource
 
             if (disabledOutcomes.Count() > 0)
             {
-                var disabledText = string.Join(", ", disabledOutcomes);
-                var toAppend = "Disabled outcomes".Translate() + ": " + disabledText;
+                var disabledText = string.Join(", ", disabledOutcomes.Select(x => x.LabelCap));
+                var toAppend = "USH_HE_DisabledOutcomes".Translate() + ": " + disabledText;
 
                 sb.AppendLine(toAppend.Colorize(ColorLibrary.LimeGreen));
             }
