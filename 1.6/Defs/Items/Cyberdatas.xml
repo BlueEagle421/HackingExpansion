@@ -37,6 +37,11 @@
                 <hackWorkAmount>2100</hackWorkAmount>
                 <maxPerDataSourceRange>8~16</maxPerDataSourceRange>
             </li>
+            <li Class="USH_HE.ResearchPrerequisitesExtension">
+                <researchPrerequisites>
+                    <li>USH_BasicCybertech</li>
+                </researchPrerequisites>
+            </li>
         </modExtensions>
     </ThingDef>
 
@@ -54,6 +59,11 @@
             <li Class="USH_HE.RippableExtension">
                 <hackWorkAmount>13500</hackWorkAmount>
                 <maxPerDataSourceRange>2~5</maxPerDataSourceRange>
+            </li>
+            <li Class="USH_HE.ResearchPrerequisitesExtension">
+                <researchPrerequisites>
+                    <li>USH_AdvancedCybertech</li>
+                </researchPrerequisites>
             </li>
         </modExtensions>
     </ThingDef>
@@ -73,7 +83,13 @@
         <statBases>
             <MarketValue>30</MarketValue>
         </statBases>
-        <modExtensions Inherit="False"></modExtensions>
+        <modExtensions Inherit="False">
+            <li Class="USH_HE.ResearchPrerequisitesExtension">
+                <researchPrerequisites>
+                    <li>USH_AdvancedCybertech</li>
+                </researchPrerequisites>
+            </li>
+        </modExtensions>
     </ThingDef>
 
 </Defs>

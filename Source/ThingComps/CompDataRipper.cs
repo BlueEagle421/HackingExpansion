@@ -9,6 +9,18 @@ public class RippableExtension : DefModExtension
     public IntRange maxPerDataSourceRange;
 }
 
+public class ResearchPrerequisitesExtension : DefModExtension
+{
+    public List<ResearchProjectDef> researchPrerequisites = [];
+
+    public override void ResolveReferences(Def parentDef)
+    {
+        base.ResolveReferences(parentDef);
+
+        ResearchPrerequisitesResolver.AddDefToCheck(parentDef);
+    }
+}
+
 public class CompProperties_DataRipper : CompProperties
 {
     public List<ThingDef> rippableThings = [];
