@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
+namespace USH_HE;
+
 public class CompProperties_TurretHackable : CompProperties_Hackable
 {
     public CompProperties_TurretHackable()
@@ -29,6 +31,24 @@ public class CompTurretHackable : CompHackable
         if (parent.Faction == Faction.OfPlayer)
             return "";
 
+        if (IsHacked)
+            return "Disabled".Translate().Colorize(ColorLibrary.RedReadable);
+
         return base.CompInspectStringExtra();
+    }
+
+    protected override void OnHacked(Pawn hacker = null, bool suppressMessages = false)
+    {
+        base.OnHacked(hacker, suppressMessages);
+
+        CyberUtils.MakeHackingOutcomeEffect(parent, "Disabled".Translate());
+    }
+
+    public override bool CompPreventClaimingBy(Faction faction)
+    {
+        if (IsHacked)
+            return true;
+
+        return base.CompPreventClaimingBy(faction);
     }
 }

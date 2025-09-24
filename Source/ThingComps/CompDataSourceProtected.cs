@@ -126,11 +126,7 @@ public class CompDataSourceProtected : CompDataSource
             return;
         }
 
-        USH_DefOf.USH_HackingOutcome.SpawnMaintained(parent.Position, parent.Map);
-
-        float fadeTicks = 4f;
-        var content = "USH_HE_ICEBreakerInstalled".Translate().Colorize(Color.red);
-        MoteMaker.ThrowText(parent.DrawPos, parent.Map, content, fadeTicks);
+        CyberUtils.MakeHackingOutcomeEffect(parent, "USH_HE_ICEBreakerInstalled".Translate());
 
         _installedICEBreaker = true;
     }
@@ -152,6 +148,9 @@ public class CompDataSourceProtected : CompDataSource
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats()
     {
+        if (parent.Faction == Faction.OfPlayer)
+            yield break;
+
         string statLabel = "USH_HE_SecurityHackset".Translate();
         string statValue = _hacksetDef == null ? "None".Translate() : _hacksetDef.LabelCap;
         string statContent = "USH_HE_SecurityHacksetDesc".Translate();
@@ -177,6 +176,9 @@ public class CompDataSourceProtected : CompDataSource
         StringBuilder sb = new();
 
         sb.AppendLine(base.CompInspectStringExtra());
+
+        if (parent.Faction == Faction.OfPlayer)
+            return sb.ToString();
 
         string hacksetText = _hacksetDef == null ? "None".Translate() : _hacksetDef.LabelCap.Colorize(Color.red);
         sb.AppendLine("USH_HE_SecurityHackset".Translate() + ": " + hacksetText);

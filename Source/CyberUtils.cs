@@ -113,6 +113,14 @@ public static class CyberUtils
         return pod != null;
     }
 
+    public static void MakeHackingOutcomeEffect(Thing t, string content)
+    {
+        USH_DefOf.USH_HackingOutcome.SpawnMaintained(t.Position, t.Map);
+
+        float fadeTicks = 4f;
+        MoteMaker.ThrowText(t.DrawPos, t.Map, content.Colorize(Color.red), fadeTicks);
+    }
+
     public static IList<float> PercentChancesByWeight<T>(this IEnumerable<T> source, Func<T, float> weightSelector)
     {
         if (source == null) throw new ArgumentNullException(nameof(source));

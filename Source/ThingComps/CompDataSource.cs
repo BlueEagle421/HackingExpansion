@@ -72,11 +72,7 @@ public class CompDataSource : ThingComp
 
     public void AddDataRipper(IEnumerable<ThingDef> rippableThings)
     {
-        USH_DefOf.USH_HackingOutcome.SpawnMaintained(parent.Position, parent.Map);
-
-        float fadeTicks = 4f;
-        var content = "USH_HE_RipperInstalled".Translate().Colorize(Color.red);
-        MoteMaker.ThrowText(parent.DrawPos, parent.Map, content, fadeTicks);
+        CyberUtils.MakeHackingOutcomeEffect(parent, "USH_HE_RipperInstalled".Translate());
 
         foreach (var thingDef in rippableThings)
             if (!_installedOutputThings.Select(x => x.Def).Contains(thingDef))
