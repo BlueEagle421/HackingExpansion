@@ -11,6 +11,7 @@ public static class USH_DefOf
     public static StatCategoryDef USH_Hacker;
     public static StatDef USH_RemoteHackingDistance;
     public static JobDef USH_InstallDataRipper;
+    public static JobDef USH_InstallICEBreaker;
     public static JobDef USH_InstallVirtualDataRipper;
     public static EffecterDef USH_RippingData;
     public static EffecterDef USH_HackingOutcome;

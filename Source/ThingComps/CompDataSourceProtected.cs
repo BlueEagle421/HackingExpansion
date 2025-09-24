@@ -21,6 +21,10 @@ public class CompDataSourceProtected : CompDataSource
     private HacksetDef _hacksetDef;
     public HacksetDef HacksetDef => _hacksetDef;
 
+    private bool _installedICEBreaker;
+
+    private const float ICE_BREAKER_FAIL_CHANCE = 0.02f;
+
     private WorldComponent_HacksetsLetter _worldComp;
     private WorldComponent_HacksetsLetter WorldComp
     {
@@ -51,10 +55,7 @@ public class CompDataSourceProtected : CompDataSource
 
     private void ApplyOutcome(Pawn hacker)
     {
-        var outcome = _hacksetDef.hackingOutcomes
-            .Where(x => x.Worker.CanApplyOnPawn(hacker)
-            && !_appliedOutcomes.Contains(x))
-            .RandomElementByWeight(def => def.weight).Worker;
+        var outcome = GetHackingOutcome(hacker);
 
         if (outcome == null)
         {
@@ -88,7 +89,48 @@ public class CompDataSourceProtected : CompDataSource
             return false;
 
         return true;
+    }
 
+    private HackingOutcomeWorker GetHackingOutcome(Pawn hacker)
+    {
+        List<HackingOutcomeDef> allDefs = _hacksetDef.hackingOutcomes;
+
+        if (_installedICEBreaker)
+            allDefs = [.. allDefs.Where(x => !x.disabledByBreaker)];
+
+        var outcome = allDefs
+            .Where(x => x.Worker.CanApplyOnPawn(hacker)
+            && !_appliedOutcomes.Contains(x))
+            .RandomElementByWeight(def => def.weight).Worker;
+
+        return outcome;
+    }
+
+    public AcceptanceReport CanAcceptICEBreaker(CompICEBreaker compICEBreaker)
+    {
+        if (_installedICEBreaker)
+            return "Already installed";
+
+        return true;
+    }
+
+    public void AddICEBreaker(CompICEBreaker compICEBreaker)
+    {
+        if (_installedICEBreaker)
+            return;
+
+        if (Rand.Chance(ICE_BREAKER_FAIL_CHANCE))
+        {
+            GenExplosion.DoExplosion(parent.Position, parent.Map, 3.9f, DamageDefOf.Bomb, null);
+
+            //TO DO: LETTER
+
+            return;
+        }
+
+        CompHackable.Hack(CompHackable.defence * 0.1f);
+
+        _installedICEBreaker = true;
     }
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats()
@@ -122,6 +164,19 @@ public class CompDataSourceProtected : CompDataSource
         string hacksetText = _hacksetDef == null ? "None".Translate() : _hacksetDef.LabelCap.Colorize(Color.red);
         sb.AppendLine("USH_HE_SecurityHackset".Translate() + ": " + hacksetText);
 
+        if (_installedICEBreaker)
+        {
+            var disabledOutcomes = _hacksetDef.hackingOutcomes.Where(x => x.disabledByBreaker);
+
+            if (disabledOutcomes.Count() > 0)
+            {
+                var disabledText = string.Join(", ", disabledOutcomes);
+                var toAppend = "Disabled outcomes".Translate() + ": " + disabledText;
+
+                sb.AppendLine(toAppend.Colorize(ColorLibrary.LimeGreen));
+            }
+        }
+
         return sb.ToString().Trim();
     }
 
@@ -130,5 +185,6 @@ public class CompDataSourceProtected : CompDataSource
         base.PostExposeData();
 
         Scribe_Defs.Look(ref _hacksetDef, nameof(_hacksetDef));
+        Scribe_Values.Look(ref _installedICEBreaker, nameof(_installedICEBreaker));
     }
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="ResourceBase">
+        <defName>USH_ICEBreaker</defName>
+        <label>ICE breaker</label>
+        <description>An advanced device that automatically completes a small portion of hacking progress on a device and disables its most deadly security measures like brain fry or lethal cyber necrosis. It has a small chance of being detected by ICE and may cause a brief explosion that destroys the device.</description>
+        <thingClass>ThingWithComps</thingClass>
+        <descriptionHyperlinks>
+            <USH_HE.HacksetDef>USH_ICE</USH_HE.HacksetDef>
+            <USH_HE.HacksetDef>USH_CoreCommandICE</USH_HE.HacksetDef>
+            <USH_HE.HacksetDef>USH_BlackICE</USH_HE.HacksetDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>Things/Item/ICEBreaker</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <resourceReadoutPriority>Middle</resourceReadoutPriority>
+        <useHitPoints>true</useHitPoints>
+        <statBases>
+            <MaxHitPoints>80</MaxHitPoints>
+            <Mass>0.2</Mass>
+            <DeteriorationRate>1.0</DeteriorationRate>
+            <Flammability>0.2</Flammability>
+        </statBases>
+        <recipeMaker>
+            <recipeUsers>
+                <li>TableMachining</li>
+            </recipeUsers>
+            <useIngredientsForColor>false</useIngredientsForColor>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+            <researchPrerequisite>USH_BasicCybertech</researchPrerequisite>
+            <displayPriority>650</displayPriority>
+        </recipeMaker>
+        <costList>
+            <Uranium>15</Uranium>
+            <ComponentIndustrial>3</ComponentIndustrial>
+        </costList>
+        <techLevel>Industrial</techLevel>
+        <stackLimit>10</stackLimit>
+        <thingCategories>
+            <li>ItemsMisc</li>
+        </thingCategories>
+        <comps>
+            <li Class="USH_HE.CompProperties_ICEBreaker"></li>
+        </comps>
+    </ThingDef>
+
+    <JobDef>
+        <defName>USH_InstallICEBreaker</defName>
+        <driverClass>USH_HE.JobDriver_InstallICEBreaker</driverClass>
+        <reportString>installing ICE breaker on TargetA.</reportString>
+        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+
+</Defs>
