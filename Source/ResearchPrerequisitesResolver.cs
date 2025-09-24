@@ -17,8 +17,7 @@ public class ResearchPrerequisitesResolver(World world) : WorldComponent(world)
     {
         base.FinalizeInit(fromLoad);
 
-        if (fromLoad)
-            AddUnlockedDefs();
+        AddUnlockedDefs();
     }
 
     private void AddUnlockedDefs()
