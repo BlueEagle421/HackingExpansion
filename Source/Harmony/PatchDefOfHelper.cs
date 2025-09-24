@@ -94,18 +94,16 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         if (thingDef.HasComp<CompMannable>())
             return false;
 
+        if (thingDef.HasComp<CompInteractable>())
+            return false;
+
         if (thingDef.HasComp<CompHackable>())
             return false;
 
         bool hasPower = thingDef.HasComp<CompPowerTrader>();
+
         var compStunnable = thingDef.GetCompProperties<CompProperties_Stunnable>();
-
-        bool isStunnable = compStunnable != null;
-        bool damagesNotNull = isStunnable && compStunnable.affectedDamageDefs != null;
-
-        bool empStunnable =
-            damagesNotNull &&
-            compStunnable.affectedDamageDefs.Contains(DamageDefOf.EMP);
+        bool empStunnable = compStunnable?.affectedDamageDefs?.Any(d => d == DamageDefOf.EMP) == true;
 
         return hasPower && empStunnable;
     }
@@ -140,7 +138,7 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         float cost = thingDef.CostList.Sum(x => x.count * x.thingDef.BaseMarketValue);
         cost += thingDef.CostStuffCount * 2; //assuming cheap resource
 
-        cost /= 2; //balancing
+        cost /= 4; //balancing
 
         //rounded for readability
         if (cost > 1000)
