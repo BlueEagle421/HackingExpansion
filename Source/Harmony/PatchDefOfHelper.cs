@@ -88,6 +88,9 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         if (thingDef.building?.turretGunDef == null)
             return false;
 
+        if (thingDef.HasComp<CompMannable>())
+            return false;
+
         if (thingDef.HasComp<CompHackable>())
             return false;
 
