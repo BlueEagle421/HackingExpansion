@@ -43,6 +43,7 @@
                 <soundOnUsed>USH_CyberlinkInstalled</soundOnUsed>
             </li>
         </comps>
+        <tradeability>Sellable</tradeability>
     </ThingDef>
 
     <ThingDef Abstract="True" Name="USH_CyberlinkBase" ParentName="USH_CyberlinkBodyPartBase">

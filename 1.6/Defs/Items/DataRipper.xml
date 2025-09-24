@@ -22,6 +22,7 @@
             <DeteriorationRate>1.0</DeteriorationRate>
             <Flammability>0.2</Flammability>
         </statBases>
+        <tradeability>Sellable</tradeability>
         <recipeMaker>
             <recipeUsers>
                 <li>TableMachining</li>
