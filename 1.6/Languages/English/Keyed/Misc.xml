@@ -63,4 +63,9 @@
     <USH_HE_BreakerFailLetterLabel>Black ICE response</USH_HE_BreakerFailLetterLabel>
     <USH_HE_BreakerFailLetter>The security system responded to ICE breaker and defended itself by installing a self destruction protocol in the device. It resulted in an explosion.</USH_HE_BreakerFailLetter>
 
+    <USH_GE_EnableMechSetting>Enable hackable mechanoids</USH_GE_EnableMechSetting>
+    <USH_GE_EnableMechSettingDesc>Whether mechanoids can be hacked or not. Changing this setting requires save restart to work.</USH_GE_EnableMechSettingDesc>
+
+    <USH_GE_EnableTurretSetting>Enable hackable turrets</USH_GE_EnableTurretSetting>
+    <USH_GE_EnableTurretSettingDesc>Whether turrets can be hacked or not. Changing this setting requires save restart to work.</USH_GE_EnableTurretSettingDesc>
 </LanguageData>
