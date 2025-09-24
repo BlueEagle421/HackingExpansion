@@ -37,6 +37,12 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
             {
                 if (ShouldBeDataSource(def))
                     (def.comps ??= []).Add(new CompProperties_DataSourceProtected());
+
+                if (ShouldTurretBeHackable(def))
+                {
+                    (def.comps ??= []).Add(TurretPropsToAdd(def));
+                    (def.comps ??= []).Add(new CompProperties_DataSourceProtected());
+                }
             }
             catch
             {
@@ -55,5 +61,33 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
 
         return true;
     }
+
+    private static bool ShouldTurretBeHackable(ThingDef thingDef)
+    {
+        if (thingDef.building?.turretGunDef == null)
+            return false;
+
+        if (thingDef.HasComp<CompHackable>())
+            return false;
+
+        bool hasPower = thingDef.HasComp<CompPowerTrader>();
+        var compStunnable = thingDef.GetCompProperties<CompProperties_Stunnable>();
+
+        bool isStunnable = compStunnable != null;
+        bool damagesNotNull = compStunnable.affectedDamageDefs != null;
+
+        bool empStunnable =
+            isStunnable &&
+            damagesNotNull &&
+            compStunnable.affectedDamageDefs.Contains(DamageDefOf.EMP);
+
+        return hasPower && empStunnable;
+    }
+
+    private static CompProperties_TurretHackable TurretPropsToAdd(ThingDef thingDef)
+        => new()
+        {
+            defence = thingDef.building.combatPower * 2 * 60,
+        };
 
 }
