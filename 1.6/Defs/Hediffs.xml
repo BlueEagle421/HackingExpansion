@@ -96,4 +96,20 @@
         </comps>
     </HediffDef>
 
+    <HediffDef ParentName="DiseaseBase">
+        <defName>USH_Disabled</defName>
+        <label>disabled</label>
+        <description>The internal subcore is disabled disconnecting main processing power from the body.</description>
+        <stages>
+            <li>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <setMax>0.1</setMax>
+                    </li>
+                </capMods>
+            </li>
+        </stages>
+    </HediffDef>
+
 </Defs>

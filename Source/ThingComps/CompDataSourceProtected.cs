@@ -178,7 +178,10 @@ public class CompDataSourceProtected : CompDataSource
         sb.AppendLine(base.CompInspectStringExtra());
 
         if (parent.Faction == Faction.OfPlayer)
-            return sb.ToString();
+            return sb.ToString().Trim();
+
+        if (CompHackable.IsHacked)
+            return sb.ToString().Trim();
 
         string hacksetText = _hacksetDef == null ? "None".Translate() : _hacksetDef.LabelCap.Colorize(Color.red);
         sb.AppendLine("USH_HE_SecurityHackset".Translate() + ": " + hacksetText);

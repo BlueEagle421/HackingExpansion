@@ -31,4 +31,5 @@ public static class USH_DefOf
     public static ThingDef USH_EncryptedCrate;
     public static HacksetDef USH_BlackICE;
     public static ThingDef USH_BrokenExecData;
+    public static HediffDef USH_Disabled;
 }

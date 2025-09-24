@@ -36,11 +36,19 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
             try
             {
                 if (ShouldBeDataSource(def))
+                {
                     (def.comps ??= []).Add(new CompProperties_DataSourceProtected());
+                }
 
                 if (ShouldTurretBeHackable(def))
                 {
                     (def.comps ??= []).Add(TurretPropsToAdd(def));
+                    (def.comps ??= []).Add(new CompProperties_DataSourceProtected());
+                }
+
+                if (ShouldMechBeHackable(def))
+                {
+                    (def.comps ??= []).Add(MechPropsToAdd(def));
                     (def.comps ??= []).Add(new CompProperties_DataSourceProtected());
                 }
             }
@@ -84,10 +92,29 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         return hasPower && empStunnable;
     }
 
+    private static bool ShouldMechBeHackable(ThingDef thingDef)
+    {
+        var race = thingDef.race;
+
+        if (race == null)
+            return false;
+
+        if (!race.IsMechanoid && race.IsDrone)
+            return false;
+
+        return true;
+    }
+
     private static CompProperties_TurretHackable TurretPropsToAdd(ThingDef thingDef)
         => new()
         {
             defence = thingDef.building.combatPower * 2 * 60,
+        };
+
+    private static CompProperties_MechanoidHackable MechPropsToAdd(ThingDef thingDef)
+        => new()
+        {
+            defence = 600,
         };
 
 }
