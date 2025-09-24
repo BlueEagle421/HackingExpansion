@@ -83,6 +83,30 @@ public class CompDataSource : ThingComp
                 _installedOutputThings.Add(new(thingDef, CompHackable));
     }
 
+    public virtual void ProcessHacked(Pawn hacker, bool suppressMessages)
+    {
+        HandleBrokenExecSpawn(hacker);
+    }
+
+    private void HandleBrokenExecSpawn(Pawn hacker)
+    {
+        if (!_installedOutputThings.Any())
+            return;
+
+        if (this is not CompDataSourceProtected compProtected)
+            return;
+
+        bool matchingHackset = USH_DefOf.USH_BrokenExecData
+            .descriptionHyperlinks
+            .Select(x => x.def)
+            .Contains(compProtected.HacksetDef);
+
+        if (!matchingHackset)
+            return;
+
+        ProduceOutput(USH_DefOf.USH_BrokenExecData, hacker);
+    }
+
     public virtual void Hack(float amount, Pawn hacker = null)
     {
         if (!IsReadyToOutput)

@@ -58,4 +58,22 @@
         </modExtensions>
     </ThingDef>
 
+    <ThingDef ParentName="USH_Cyberdata">
+        <defName>USH_BrokenExecData</defName>
+        <label>broken exec data</label>
+        <description>A spacer-tech diskette that once contained a powerful executable. It can be salvaged for its components or restored and used as a holding cell for a new exec.\n\nIt drops from ripped, hackable devices secured by ICE or ICE variants.</description>
+        <descriptionHyperlinks>
+            <USH_HE.HacksetDef>USH_ICE</USH_HE.HacksetDef>
+            <USH_HE.HacksetDef>USH_CoreCommandICE</USH_HE.HacksetDef>
+            <USH_HE.HacksetDef>USH_BlackICE</USH_HE.HacksetDef>
+        </descriptionHyperlinks>
+        <graphicData>
+            <texPath>Things/Item/BrokenExecData</texPath>
+        </graphicData>
+        <statBases>
+            <MarketValue>30</MarketValue>
+        </statBases>
+        <modExtensions Inherit="False"></modExtensions>
+    </ThingDef>
+
 </Defs>

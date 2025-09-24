@@ -28,4 +28,19 @@ namespace USH_HE
             compDataSource.Hack(amount, hacker);
         }
     }
+
+    [HarmonyPatch(typeof(CompHackable), "ProcessHacked")]
+    public static class Patch_CompHackable_ProcessHack
+    {
+        static void Postfix(CompHackable __instance, Pawn hacker, bool suppressMessages)
+        {
+            if (__instance == null)
+                return;
+
+            if (!__instance.parent.TryGetComp(out CompDataSource compDataSource))
+                return;
+
+            compDataSource.ProcessHacked(hacker, suppressMessages);
+        }
+    }
 }
