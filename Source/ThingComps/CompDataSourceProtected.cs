@@ -37,7 +37,7 @@ public class CompDataSourceProtected : CompDataSource
     {
         base.PostSpawnSetup(respawningAfterLoad);
 
-        _hacksetDef = CompHackable.GetHacksetDef();
+        _hacksetDef ??= CompHackable.GetHacksetDef();
     }
 
     public override void Hack(float amount, Pawn hacker = null)
