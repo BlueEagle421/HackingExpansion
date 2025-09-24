@@ -23,5 +23,5 @@ public class HE_Mod : Mod
 
     public override void DoSettingsWindowContents(Rect inRect) => Settings.DoSettingsWindowContents(inRect);
 
-    public override string SettingsCategory() => "Glittertech Expansion";
+    public override string SettingsCategory() => "Hacking Expansion";
 }

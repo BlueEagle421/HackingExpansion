@@ -38,13 +38,11 @@ public class HE_Settings : ModSettings
 
 
         //EnableMechHacking
-        listingStandard.Label("\n");
-        listingStandard.CheckboxLabeled("USH_GE_EnableMechSetting".Translate().Colorize(Color.cyan), ref EnableMechHacking.Value);
+        listingStandard.CheckboxLabeled("USH_GE_EnableMechSetting".Translate().Colorize(ColorLibrary.LimeGreen), ref EnableMechHacking.Value);
         listingStandard.Label("USH_GE_EnableMechSettingDesc".Translate());
 
         //EnableTurretsHacking
-        listingStandard.Label("\n");
-        listingStandard.CheckboxLabeled("USH_GE_EnableTurretSetting".Translate().Colorize(Color.cyan), ref EnableTurretsHacking.Value);
+        listingStandard.CheckboxLabeled("USH_GE_EnableTurretSetting".Translate().Colorize(ColorLibrary.LimeGreen), ref EnableTurretsHacking.Value);
         listingStandard.Label("USH_GE_EnableTurretSettingDesc".Translate());
 
         //Reset button
