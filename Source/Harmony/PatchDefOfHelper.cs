@@ -110,15 +110,15 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
 
     private static bool ShouldMechBeHackable(PawnKindDef kindDef)
     {
-        var race = kindDef.race.race;
+        var raceProps = kindDef.race.race;
 
-        if (race == null)
+        if (raceProps == null)
             return false;
 
         if (kindDef.race.HasComp<CompHackable>())
             return false;
 
-        if (!race.IsMechanoid && race.IsDrone)
+        if (!raceProps.IsMechanoid && raceProps.IsDrone)
             return false;
 
         return true;
@@ -147,6 +147,6 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
     private static CompProperties_MechanoidHackable MechPropsToAdd(PawnKindDef kindDef)
         => new()
         {
-            defence = kindDef.combatPower * 2 * 60,
+            defence = kindDef.combatPower * 2 * 60 * kindDef.race.race.baseBodySize,
         };
 }
