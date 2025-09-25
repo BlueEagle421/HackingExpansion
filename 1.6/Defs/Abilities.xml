@@ -12,7 +12,7 @@
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_VirtualDataRipper</defName>
         <label>virtual data ripper</label>
-        <description>.</description>
+        <description>Installs a data ripper on the targeted device, allowing cyberdata extraction.</description>
         <iconPath>Abilities/VirtualDataRipper</iconPath>
         <abilityClass>USH_HE.Ability_VirtualDataRipper</abilityClass>
         <castTime>240</castTime>
@@ -34,7 +34,7 @@
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_VirtualICEBreaker</defName>
         <label>virtual black ICE breaker</label>
-        <description>.</description>
+        <description>Installs a virtual black ICE breaker on the targeted device, disabling its lethal security measures.</description>
         <iconPath>Abilities/VirtualICEBreaker</iconPath>
         <abilityClass>USH_HE.Ability_VirtualICEBreaker</abilityClass>
         <castTime>240</castTime>
@@ -50,7 +50,7 @@
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_Zapcode</defName>
         <label>zapcode</label>
-        <description>.</description>
+        <description>Penetrates the first layers of security systems. Automatically hacks 25% of the device, but only if it has not already been accessed by another hacker.</description>
         <iconPath>Abilities/Zapcode</iconPath>
         <abilityClass>USH_HE.Ability_Zapcode</abilityClass>
         <castTime>90</castTime>
@@ -65,7 +65,7 @@
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_ForkBomb</defName>
         <label>fork bomb</label>
-        <description>.</description>
+        <description>Overwhelms the targeted software with simple commands that recursively multiply, consuming most of its processing power.</description>
         <iconPath>Abilities/ForkBomb</iconPath>
         <abilityClass>USH_HE.Ability_ForkBomb</abilityClass>
         <castTime>30</castTime>
@@ -80,7 +80,7 @@
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_Discharge</defName>
         <label>discharge</label>
-        <description>.</description>
+        <description>Forces the targeted device to discharge its internal power supply, resulting in an EMP explosion.</description>
         <iconPath>Abilities/Discharge</iconPath>
         <abilityClass>USH_HE.Ability_Discharge</abilityClass>
         <castTime>90</castTime>
@@ -96,7 +96,7 @@
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_ShortCircuit</defName>
         <label>short circuit</label>
-        <description>.</description>
+        <description>Causes a short circuit in the device’s internal components, resulting in a small burning explosion.</description>
         <iconPath>Abilities/ShortCircuit</iconPath>
         <abilityClass>USH_HE.Ability_ShortCircuit</abilityClass>
         <castTime>120</castTime>
@@ -112,7 +112,7 @@
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_HijackSubcore</defName>
         <label>hijack subcore</label>
-        <description>.</description>
+        <description>Reprograms the targeted mechanoid's subcore to recognize the hacker as an ally. The intense, prolonged mental focus required to cast this exec physically harms tissue surrounding the neural port, causing necrosis that can later be healed.</description>
         <iconPath>Abilities/HijackSubcore</iconPath>
         <abilityClass>USH_HE.Ability_HijackSubcore</abilityClass>
         <castTime>360</castTime>
