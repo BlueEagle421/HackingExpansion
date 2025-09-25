@@ -32,4 +32,5 @@ public static class USH_DefOf
     public static HacksetDef USH_BlackICE;
     public static ThingDef USH_BrokenExecData;
     public static HediffDef USH_Disabled;
+    public static HediffDef USH_ForkBomb;
 }

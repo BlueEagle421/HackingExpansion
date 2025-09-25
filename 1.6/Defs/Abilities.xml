@@ -19,4 +19,14 @@
         <targetMode>Thing</targetMode>
     </VEF.Abilities.AbilityDef>
 
+    <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
+        <defName>USH_ForkBomb</defName>
+        <label>fork bomb</label>
+        <description>.</description>
+        <iconPath>Abilities/ForkBomb</iconPath>
+        <abilityClass>USH_HE.Ability_ForkBomb</abilityClass>
+        <castTime>30</castTime>
+        <targetMode>Pawn</targetMode>
+    </VEF.Abilities.AbilityDef>
+
 </Defs>
