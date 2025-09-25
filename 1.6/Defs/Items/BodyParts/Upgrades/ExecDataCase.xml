@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="USH_AdvancedCyberlinkUpgradeBase">
+        <defName>USH_ExecDataCase</defName>
+        <label>exec data case</label>
+        <description>.</description>
+        <descriptionHyperlinks>
+            <HediffDef>USH_InstalledExecDataCase</HediffDef>
+        </descriptionHyperlinks>
+        <statBases>
+            <MaxInstallCount>1</MaxInstallCount>
+        </statBases>
+        <costList>
+            <USH_AdvancedCyberdata>1</USH_AdvancedCyberdata>
+            <Plasteel>12</Plasteel>
+        </costList>
+        <recipeMaker>
+            <researchPrerequisite>USH_AdvancedCybertech</researchPrerequisite>
+        </recipeMaker>
+        <comps>
+            <li Class="CompProperties_Usable">
+                <compClass>CompUsableImplant</compClass>
+                <useJob>UseItem</useJob>
+                <useLabel>Implant {0_label}</useLabel>
+                <userMustHaveHediff>USH_InstalledAdvancedCyberlink</userMustHaveHediff>
+            </li>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledExecDataCase</hediffDef>
+                <bodyPart>Brain</bodyPart>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef>
+        <defName>USH_InstalledExecDataCase</defName>
+        <hediffClass>USH_HE.Hediff_VirtualDataRipper</hediffClass>
+        <label>exec data case</label>
+        <description>.</description>
+        <descriptionHyperlinks>
+            <ThingDef>USH_ExecDataCase</ThingDef>
+        </descriptionHyperlinks>
+        <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+        <isBad>false</isBad>
+        <priceImpact>true</priceImpact>
+        <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+        <duplicationAllowed>false</duplicationAllowed>
+    </HediffDef>
+
+</Defs>
