@@ -34,7 +34,6 @@
 
     <HediffDef>
         <defName>USH_InstalledExecDataCase</defName>
-        <hediffClass>USH_HE.Hediff_VirtualDataRipper</hediffClass>
         <label>exec data case</label>
         <description>.</description>
         <descriptionHyperlinks>
