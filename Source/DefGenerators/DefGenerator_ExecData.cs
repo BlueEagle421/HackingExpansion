@@ -20,8 +20,8 @@ public class ThingDefGenerator_ExecData
                 continue;
 
             ThingDef thingDef = BaseNeurotrainer(ExecDataDefPrefix + "_" + def.defName, hotReload);
-            thingDef.label = "PsycastNeurotrainerLabel".Translate(def.label);
-            // thingDef.description = "PsycastNeurotrainerDescription".Translate(def.Named("PSYCAST"), def.description.Named("PSYCASTDESCRIPTION"));
+            thingDef.label = "USH_HE_ExecDataLabel".Translate(def.label);
+            thingDef.description = "USH_HE_ExecDataDescription".Translate(def.LabelCap, def.description);
 
             thingDef.comps.Add(new CompProperties_Usable
             {
@@ -29,7 +29,7 @@ public class ThingDefGenerator_ExecData
                 useJob = USH_DefOf.UseItem,
                 useLabel = "USH_HE_UseExecData".Translate(def.label),
                 showUseGizmo = true,
-                userMustHaveHediff = USH_DefOf.USH_InstalledAdvancedCyberlink,
+                userMustHaveHediff = USH_DefOf.USH_InstalledExecDataCase,
             });
 
             // thingDef.comps.Add(new CompProperties_UseEffectInstallImplant
