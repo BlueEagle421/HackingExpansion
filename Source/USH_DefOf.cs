@@ -33,4 +33,8 @@ public static class USH_DefOf
     public static ThingDef USH_BrokenExecData;
     public static HediffDef USH_Disabled;
     public static HediffDef USH_ForkBomb;
+    public static JobDef UseItem;
+    public static HediffDef USH_InstalledAdvancedCyberlink;
+    public static ThingCategoryDef USH_ExecDatas;
+    public static SoundDef USH_CyberlinkInstalled;
 }
