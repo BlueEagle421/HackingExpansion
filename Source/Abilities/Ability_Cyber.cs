@@ -1,11 +1,11 @@
-using VEF.Abilities;
+using RimWorld;
 using Verse;
 
 namespace USH_HE;
 
-public abstract class Ability_Cyber : Ability
+public abstract class Ability_Cyber : VEF.Abilities.Ability
 {
-    public override RimWorld.TargetingParameters targetParams => new()
+    public override TargetingParameters targetParams => new()
     {
         canTargetPawns = true,
         canTargetSelf = false,
@@ -19,9 +19,12 @@ public abstract class Ability_Cyber : Ability
         if (targetInfo.Thing is null)
             return false;
 
-        if (!targetInfo.Thing.TryGetComp(out CompCyberTarget _))
+        if (!targetInfo.Thing.TryGetComp(out CompHackable _))
             return false;
 
         return true;
     }
+
+    public override float GetRangeForPawn()
+        => pawn.GetRemoteHackRadius();
 }

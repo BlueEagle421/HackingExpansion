@@ -1,41 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <VEF.Abilities.AbilityDef Name="VPE_PsycastBase" Abstract="true">
-        <warmupSound>VPE_PsycastCastingEffect</warmupSound>
-        <warmupMote>VPE_Mote_CastPsycast</warmupMote>
+    <VEF.Abilities.AbilityDef Name="USH_ExecBase" Abstract="true">
+        <!-- <warmupSound>VPE_PsycastCastingEffect</warmupSound> -->
         <!-- <gizmoClass>VanillaPsycastsExpanded.Command_Ability_Psycast</gizmoClass> -->
         <cooldownTime>120</cooldownTime>
-        <rangeRingColor>(1, 1, 1)</rangeRingColor>
+        <rangeRingColor>(0, 1, 0, 0.5)</rangeRingColor>
         <radiusRingColor>(0.3, 0.8, 1)</radiusRingColor>
         <requireLineOfSight>false</requireLineOfSight>
     </VEF.Abilities.AbilityDef>
 
-    <VEF.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-        <defName>VPE_Bolt</defName>
-        <label>bolt</label>
-        <description>Hurls a weak bolt of electricity to strike a small target area, at a distance scaling with psychic sensitivity. Burns on direct hits and inflicts area EMP damage.</description>
-        <iconPath>Abilities/Staticlord/Bolt</iconPath>
-        <abilityClass>VEF.Abilities.Ability_ShootProjectile</abilityClass>
-        <castTime>3</castTime>
-        <range>12.9</range>
-        <rangeStatFactors>
-            <PsychicSensitivity>1</PsychicSensitivity>
-        </rangeStatFactors>
-        <radius>1.9</radius>
-        <power>1</power>
-        <castSound>VPE_Bolt_Cast</castSound>
-        <targetMode>Pawn</targetMode>
-        <targetingParameters>
-            <canTargetItems>true</canTargetItems>
-            <canTargetLocations>true</canTargetLocations>
-        </targetingParameters>
-        <modExtensions>
-            <li Class="VEF.Abilities.AbilityExtension_Projectile">
-                <projectile>VPE_Bolt</projectile>
-                <forcedMissRadius>1.9</forcedMissRadius>
-            </li>
-        </modExtensions>
+    <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
+        <defName>USH_Zapcode</defName>
+        <label>zapcode</label>
+        <description>.</description>
+        <iconPath>Abilities/IgnoreAutoHack</iconPath>
+        <abilityClass>USH_HE.Ability_Zapcode</abilityClass>
+        <castTime>90</castTime>
+        <!-- <castSound>VPE_Bolt_Cast</castSound> -->
+        <targetMode>Thing</targetMode>
     </VEF.Abilities.AbilityDef>
 
 </Defs>
