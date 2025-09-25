@@ -31,4 +31,16 @@
         <targetMode>Pawn</targetMode>
     </VEF.Abilities.AbilityDef>
 
+    <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
+        <defName>USH_Discharge</defName>
+        <label>discharge</label>
+        <description>.</description>
+        <iconPath>Abilities/Discharge</iconPath>
+        <abilityClass>USH_HE.Ability_Discharge</abilityClass>
+        <castTime>90</castTime>
+        <radius>7.9</radius>
+        <!-- <cooldownTime>7500</cooldownTime> -->
+        <targetMode>Thing</targetMode>
+    </VEF.Abilities.AbilityDef>
+
 </Defs>
