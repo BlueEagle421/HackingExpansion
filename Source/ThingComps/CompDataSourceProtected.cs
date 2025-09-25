@@ -120,7 +120,7 @@ public class CompDataSourceProtected : CompDataSource
         if (_installedICEBreaker)
             return;
 
-        if (Rand.Chance(compICEBreaker.Props.failChance))
+        if (compICEBreaker != null && Rand.Chance(compICEBreaker.Props.failChance))
         {
             ICEBreakerFail(compICEBreaker);
             return;

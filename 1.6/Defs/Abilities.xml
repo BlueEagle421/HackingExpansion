@@ -34,6 +34,22 @@
     </VEF.Abilities.AbilityDef>
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
+        <defName>USH_VirtualICEBreaker</defName>
+        <label>virtual black ICE breaker</label>
+        <description>.</description>
+        <iconPath>Abilities/VirtualICEBreaker</iconPath>
+        <abilityClass>USH_HE.Ability_VirtualICEBreaker</abilityClass>
+        <castTime>240</castTime>
+        <!-- <cooldownTime>12500</cooldownTime> -->
+        <targetMode>Thing</targetMode>
+        <modExtensions>
+            <li Class="USH_HE.AbilityExtension_Cyber">
+                <doHackEffect>false</doHackEffect>
+            </li>
+        </modExtensions>
+    </VEF.Abilities.AbilityDef>
+
+    <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_Zapcode</defName>
         <label>zapcode</label>
         <description>.</description>
