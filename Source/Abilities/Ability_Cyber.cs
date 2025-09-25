@@ -4,8 +4,24 @@ using Verse;
 
 namespace USH_HE;
 
+public class AbilityExtension_Cyber : DefModExtension
+{
+    public bool doHackEffect = true;
+}
+
+
 public abstract class Ability_Cyber : VEF.Abilities.Ability
 {
+    private AbilityExtension_Cyber _ext;
+    private AbilityExtension_Cyber Ext
+    {
+        get
+        {
+            _ext ??= def.GetModExtension<AbilityExtension_Cyber>();
+            return _ext;
+        }
+    }
+
     public override TargetingParameters targetParams => new()
     {
         canTargetPawns = true,
@@ -30,9 +46,10 @@ public abstract class Ability_Cyber : VEF.Abilities.Ability
     {
         base.Cast(targets);
 
-        foreach (GlobalTargetInfo target in targets)
-            if (target.HasThing)
-                CyberUtils.MakeHackingOutcomeEffect(target.Thing, def.LabelCap);
+        if (Ext.doHackEffect)
+            foreach (GlobalTargetInfo target in targets)
+                if (target.HasThing)
+                    CyberUtils.MakeHackingOutcomeEffect(target.Thing, def.LabelCap);
     }
 
     public override float GetRangeForPawn()

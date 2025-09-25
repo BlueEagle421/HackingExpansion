@@ -12,6 +12,28 @@
     </VEF.Abilities.AbilityDef>
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
+        <defName>USH_VirtualDataRipper</defName>
+        <label>virtual data ripper</label>
+        <description>.</description>
+        <iconPath>Abilities/VirtualDataRipper</iconPath>
+        <abilityClass>USH_HE.Ability_VirtualDataRipper</abilityClass>
+        <castTime>240</castTime>
+        <!-- <cooldownTime>12500</cooldownTime> -->
+        <targetMode>Thing</targetMode>
+        <modExtensions>
+            <li Class="USH_HE.AbilityExtension_Cyber">
+                <doHackEffect>false</doHackEffect>
+            </li>
+            <li Class="USH_HE.AbilityExtension_VirtualDataRipper">
+                <rippableThings>
+                    <li>USH_Cyberdata</li>
+                    <li>USH_AdvancedCyberdata</li>
+                </rippableThings>
+            </li>
+        </modExtensions>
+    </VEF.Abilities.AbilityDef>
+
+    <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_Zapcode</defName>
         <label>zapcode</label>
         <description>.</description>
@@ -20,6 +42,10 @@
         <castTime>90</castTime>
         <!-- <cooldownTime>5000</cooldownTime> -->
         <targetMode>Thing</targetMode>
+        <modExtensions>
+            <li Class="USH_HE.AbilityExtension_Cyber">
+            </li>
+        </modExtensions>
     </VEF.Abilities.AbilityDef>
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
@@ -31,6 +57,10 @@
         <castTime>30</castTime>
         <!-- <cooldownTime>2500</cooldownTime> -->
         <targetMode>Pawn</targetMode>
+        <modExtensions>
+            <li Class="USH_HE.AbilityExtension_Cyber">
+            </li>
+        </modExtensions>
     </VEF.Abilities.AbilityDef>
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
@@ -43,6 +73,10 @@
         <radius>7.9</radius>
         <!-- <cooldownTime>7500</cooldownTime> -->
         <targetMode>Thing</targetMode>
+        <modExtensions>
+            <li Class="USH_HE.AbilityExtension_Cyber">
+            </li>
+        </modExtensions>
     </VEF.Abilities.AbilityDef>
 
 </Defs>
