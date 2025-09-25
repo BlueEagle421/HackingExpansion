@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <RecipeDef>
+        <defName>USH_SalvageBrokenExecData</defName>
+        <label>salvage broken exec data</label>
+        <description>Salvage what's left of the broken exec data to extract it's precious inner components.</description>
+        <jobString>Salvaging broken exec data.</jobString>
+        <workAmount>600</workAmount>
+        <workSpeedStat>ButcheryMechanoidSpeed</workSpeedStat>
+        <workSkill>Crafting</workSkill>
+        <efficiencyStat>ButcheryMechanoidEfficiency</efficiencyStat>
+        <effectWorking>ButcherMechanoid</effectWorking>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>USH_BrokenExecData</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <products>
+            <Uranium>10</Uranium>
+            <Plasteel>6</Plasteel>
+            <Gold>2</Gold>
+        </products>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>USH_BrokenExecData</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+    </RecipeDef>
+
+</Defs>

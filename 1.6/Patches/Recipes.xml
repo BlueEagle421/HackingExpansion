@@ -44,4 +44,11 @@
         </value>
     </Operation>
 
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName = "TableMachining"]/recipes</xpath>
+        <value>
+            <li>USH_SalvageBrokenExecData</li>
+        </value>
+    </Operation>
+
 </Patch>
