@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Drawing;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace USH_HE;
@@ -53,12 +55,19 @@ public class ThingDefGenerator_ExecData
         obj.label = "USH_HE_ExecDataHediffLearningLabel".Translate(def.LabelCap);
         obj.description = "USH_HE_ExecDataHediffLearningDescription".Translate(def.Named("EXEC"));
 
+        obj.hediffClass = typeof(Hediff_LearningAbility);
         obj.descriptionHyperlinks = [new(def)];
-        obj.defaultLabelColor = new(153, 153, 255);
+        obj.defaultLabelColor = new(1, 1, 1);
         obj.isBad = false;
         obj.priceImpact = true;
         obj.keepOnBodyPartRestoration = true;
         obj.duplicationAllowed = false;
+
+        obj.modExtensions = [new LearningAbilityExtension()
+        {
+            abilityDef = def,
+            abilityExt = ext,
+        }];
 
         return obj;
     }

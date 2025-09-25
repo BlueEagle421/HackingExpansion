@@ -105,6 +105,25 @@ public class CompDataSource : ThingComp
 
     public virtual void Hack(float amount, Pawn hacker = null)
     {
+        HackForLearning(amount, hacker);
+
+        HackForOutput(amount, hacker);
+    }
+
+    private void HackForLearning(float amount, Pawn hacker)
+    {
+        if (hacker == null)
+            return;
+
+        var hediffs = hacker.health.hediffSet.hediffs;
+
+        for (int i = 0; i < hediffs.Count; i++)
+            if (hediffs[i] is Hediff_LearningAbility hediffLearning)
+                hediffLearning.Hack(amount);
+    }
+
+    private void HackForOutput(float amount, Pawn hacker)
+    {
         if (!IsReadyToOutput)
             return;
 
