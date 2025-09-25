@@ -1,4 +1,5 @@
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace USH_HE;
@@ -23,6 +24,15 @@ public abstract class Ability_Cyber : VEF.Abilities.Ability
             return false;
 
         return true;
+    }
+
+    public override void Cast(params GlobalTargetInfo[] targets)
+    {
+        base.Cast(targets);
+
+        foreach (GlobalTargetInfo target in targets)
+            if (target.HasThing)
+                CyberUtils.MakeHackingOutcomeEffect(target.Thing, def.LabelCap);
     }
 
     public override float GetRangeForPawn()
