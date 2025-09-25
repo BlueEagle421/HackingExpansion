@@ -8,8 +8,6 @@ public class ThingDefGenerator_ExecData
 {
     public static string ExecDataDefPrefix = "ExecData";
 
-    private const int MaxAbilityLevel = 6;
-
     public static IEnumerable<ThingDef> ImpliedThingDefs(bool hotReload = false)
     {
         foreach (var def in DefDatabase<VEF.Abilities.AbilityDef>.AllDefs)
@@ -19,42 +17,17 @@ public class ThingDefGenerator_ExecData
             if (ext == null)
                 continue;
 
-            ThingDef thingDef = BaseNeurotrainer(ExecDataDefPrefix + "_" + def.defName, hotReload);
-            thingDef.label = "USH_HE_ExecDataLabel".Translate(def.label);
-            thingDef.description = "USH_HE_ExecDataDescription".Translate(def.LabelCap, def.description);
-
-            thingDef.comps.Add(new CompProperties_Usable
-            {
-                compClass = typeof(CompUsableImplant),
-                useJob = USH_DefOf.UseItem,
-                useLabel = "USH_HE_UseExecData".Translate(def.label),
-                showUseGizmo = true,
-                userMustHaveHediff = USH_DefOf.USH_InstalledExecDataCase,
-            });
-
-            // thingDef.comps.Add(new CompProperties_UseEffectInstallImplant
-            // {
-            //     ability = def
-            // });
-            // thingDef.statBases.Add(new StatModifier
-            // {
-            //     stat = StatDefOf.MarketValue,
-            //     value = Mathf.Round(Mathf.Lerp(100f, 1000f, def.level / 6f))
-            // });
-
-            thingDef.thingCategories = [USH_DefOf.USH_ExecDatas];
-            thingDef.modContentPack = def.modContentPack;
-            thingDef.descriptionHyperlinks = [new DefHyperlink(def)];
-
-            yield return thingDef;
-
+            yield return ExecData(def, hotReload);
         }
     }
 
-    private static ThingDef BaseNeurotrainer(string defName, bool hotReload = false)
+    private static ThingDef ExecData(VEF.Abilities.AbilityDef def, bool hotReload = false)
     {
+        string defName = ExecDataDefPrefix + "_" + def.defName;
         ThingDef obj = hotReload ? (DefDatabase<ThingDef>.GetNamed(defName, errorOnFail: false) ?? new ThingDef()) : new ThingDef();
         obj.defName = defName;
+        obj.label = "USH_HE_ExecDataLabel".Translate(def.label);
+        obj.description = "USH_HE_ExecDataDescription".Translate(def.LabelCap, def.description);
         obj.category = ThingCategory.Item;
         obj.selectable = true;
         obj.thingClass = typeof(ThingWithComps);
@@ -110,6 +83,29 @@ public class ThingDefGenerator_ExecData
         obj.tradeNeverStack = true;
         obj.forceDebugSpawnable = true;
         obj.drawerType = DrawerType.MapMeshOnly;
+
+        obj.thingCategories = [USH_DefOf.USH_ExecDatas];
+        obj.modContentPack = def.modContentPack;
+        obj.descriptionHyperlinks = [new DefHyperlink(def)];
+
+        obj.comps.Add(new CompProperties_Usable
+        {
+            compClass = typeof(CompUsableImplant),
+            useJob = USH_DefOf.UseItem,
+            useLabel = "USH_HE_UseExecData".Translate(def.label),
+            showUseGizmo = true,
+            userMustHaveHediff = USH_DefOf.USH_InstalledExecDataCase,
+        });
+
+        // thingDef.comps.Add(new CompProperties_UseEffectInstallImplant
+        // {
+        //     ability = def
+        // });
+        // thingDef.statBases.Add(new StatModifier
+        // {
+        //     stat = StatDefOf.MarketValue,
+        //     value = Mathf.Round(Mathf.Lerp(100f, 1000f, def.level / 6f))
+        // });
 
         return obj;
     }
