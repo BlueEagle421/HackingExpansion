@@ -20,6 +20,7 @@
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
+                <learningPoints>120</learningPoints>
                 <doHackEffect>false</doHackEffect>
             </li>
             <li Class="USH_HE.AbilityExtension_VirtualDataRipper">
@@ -42,6 +43,7 @@
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
+                <learningPoints>720</learningPoints>
                 <doHackEffect>false</doHackEffect>
             </li>
         </modExtensions>
@@ -58,6 +60,7 @@
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
+                <learningPoints>210</learningPoints>
             </li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
@@ -73,6 +76,7 @@
         <targetMode>Pawn</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
+                <learningPoints>160</learningPoints>
             </li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
@@ -89,6 +93,7 @@
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
+                <learningPoints>210</learningPoints>
             </li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
@@ -105,6 +110,7 @@
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
+                <learningPoints>210</learningPoints>
             </li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
@@ -120,6 +126,7 @@
         <targetMode>Pawn</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
+                <learningPoints>1200</learningPoints>
             </li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
