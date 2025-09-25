@@ -3,6 +3,8 @@
 
     <VEF.Abilities.AbilityDef Name="USH_ExecBase" Abstract="true">
         <!-- <warmupSound>VPE_PsycastCastingEffect</warmupSound> -->
+        <warmupStartSound>Hacking_Started</warmupStartSound>
+        <warmupSound>Hacking_InProgress</warmupSound>
         <cooldownTime>120</cooldownTime>
         <rangeRingColor>(0, 1, 0, 0.5)</rangeRingColor>
         <radiusRingColor>(0.3, 0.8, 1)</radiusRingColor>
