@@ -3,7 +3,6 @@
 
     <VEF.Abilities.AbilityDef Name="USH_ExecBase" Abstract="true">
         <!-- <warmupSound>VPE_PsycastCastingEffect</warmupSound> -->
-        <!-- <gizmoClass>VanillaPsycastsExpanded.Command_Ability_Psycast</gizmoClass> -->
         <cooldownTime>120</cooldownTime>
         <rangeRingColor>(0, 1, 0, 0.5)</rangeRingColor>
         <radiusRingColor>(0.3, 0.8, 1)</radiusRingColor>
@@ -14,10 +13,9 @@
         <defName>USH_Zapcode</defName>
         <label>zapcode</label>
         <description>.</description>
-        <iconPath>Abilities/IgnoreAutoHack</iconPath>
+        <iconPath>Abilities/Zapcode</iconPath>
         <abilityClass>USH_HE.Ability_Zapcode</abilityClass>
         <castTime>90</castTime>
-        <!-- <castSound>VPE_Bolt_Cast</castSound> -->
         <targetMode>Thing</targetMode>
     </VEF.Abilities.AbilityDef>
 
