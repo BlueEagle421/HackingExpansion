@@ -7,6 +7,27 @@ namespace USH_HE;
 public class ThingDefGenerator_ExecData
 {
     public static string ExecDataDefPrefix = "ExecData";
+    public static string ExecDataDefLearningPrefix = ExecDataDefPrefix + "Learning";
+
+    private static Dictionary<VEF.Abilities.AbilityDef, HediffDef> _abilityHediffDict = [];
+
+    public static IEnumerable<HediffDef> ImpliedHediffDefs(bool hotReload = false)
+    {
+        if (hotReload) _abilityHediffDict.Clear();
+
+        foreach (var def in DefDatabase<VEF.Abilities.AbilityDef>.AllDefs)
+        {
+            AbilityExtension_Cyber ext = def.GetModExtension<AbilityExtension_Cyber>();
+
+            if (ext == null)
+                continue;
+
+            var hediffLearningDef = ExecDataHediffLearning(def, ext, hotReload);
+            _abilityHediffDict.Add(def, hediffLearningDef);
+
+            yield return hediffLearningDef;
+        }
+    }
 
     public static IEnumerable<ThingDef> ImpliedThingDefs(bool hotReload = false)
     {
@@ -17,17 +38,40 @@ public class ThingDefGenerator_ExecData
             if (ext == null)
                 continue;
 
-            yield return ExecData(def, hotReload);
+            var learningHediffDef = _abilityHediffDict.TryGetValue(def);
+
+            yield return ExecData(def, learningHediffDef, ext, hotReload);
         }
     }
 
-    private static ThingDef ExecData(VEF.Abilities.AbilityDef def, bool hotReload = false)
+    private static HediffDef ExecDataHediffLearning(VEF.Abilities.AbilityDef def, AbilityExtension_Cyber ext, bool hotReload = false)
+    {
+        string defName = ExecDataDefLearningPrefix + "_" + def.defName;
+        HediffDef obj = hotReload ? (DefDatabase<HediffDef>.GetNamed(defName, errorOnFail: false) ?? new HediffDef()) : new HediffDef();
+
+        obj.defName = defName;
+        obj.label = "USH_HE_ExecDataHediffLearningLabel".Translate(def.LabelCap);
+        obj.description = "USH_HE_ExecDataHediffLearningDescription".Translate(def.Named("EXEC"));
+
+        obj.descriptionHyperlinks = [new(def)];
+        obj.defaultLabelColor = new(153, 153, 255);
+        obj.isBad = false;
+        obj.priceImpact = true;
+        obj.keepOnBodyPartRestoration = true;
+        obj.duplicationAllowed = false;
+
+        return obj;
+    }
+
+    private static ThingDef ExecData(VEF.Abilities.AbilityDef def, HediffDef learningHediffDef, AbilityExtension_Cyber ext, bool hotReload = false)
     {
         string defName = ExecDataDefPrefix + "_" + def.defName;
         ThingDef obj = hotReload ? (DefDatabase<ThingDef>.GetNamed(defName, errorOnFail: false) ?? new ThingDef()) : new ThingDef();
+
         obj.defName = defName;
         obj.label = "USH_HE_ExecDataLabel".Translate(def.label);
         obj.description = "USH_HE_ExecDataDescription".Translate(def.LabelCap, def.description);
+
         obj.category = ThingCategory.Item;
         obj.selectable = true;
         obj.thingClass = typeof(ThingWithComps);
@@ -57,11 +101,11 @@ public class ThingDefGenerator_ExecData
         [
             new() {
                 stat = StatDefOf.MaxHitPoints,
-                value = 80f
+                value = 120f
             },
             new() {
                 stat = StatDefOf.Mass,
-                value = 0.2f
+                value = 0.8f
             },
             new() {
                 stat = StatDefOf.DeteriorationRate,
@@ -86,7 +130,7 @@ public class ThingDefGenerator_ExecData
 
         obj.thingCategories = [USH_DefOf.USH_ExecDatas];
         obj.modContentPack = def.modContentPack;
-        obj.descriptionHyperlinks = [new DefHyperlink(def)];
+        obj.descriptionHyperlinks = [new(def), new(USH_DefOf.USH_ExecDataCase)];
 
         obj.comps.Add(new CompProperties_Usable
         {
@@ -97,15 +141,17 @@ public class ThingDefGenerator_ExecData
             userMustHaveHediff = USH_DefOf.USH_InstalledExecDataCase,
         });
 
-        // thingDef.comps.Add(new CompProperties_UseEffectInstallImplant
-        // {
-        //     ability = def
-        // });
-        // thingDef.statBases.Add(new StatModifier
-        // {
-        //     stat = StatDefOf.MarketValue,
-        //     value = Mathf.Round(Mathf.Lerp(100f, 1000f, def.level / 6f))
-        // });
+        obj.comps.Add(new CompProperties_UseEffectInstallImplant
+        {
+            hediffDef = learningHediffDef,
+            bodyPart = USH_DefOf.Brain
+        });
+
+        obj.statBases.Add(new StatModifier
+        {
+            stat = StatDefOf.MarketValue,
+            value = ext.marketValue
+        });
 
         return obj;
     }
