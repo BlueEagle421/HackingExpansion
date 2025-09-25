@@ -96,6 +96,22 @@
     </VEF.Abilities.AbilityDef>
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
+        <defName>USH_ShortCircuit</defName>
+        <label>short circuit</label>
+        <description>.</description>
+        <iconPath>Abilities/ShortCircuit</iconPath>
+        <abilityClass>USH_HE.Ability_ShortCircuit</abilityClass>
+        <castTime>120</castTime>
+        <radius>3.9</radius>
+        <!-- <cooldownTime>5000</cooldownTime> -->
+        <targetMode>Thing</targetMode>
+        <modExtensions>
+            <li Class="USH_HE.AbilityExtension_Cyber">
+            </li>
+        </modExtensions>
+    </VEF.Abilities.AbilityDef>
+
+    <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_HijackSubcore</defName>
         <label>hijack subcore</label>
         <description>.</description>
