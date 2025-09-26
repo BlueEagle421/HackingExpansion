@@ -16,7 +16,7 @@
         <iconPath>Abilities/VirtualDataRipper</iconPath>
         <abilityClass>USH_HE.Ability_VirtualDataRipper</abilityClass>
         <castTime>240</castTime>
-        <!-- <cooldownTime>12500</cooldownTime> -->
+        <cooldownTime>12500</cooldownTime>
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
@@ -39,7 +39,7 @@
         <iconPath>Abilities/VirtualICEBreaker</iconPath>
         <abilityClass>USH_HE.Ability_VirtualICEBreaker</abilityClass>
         <castTime>240</castTime>
-        <!-- <cooldownTime>12500</cooldownTime> -->
+        <cooldownTime>12500</cooldownTime>
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
@@ -56,7 +56,7 @@
         <iconPath>Abilities/Zapcode</iconPath>
         <abilityClass>USH_HE.Ability_Zapcode</abilityClass>
         <castTime>90</castTime>
-        <!-- <cooldownTime>5000</cooldownTime> -->
+        <cooldownTime>5000</cooldownTime>
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
@@ -72,7 +72,7 @@
         <iconPath>Abilities/ForkBomb</iconPath>
         <abilityClass>USH_HE.Ability_ForkBomb</abilityClass>
         <castTime>30</castTime>
-        <!-- <cooldownTime>2500</cooldownTime> -->
+        <cooldownTime>2500</cooldownTime>
         <targetMode>Pawn</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
@@ -89,7 +89,7 @@
         <abilityClass>USH_HE.Ability_Discharge</abilityClass>
         <castTime>90</castTime>
         <radius>7.9</radius>
-        <!-- <cooldownTime>7500</cooldownTime> -->
+        <cooldownTime>7500</cooldownTime>
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
@@ -106,7 +106,7 @@
         <abilityClass>USH_HE.Ability_ShortCircuit</abilityClass>
         <castTime>120</castTime>
         <radius>3.9</radius>
-        <!-- <cooldownTime>5000</cooldownTime> -->
+        <cooldownTime>5000</cooldownTime>
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
@@ -122,7 +122,7 @@
         <iconPath>Abilities/HijackSubcore</iconPath>
         <abilityClass>USH_HE.Ability_HijackSubcore</abilityClass>
         <castTime>360</castTime>
-        <!-- <cooldownTime>7500</cooldownTime> -->
+        <cooldownTime>360000</cooldownTime> <!-- 6 days -->
         <targetMode>Pawn</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
