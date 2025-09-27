@@ -26,13 +26,17 @@ public class Ability_Disarm : Ability_Cyber
             return;
 
         var eqTracker = p.equipment;
-        if (eqTracker != null)
-        {
-            var primary = eqTracker.Primary;
 
-            if (primary != null)
-                eqTracker.TryDropEquipment(primary, out var _, p.Position, true);
-        }
+        if (eqTracker == null)
+            return;
+
+        var primary = eqTracker.Primary;
+
+        if (primary == null)
+            return;
+
+        eqTracker.TryDropEquipment(primary, out var _, p.Position, true);
+
     }
 
     private bool TryGetPrimary(Pawn p, out ThingWithComps primary)
