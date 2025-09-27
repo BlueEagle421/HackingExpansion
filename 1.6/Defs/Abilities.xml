@@ -315,6 +315,55 @@
         </modExtensions>
     </HediffDef>
 
+    <!-- DISARM -->
+
+    <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
+        <defName>USH_Disarm</defName>
+        <label>disarm</label>
+        <description>Hacks the targeted weapon to be temporary disabled and dropped by the holder</description>
+        <iconPath>Abilities/Disarm</iconPath>
+        <abilityClass>USH_HE.Ability_Disarm</abilityClass>
+        <castTime>180</castTime>
+        <cooldownTime>5000</cooldownTime>
+        <targetMode>Pawn</targetMode>
+        <modExtensions>
+            <li Class="USH_HE.AbilityExtension_Cyber"></li>
+        </modExtensions>
+    </VEF.Abilities.AbilityDef>
+
+    <ThingDef ParentName="USH_ExecDataBase">
+        <defName>USH_ExecData_Disarm</defName>
+        <label>exec data (disarm)</label>
+        <description>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.</description>
+        <descriptionHyperlinks>
+            <VEF.Abilities.AbilityDef>USH_Disarm</VEF.Abilities.AbilityDef>
+        </descriptionHyperlinks>
+        <costList>
+            <Gun_ChargeRifle>1</Gun_ChargeRifle>
+        </costList>
+        <comps>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="USH_ExecHediffBase">
+        <defName>USH_ExecDataHediff_Disarm</defName>
+        <label>disarm</label>
+        <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the disarm exec.</description>
+        <modExtensions>
+            <li Class="USH_HE.LearningAbilityExtension">
+                <learningPoints>420</learningPoints>
+                <abilityDef>USH_Disarm</abilityDef>
+            </li>
+        </modExtensions>
+    </HediffDef>
+
     <!-- SHORT CIRCUIT -->
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">

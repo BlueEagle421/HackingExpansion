@@ -10,6 +10,8 @@
 
     <USH_HE_MustBeHacked>Must be hacked first</USH_HE_MustBeHacked>
 
+    <USH_HE_NotIndustrial>Must be hacked first</USH_HE_NotIndustrial>
+
     <USH_HE_UseExecData>Implant {0}</USH_HE_UseExecData>
     <USH_HE_ExecDataLabel>exec data ({0})</USH_HE_ExecDataLabel>
     <USH_HE_ExecDataDescription>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.\n\n{0}\n{1}</USH_HE_ExecDataDescription>
