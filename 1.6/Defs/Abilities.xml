@@ -9,6 +9,55 @@
         <requireLineOfSight>false</requireLineOfSight>
     </VEF.Abilities.AbilityDef>
 
+    <HediffDef Name="USH_ExecHediffBase" Abstract="true">
+        <hediffClass>USH_HE.Hediff_LearningAbility</hediffClass>
+        <label>virtual data ripper</label>
+        <description>An implant which that allows hackers installing virtual data rippers in electronic devices.</description>
+        <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+        <isBad>false</isBad>
+        <priceImpact>true</priceImpact>
+        <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+        <duplicationAllowed>false</duplicationAllowed>
+    </HediffDef>
+
+    <ThingDef ParentName="USH_Cyberdata" Name="USH_ExecDataBase" Abstract="true">
+        <graphicData>
+            <texPath>Things/Item/ExecData</texPath>
+        </graphicData>
+        <statBases>
+            <MarketValue>100</MarketValue>
+        </statBases>
+        <modExtensions Inherit="False"></modExtensions>
+        <comps>
+            <li Class="CompProperties_Usable">
+                <compClass>CompUsableImplant</compClass>
+                <useJob>UseItem</useJob>
+                <useLabel>Implant {0_label}</useLabel>
+                <userMustHaveHediff>USH_InstalledExecDataCase</userMustHaveHediff>
+            </li>
+        </comps>
+        <costList>
+            <USH_BrokenExecData>1</USH_BrokenExecData>
+            <Plasteel>12</Plasteel>
+        </costList>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <recipeUsers>
+                <li>TableMachining</li>
+            </recipeUsers>
+            <researchPrerequisite>USH_AdvancedCybertech</researchPrerequisite>
+            <skillRequirements>
+                <Intellectual>8</Intellectual>
+            </skillRequirements>
+            <workAmount>540</workAmount>
+        </recipeMaker>
+    </ThingDef>
+
+    <!-- VIRTUAL DATA RIPPER -->
+
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_VirtualDataRipper</defName>
         <label>virtual data ripper</label>
@@ -20,7 +69,6 @@
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
-                <learningPoints>120</learningPoints>
                 <doHackEffect>false</doHackEffect>
             </li>
             <li Class="USH_HE.AbilityExtension_VirtualDataRipper">
@@ -31,6 +79,41 @@
             </li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
+
+    <ThingDef ParentName="USH_ExecDataBase">
+        <defName>USH_ExecData_VirtualDataRipper</defName>
+        <label>exec data (virtual data ripper)</label>
+        <description>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.</description>
+        <descriptionHyperlinks>
+            <VEF.Abilities.AbilityDef>USH_VirtualDataRipper</VEF.Abilities.AbilityDef>
+        </descriptionHyperlinks>
+        <costList>
+            <USH_DataRipper>1</USH_DataRipper>
+        </costList>
+        <comps>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="USH_ExecHediffBase">
+        <defName>USH_ExecDataHediff_VirtualDataRipper</defName>
+        <label>virtual data ripper</label>
+        <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the virtual data ripper exec.</description>
+        <modExtensions>
+            <li Class="USH_HE.LearningAbilityExtension">
+                <learningPoints>120</learningPoints>
+                <abilityDef>USH_VirtualDataRipper</abilityDef>
+            </li>
+        </modExtensions>
+    </HediffDef>
+
+    <!-- VIRTUAL ICE BREAKER -->
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_VirtualICEBreaker</defName>
@@ -43,11 +126,45 @@
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
-                <learningPoints>720</learningPoints>
                 <doHackEffect>false</doHackEffect>
             </li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
+
+    <ThingDef ParentName="USH_ExecDataBase">
+        <defName>USH_ExecData_VirtualICEBreaker</defName>
+        <label>exec data (virtual black ICE breaker)</label>
+        <description>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.</description>
+        <descriptionHyperlinks>
+            <VEF.Abilities.AbilityDef>USH_VirtualICEBreaker</VEF.Abilities.AbilityDef>
+        </descriptionHyperlinks>
+        <costList>
+            <USH_ICEBreaker>1</USH_ICEBreaker>
+        </costList>
+        <comps>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="USH_ExecHediffBase">
+        <defName>USH_ExecDataHediff_VirtualICEBreaker</defName>
+        <label>virtual black ICE breaker</label>
+        <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the virtual black ICE breaker exec.</description>
+        <modExtensions>
+            <li Class="USH_HE.LearningAbilityExtension">
+                <learningPoints>720</learningPoints>
+                <abilityDef>USH_VirtualICEBreaker</abilityDef>
+            </li>
+        </modExtensions>
+    </HediffDef>
+
+    <!-- ZAPCODE -->
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_Zapcode</defName>
@@ -60,10 +177,44 @@
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">
-                <learningPoints>210</learningPoints>
             </li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
+
+    <ThingDef ParentName="USH_ExecDataBase">
+        <defName>USH_ExecData_Zapcode</defName>
+        <label>exec data (zapcode)</label>
+        <description>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.</description>
+        <descriptionHyperlinks>
+            <VEF.Abilities.AbilityDef>USH_Zapcode</VEF.Abilities.AbilityDef>
+        </descriptionHyperlinks>
+        <costList>
+            <Shell_EMP>2</Shell_EMP>
+        </costList>
+        <comps>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="USH_ExecHediffBase">
+        <defName>USH_ExecDataHediff_Zapcode</defName>
+        <label>zapcode</label>
+        <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the zapcode exec.</description>
+        <modExtensions>
+            <li Class="USH_HE.LearningAbilityExtension">
+                <learningPoints>210</learningPoints>
+                <abilityDef>USH_Zapcode</abilityDef>
+            </li>
+        </modExtensions>
+    </HediffDef>
+
+    <!-- FORK BOMB -->
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_ForkBomb</defName>
@@ -81,6 +232,41 @@
         </modExtensions>
     </VEF.Abilities.AbilityDef>
 
+    <ThingDef ParentName="USH_ExecDataBase">
+        <defName>USH_ExecData_ForkBomb</defName>
+        <label>exec data (fork bomb)</label>
+        <description>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.</description>
+        <descriptionHyperlinks>
+            <VEF.Abilities.AbilityDef>USH_ForkBomb</VEF.Abilities.AbilityDef>
+        </descriptionHyperlinks>
+        <costList>
+            <ComponentSpacer>2</ComponentSpacer>
+        </costList>
+        <comps>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="USH_ExecHediffBase">
+        <defName>USH_ExecDataHediff_ForkBomb</defName>
+        <label>fork bomb</label>
+        <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the fork bomb exec.</description>
+        <modExtensions>
+            <li Class="USH_HE.LearningAbilityExtension">
+                <learningPoints>210</learningPoints>
+                <abilityDef>USH_ForkBomb</abilityDef>
+            </li>
+        </modExtensions>
+    </HediffDef>
+
+    <!-- DISCHARGE -->
+
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_Discharge</defName>
         <label>discharge</label>
@@ -92,11 +278,44 @@
         <cooldownTime>7500</cooldownTime>
         <targetMode>Thing</targetMode>
         <modExtensions>
-            <li Class="USH_HE.AbilityExtension_Cyber">
-                <learningPoints>210</learningPoints>
-            </li>
+            <li Class="USH_HE.AbilityExtension_Cyber"></li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
+
+    <ThingDef ParentName="USH_ExecDataBase">
+        <defName>USH_ExecData_Discharge</defName>
+        <label>exec data (discharge)</label>
+        <description>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.</description>
+        <descriptionHyperlinks>
+            <VEF.Abilities.AbilityDef>USH_Discharge</VEF.Abilities.AbilityDef>
+        </descriptionHyperlinks>
+        <costList>
+            <Shell_EMP>2</Shell_EMP>
+        </costList>
+        <comps>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="USH_ExecHediffBase">
+        <defName>USH_ExecDataHediff_Discharge</defName>
+        <label>discharge</label>
+        <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the discharge exec.</description>
+        <modExtensions>
+            <li Class="USH_HE.LearningAbilityExtension">
+                <learningPoints>210</learningPoints>
+                <abilityDef>USH_Discharge</abilityDef>
+            </li>
+        </modExtensions>
+    </HediffDef>
+
+    <!-- SHORT CIRCUIT -->
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_ShortCircuit</defName>
@@ -109,11 +328,44 @@
         <cooldownTime>5000</cooldownTime>
         <targetMode>Thing</targetMode>
         <modExtensions>
-            <li Class="USH_HE.AbilityExtension_Cyber">
-                <learningPoints>210</learningPoints>
-            </li>
+            <li Class="USH_HE.AbilityExtension_Cyber"></li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
+
+    <ThingDef ParentName="USH_ExecDataBase">
+        <defName>USH_ExecData_ShortCircuit</defName>
+        <label>exec data (short circuit)</label>
+        <description>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.</description>
+        <descriptionHyperlinks>
+            <VEF.Abilities.AbilityDef>USH_ShortCircuit</VEF.Abilities.AbilityDef>
+        </descriptionHyperlinks>
+        <costList>
+            <Shell_HighExplosive>2</Shell_HighExplosive>
+        </costList>
+        <comps>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="USH_ExecHediffBase">
+        <defName>USH_ExecDataHediff_ShortCircuit</defName>
+        <label>short circuit</label>
+        <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the short circuit exec.</description>
+        <modExtensions>
+            <li Class="USH_HE.LearningAbilityExtension">
+                <learningPoints>210</learningPoints>
+                <abilityDef>USH_ShortCircuit</abilityDef>
+            </li>
+        </modExtensions>
+    </HediffDef>
+
+    <!-- HIJACK SUBCORE -->
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_HijackSubcore</defName>
@@ -125,10 +377,41 @@
         <cooldownTime>360000</cooldownTime> <!-- 6 days -->
         <targetMode>Pawn</targetMode>
         <modExtensions>
-            <li Class="USH_HE.AbilityExtension_Cyber">
-                <learningPoints>1200</learningPoints>
-            </li>
+            <li Class="USH_HE.AbilityExtension_Cyber"></li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
+
+    <ThingDef ParentName="USH_ExecDataBase">
+        <defName>USH_ExecData_HijackSubcore</defName>
+        <label>exec data (hijack subcore)</label>
+        <description>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.</description>
+        <descriptionHyperlinks>
+            <VEF.Abilities.AbilityDef>USH_HijackSubcore</VEF.Abilities.AbilityDef>
+        </descriptionHyperlinks>
+        <costList>
+            <ComponentSpacer>5</ComponentSpacer>
+        </costList>
+        <comps>
+            <li Class="CompProperties_UseEffectInstallImplant">
+                <hediffDef>USH_InstalledJammerKit</hediffDef>
+                <bodyPart>Brain</bodyPart>
+                <canUpgrade>true</canUpgrade>
+                <requiresExistingHediff>true</requiresExistingHediff>
+                <minSeverity>3</minSeverity>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <HediffDef ParentName="USH_ExecHediffBase">
+        <defName>USH_ExecDataHediff_HijackSubcore</defName>
+        <label>hijack subcore</label>
+        <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the hijack subcore exec.</description>
+        <modExtensions>
+            <li Class="USH_HE.LearningAbilityExtension">
+                <learningPoints>1200</learningPoints>
+                <abilityDef>USH_HijackSubcore</abilityDef>
+            </li>
+        </modExtensions>
+    </HediffDef>
 
 </Defs>

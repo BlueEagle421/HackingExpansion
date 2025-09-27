@@ -7,7 +7,7 @@ namespace USH_HE;
 public class LearningAbilityExtension : DefModExtension
 {
     public VEF.Abilities.AbilityDef abilityDef;
-    public AbilityExtension_Cyber abilityExt;
+    public float learningPoints;
 }
 
 
@@ -23,13 +23,13 @@ public class Hediff_LearningAbility : HediffWithComps
             return _ext;
         }
     }
-    public override string Label => $"{base.Label} ({"USH_HE_Learning".Translate()} {_progress / 60f:0}/{Ext.abilityExt.learningPoints})";
+    public override string Label => $"{base.Label} ({"USH_HE_Learning".Translate()} {_progress / 60f:0}/{Ext.learningPoints})";
 
     public virtual void Hack(float amount, Pawn hacker = null)
     {
         _progress += amount;
 
-        if (_progress / 60f >= Ext.abilityExt.learningPoints)
+        if (_progress / 60f >= Ext.learningPoints)
         {
             pawn.health.RemoveHediff(this);
             pawn.GetComp<VEF.Abilities.CompAbilities>()?.GiveAbility(Ext.abilityDef);
