@@ -312,7 +312,7 @@
         <iconPath>Abilities/Disarm</iconPath>
         <abilityClass>USH_HE.Ability_Disarm</abilityClass>
         <castTime>180</castTime>
-        <cooldownTime>5000</cooldownTime>
+        <cooldownTime>10000</cooldownTime>
         <targetMode>Pawn</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber"></li>
