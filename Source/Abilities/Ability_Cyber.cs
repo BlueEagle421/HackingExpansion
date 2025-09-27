@@ -1,6 +1,7 @@
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
+using Verse.AI;
 
 namespace USH_HE;
 
@@ -56,4 +57,10 @@ public abstract class Ability_Cyber : VEF.Abilities.Ability
 
     public override float GetRangeForPawn()
         => pawn.GetRemoteHackRadius();
+
+    public override void WarmupToil(Toil toil)
+    {
+        base.WarmupToil(toil);
+        toil.WithEffect(EffecterDefOf.Hacking, TargetIndex.A);
+    }
 }
