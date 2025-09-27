@@ -222,9 +222,7 @@
         <cooldownTime>2500</cooldownTime>
         <targetMode>Pawn</targetMode>
         <modExtensions>
-            <li Class="USH_HE.AbilityExtension_Cyber">
-                <learningPoints>160</learningPoints>
-            </li>
+            <li Class="USH_HE.AbilityExtension_Cyber"></li>
         </modExtensions>
     </VEF.Abilities.AbilityDef>
 
@@ -252,7 +250,7 @@
         <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the fork bomb exec.</description>
         <modExtensions>
             <li Class="USH_HE.LearningAbilityExtension">
-                <learningPoints>210</learningPoints>
+                <learningPoints>270</learningPoints>
                 <abilityDef>USH_ForkBomb</abilityDef>
             </li>
         </modExtensions>
@@ -299,7 +297,7 @@
         <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the discharge exec.</description>
         <modExtensions>
             <li Class="USH_HE.LearningAbilityExtension">
-                <learningPoints>210</learningPoints>
+                <learningPoints>240</learningPoints>
                 <abilityDef>USH_Discharge</abilityDef>
             </li>
         </modExtensions>
@@ -392,7 +390,7 @@
         <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the short circuit exec.</description>
         <modExtensions>
             <li Class="USH_HE.LearningAbilityExtension">
-                <learningPoints>210</learningPoints>
+                <learningPoints>180</learningPoints>
                 <abilityDef>USH_ShortCircuit</abilityDef>
             </li>
         </modExtensions>
