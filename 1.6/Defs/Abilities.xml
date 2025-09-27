@@ -308,7 +308,7 @@
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_Disarm</defName>
         <label>disarm</label>
-        <description>Hacks the targeted weapon to be temporary disabled and dropped by the holder</description>
+        <description>Hacks the targeted weapon to be temporary disabled and dropped by the holder.</description>
         <iconPath>Abilities/Disarm</iconPath>
         <abilityClass>USH_HE.Ability_Disarm</abilityClass>
         <castTime>180</castTime>
