@@ -4,9 +4,9 @@
     <ThingDef ParentName="USH_AdvancedCyberlinkUpgradeBase">
         <defName>USH_VirtualDataRipper</defName>
         <label>virtual data ripper</label>
-        <description>An implant that allows hackers to install virtual data rippers in electronic devices.\n\nIt can be self-installed without surgery.</description>
+        <description>THIS FEATURE IS OUTDATED. PLEASE USE VIRTUAL DATA RIPPER (EXEC DATA) INSTEAD.</description>
         <descriptionHyperlinks>
-            <HediffDef>USH_InstalledVirtualDataRipper</HediffDef>
+            <HediffDef>USH_ExecData_VirtualDataRipper</HediffDef>
         </descriptionHyperlinks>
         <statBases>
             <MaxInstallCount>1</MaxInstallCount>
@@ -19,27 +19,14 @@
         <recipeMaker>
             <researchPrerequisite>USH_AdvancedCybertech</researchPrerequisite>
         </recipeMaker>
-        <comps>
-            <li Class="CompProperties_Usable">
-                <compClass>CompUsableImplant</compClass>
-                <useJob>UseItem</useJob>
-                <useLabel>Implant {0_label}</useLabel>
-                <userMustHaveHediff>USH_InstalledAdvancedCyberlink</userMustHaveHediff>
-            </li>
-            <li Class="CompProperties_UseEffectInstallImplant">
-                <hediffDef>USH_InstalledVirtualDataRipper</hediffDef>
-                <bodyPart>Brain</bodyPart>
-            </li>
-        </comps>
     </ThingDef>
 
     <HediffDef>
         <defName>USH_InstalledVirtualDataRipper</defName>
-        <hediffClass>USH_HE.Hediff_VirtualDataRipper</hediffClass>
         <label>virtual data ripper</label>
-        <description>An implant which that allows hackers installing virtual data rippers in electronic devices.</description>
+        <description>THIS FEATURE IS OUTDATED. PLEASE USE VIRTUAL DATA RIPPER (EXEC DATA) INSTEAD.</description>
         <descriptionHyperlinks>
-            <ThingDef>USH_VirtualDataRipper</ThingDef>
+            <HediffDef>USH_ExecData_VirtualDataRipper</HediffDef>
         </descriptionHyperlinks>
         <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
         <isBad>false</isBad>
