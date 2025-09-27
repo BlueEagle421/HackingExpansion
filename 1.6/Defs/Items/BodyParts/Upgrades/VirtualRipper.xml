@@ -6,7 +6,7 @@
         <label>virtual data ripper</label>
         <description>THIS FEATURE IS OUTDATED. PLEASE USE VIRTUAL DATA RIPPER (EXEC DATA) INSTEAD.</description>
         <descriptionHyperlinks>
-            <HediffDef>USH_ExecData_VirtualDataRipper</HediffDef>
+            <ThingDef>USH_ExecData_VirtualDataRipper</ThingDef>
         </descriptionHyperlinks>
         <statBases>
             <MaxInstallCount>1</MaxInstallCount>
@@ -26,7 +26,7 @@
         <label>virtual data ripper</label>
         <description>THIS FEATURE IS OUTDATED. PLEASE USE VIRTUAL DATA RIPPER (EXEC DATA) INSTEAD.</description>
         <descriptionHyperlinks>
-            <HediffDef>USH_ExecData_VirtualDataRipper</HediffDef>
+            <ThingDef>USH_ExecData_VirtualDataRipper</ThingDef>
         </descriptionHyperlinks>
         <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
         <isBad>false</isBad>
