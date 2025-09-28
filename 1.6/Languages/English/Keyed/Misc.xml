@@ -20,6 +20,7 @@
     <USH_HE_OrderHackTarget>Hack target</USH_HE_OrderHackTarget>
     <USH_HE_OrderHackTargetDesc>Select a target to be hacked by this hacker.</USH_HE_OrderHackTargetDesc>
     <USH_HE_AlreadyHacked>Already hacked</USH_HE_AlreadyHacked>
+    <USH_HE_BelongsToHacker>Belongs to hacker</USH_HE_BelongsToHacker>
     <USH_HE_InstallDataRipper>Install data ripper</USH_HE_InstallDataRipper>
     <USH_HE_InstallICEBreaker>Install black ICE breaker</USH_HE_InstallICEBreaker>
 
