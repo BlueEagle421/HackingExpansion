@@ -74,9 +74,6 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
 
     private static bool ShouldBeDataSource(ThingDef def)
     {
-        if (!def.IsBuildingArtificial)
-            return false;
-
         if (!def.HasComp<CompHackable>())
             return false;
 
