@@ -151,4 +151,18 @@ public static class CyberUtils
         return chances;
     }
 
+    public static bool IsUnlocked(this ResearchPrerequisitesExtension ext)
+    {
+        if (ext == null)
+            return true;
+
+        if (ext.researchPrerequisites == null)
+            return true;
+
+        if (!ext.researchPrerequisites.Any())
+            return true;
+
+        return ext.researchPrerequisites.All(x => x.IsFinished);
+    }
+
 }

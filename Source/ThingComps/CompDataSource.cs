@@ -92,7 +92,9 @@ public class CompDataSource : ThingComp
         if (this is not CompDataSourceProtected compProtected)
             return;
 
-        bool matchingHackset = USH_DefOf.USH_BrokenExecData
+        ThingDef def = USH_DefOf.USH_BrokenExecData;
+
+        bool matchingHackset = def
             .descriptionHyperlinks
             .Select(x => x.def)
             .Contains(compProtected.HacksetDef);
@@ -100,7 +102,12 @@ public class CompDataSource : ThingComp
         if (!matchingHackset)
             return;
 
-        ProduceOutput(USH_DefOf.USH_BrokenExecData, hacker);
+        var resExt = def.GetModExtension<ResearchPrerequisitesExtension>();
+
+        if (!resExt.IsUnlocked())
+            return;
+
+        ProduceOutput(def, hacker);
     }
 
     public virtual void Hack(float amount, Pawn hacker = null)
@@ -189,8 +196,9 @@ public class CompDataSource : ThingComp
                 for (int i = 0; i < _installedOutputThings.Count; i++)
                 {
                     var data = _installedOutputThings[i];
+                    var resExt = data.Def.GetModExtension<ResearchPrerequisitesExtension>();
 
-                    if (!data.IsAvailable())
+                    if (!resExt.IsUnlocked())
                         continue;
 
                     string text = data.Def.LabelCap;
@@ -274,24 +282,6 @@ public class CompDataSource : ThingComp
             int maxInThisComp = (int)(compHackable.Props.defence / ext.hackWorkAmount);
 
             _amountLeft = Mathf.Min(maxInThisComp, targetCount);
-        }
-
-        public bool IsAvailable()
-        {
-            var resExt = _def.GetModExtension<ResearchPrerequisitesExtension>();
-
-            _projectDefs = resExt?.researchPrerequisites;
-
-            if (_projectDefs == null)
-                return true;
-
-            if (!_projectDefs.Any())
-                return true;
-
-            if (_projectDefs.All(x => x.IsFinished))
-                return true;
-
-            return false;
         }
 
         public void ExposeData()
