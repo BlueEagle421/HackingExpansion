@@ -189,6 +189,10 @@ public class CompDataSource : ThingComp
                 for (int i = 0; i < _installedOutputThings.Count; i++)
                 {
                     var data = _installedOutputThings[i];
+
+                    if (!data.IsAvailable())
+                        continue;
+
                     string text = data.Def.LabelCap;
                     text += $" ({data.HackCost.ToStringWorkAmount()} {"USH_HE_HackPoints".Translate()})".Colorize(CyberUtils.HackColor);
 
@@ -248,6 +252,7 @@ public class CompDataSource : ThingComp
         public Texture2D Tex => _tex;
         private ThingDef _def;
         public ThingDef Def => _def;
+        private List<ResearchProjectDef> _projectDefs;
         private int _amountLeft;
         public int AmountLeft
         {
@@ -269,6 +274,24 @@ public class CompDataSource : ThingComp
             int maxInThisComp = (int)(compHackable.Props.defence / ext.hackWorkAmount);
 
             _amountLeft = Mathf.Min(maxInThisComp, targetCount);
+        }
+
+        public bool IsAvailable()
+        {
+            var resExt = _def.GetModExtension<ResearchPrerequisitesExtension>();
+
+            _projectDefs = resExt?.researchPrerequisites;
+
+            if (_projectDefs == null)
+                return true;
+
+            if (!_projectDefs.Any())
+                return true;
+
+            if (_projectDefs.All(x => x.IsFinished))
+                return true;
+
+            return false;
         }
 
         public void ExposeData()

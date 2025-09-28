@@ -37,11 +37,11 @@
                 <hackWorkAmount>1500</hackWorkAmount>
                 <maxPerDataSourceRange>8~16</maxPerDataSourceRange>
             </li>
-            <li Class="USH_HE.ResearchPrerequisitesExtension">
+            <!-- <li Class="USH_HE.ResearchPrerequisitesExtension">
                 <researchPrerequisites>
                     <li>USH_BasicCybertech</li>
                 </researchPrerequisites>
-            </li>
+            </li> -->
         </modExtensions>
     </ThingDef>
 
