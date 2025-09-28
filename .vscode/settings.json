@@ -71,6 +71,7 @@
     "Smithing",
     "Standable",
     "Stunnable",
+    "Subcore",
     "Sublink",
     "Synthread",
     "targeter",
@@ -80,6 +81,7 @@
     "translocating",
     "Ultratech",
     "Upgradables",
-    "Ushankas"
+    "Ushankas",
+    "zapcode"
   ]
 }

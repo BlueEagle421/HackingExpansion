@@ -112,4 +112,26 @@
         </stages>
     </HediffDef>
 
+    <HediffDef ParentName="DiseaseBase">
+        <defName>USH_ForkBomb</defName>
+        <label>fork bomb</label>
+        <description>A simple malicious software overwhelming all processing power.</description>
+        <comps>
+            <li Class="HediffCompProperties_Disappears">
+                <disappearsAfterTicks>7500~12000</disappearsAfterTicks>
+                <showRemainingTime>true</showRemainingTime>
+            </li>
+        </comps>
+        <stages>
+            <li>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <setMax>0.1</setMax>
+                    </li>
+                </capMods>
+            </li>
+        </stages>
+    </HediffDef>
+
 </Defs>

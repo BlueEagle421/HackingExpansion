@@ -7,4 +7,10 @@
         <parent>BodyParts</parent>
     </ThingCategoryDef>
 
+    <ThingCategoryDef>
+        <defName>USH_ExecDatas</defName>
+        <label>exec datas</label>
+        <parent>Items</parent>
+    </ThingCategoryDef>
+
 </Defs>

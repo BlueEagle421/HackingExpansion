@@ -60,6 +60,9 @@
     <USH_HE_RaidLetterLabel>Raid incoming!</USH_HE_RaidLetterLabel>
     <USH_HE_RaidLetter>It looks like the hacker who previously used the cyberdeck somehow angered {FACTION}, and they are now coming to this location. It’s possible that they’ve been trying to track down the hacker for months, or even longer.\n\nThey will arrive soon.</USH_HE_RaidLetter>
 
+    <USH_HE_AbilityLearnedLetterLabel>{0} learned</USH_HE_AbilityLearnedLetterLabel>
+    <USH_HE_AbilityLearnedLetter>After intensive {0} exec training it became usable by {PAWN}.</USH_HE_AbilityLearnedLetter>
+
     <USH_HE_BreakerFailLetterLabel>Black ICE response</USH_HE_BreakerFailLetterLabel>
     <USH_HE_BreakerFailLetter>The security system responded to ICE breaker and defended itself by installing a self destruction protocol in the device. It resulted in an explosion.</USH_HE_BreakerFailLetter>
 

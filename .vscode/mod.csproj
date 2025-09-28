@@ -41,6 +41,11 @@
 			<Private>False</Private>
 		</Reference>
 
+		<!-- VEF -->
+		<Reference Include="../../../../../../steamapps/workshop/content/294100/2023507013/1.6/Assemblies/VEF.dll">
+			<Private>False</Private>
+		</Reference>
+
 	</ItemGroup>
 
 </Project>

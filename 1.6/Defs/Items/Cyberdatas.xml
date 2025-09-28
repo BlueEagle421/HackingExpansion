@@ -34,7 +34,7 @@
         <allowedArchonexusCount>5</allowedArchonexusCount>
         <modExtensions>
             <li Class="USH_HE.RippableExtension">
-                <hackWorkAmount>2100</hackWorkAmount>
+                <hackWorkAmount>1500</hackWorkAmount>
                 <maxPerDataSourceRange>8~16</maxPerDataSourceRange>
             </li>
             <li Class="USH_HE.ResearchPrerequisitesExtension">
