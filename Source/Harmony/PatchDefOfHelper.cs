@@ -154,7 +154,7 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         => new()
         {
             defence = GetTurretDefence(thingDef) * TICKS_PER_WORK,
-            notHackedInspectString = "USH_HE_HackToDisable".Translate(),
+            notHackedInspectString = "USH_HE_HackToReconfigure".Translate(),
             effectHacking = USH_DefOf.HackingTerminal
         };
 
