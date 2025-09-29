@@ -167,18 +167,17 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         {
             cost = thingDef.CostList.Sum(x => x.count * x.thingDef.BaseMarketValue);
             cost += thingDef.CostStuffCount * 2; //assuming cheap resource
+            cost /= 4; //balancing
         }
         else if (thingDef.building.combatPower != 0)
         {
-            cost = thingDef.building.combatPower * 2;
+            cost = thingDef.building.combatPower * 2.5f;
         }
         else
         {
             cost = defaultCost;
             Log.Warning($"[Hacking Expansion] No way to determine hack cost for {thingDef.LabelCap}. Defaulting to {defaultCost} hack cost.");
         }
-
-        cost /= 4; //balancing
 
         //rounded for readability
         if (cost > 1000)
