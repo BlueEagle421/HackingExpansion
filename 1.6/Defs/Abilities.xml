@@ -172,7 +172,7 @@
         <iconPath>Abilities/Zapcode</iconPath>
         <abilityClass>USH_HE.Ability_Zapcode</abilityClass>
         <castTime>90</castTime>
-        <cooldownTime>5000</cooldownTime>
+        <cooldownTime>2500</cooldownTime>
         <targetMode>Thing</targetMode>
         <modExtensions>
             <li Class="USH_HE.AbilityExtension_Cyber">

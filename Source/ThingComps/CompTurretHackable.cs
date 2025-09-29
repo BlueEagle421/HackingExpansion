@@ -41,7 +41,16 @@ public class CompTurretHackable : CompHackable
     {
         base.OnHacked(hacker, suppressMessages);
 
-        CyberUtils.MakeHackingOutcomeEffect(parent, "Disabled".Translate());
+        if (hacker == null)
+            return;
+
+        parent.SetFactionDirect(hacker.Faction);
+        this.ResetHackProgress();
+
+        if (hacker.jobs.curJob.def == JobDefOf.Hack)
+            hacker.jobs.EndCurrentJob(Verse.AI.JobCondition.InterruptForced);
+
+        CyberUtils.MakeHackingOutcomeEffect(parent, "USH_HE_Reconfigured".Translate());
     }
 
     public override bool CompPreventClaimingBy(Faction faction)

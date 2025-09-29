@@ -13,6 +13,7 @@
     <USH_HE_NeedsBlackICE>No black ICE</USH_HE_NeedsBlackICE>
 
     <USH_HE_DisabledOutcomes>Disabled</USH_HE_DisabledOutcomes>
+    <USH_HE_Reconfigured>Reconfigured</USH_HE_Reconfigured>
 
     <USH_HE_CommandChooseDataOutput>Choose data ripping output</USH_HE_CommandChooseDataOutput>
     <USH_HE_CommandChooseDataOutputDesc>Select what should be outputted as a result of hacking this device.</USH_HE_CommandChooseDataOutputDesc>
@@ -25,6 +26,7 @@
     <USH_HE_InstallICEBreaker>Install black ICE breaker</USH_HE_InstallICEBreaker>
 
     <USH_HE_HackToDisable>Hack to disable.</USH_HE_HackToDisable>
+    <USH_HE_HackToReconfigure>Hack to reconfigure.</USH_HE_HackToReconfigure>
 
     <USH_HE_HackPoints>hacking work amount</USH_HE_HackPoints>
     <USH_HE_DataRippingProgress>Data ripping progress</USH_HE_DataRippingProgress>
