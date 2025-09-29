@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
@@ -35,6 +36,10 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
 
     private static void PatchAllDefs()
     {
+        StringBuilder turretsReportSB = new();
+        turretsReportSB.AppendLine("[Hacking Expansion] Turrets patching report: ");
+        int turretsDisabledCount = 0;
+
         foreach (var def in DefDatabase<ThingDef>.AllDefsListForReading)
         {
             try
@@ -44,10 +49,16 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
                     (def.comps ??= []).Add(new CompProperties_DataSourceProtected());
                 }
 
-                if (ShouldTurretBeHackable(def))
+                if (ShouldTurretBeHackable(def, out string turretDisabledReason))
                 {
                     (def.comps ??= []).Add(TurretPropsToAdd(def));
                     (def.comps ??= []).Add(new CompProperties_DataSourceProtected());
+                }
+
+                if (turretDisabledReason != "")
+                {
+                    turretsDisabledCount++;
+                    turretsReportSB.AppendLine($"  - {def.LabelCap}: {turretDisabledReason}");
                 }
             }
             catch
@@ -55,6 +66,9 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
                 _omittedDefNames.Add(def.defName);
             }
         }
+
+        turretsReportSB.AppendLine("Turrets not valid for patching total: " + turretsDisabledCount);
+        Log.Message(turretsReportSB.ToString());
 
         foreach (var kindDef in DefDatabase<PawnKindDef>.AllDefsListForReading)
         {
@@ -82,20 +96,25 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         return true;
     }
 
-    private static bool ShouldTurretBeHackable(ThingDef thingDef)
+    private static bool ShouldTurretBeHackable(ThingDef thingDef, out string reason)
     {
+        reason = "";
+
         if (!HE_Mod.Settings.EnableTurretsHacking.Value)
             return false;
 
         if (thingDef.building?.turretGunDef == null)
             return false;
 
+        reason = "mannable";
         if (thingDef.HasComp<CompMannable>())
             return false;
 
+        reason = "interactable";
         if (thingDef.HasComp<CompInteractable>())
             return false;
 
+        reason = "already hackable";
         if (thingDef.HasComp<CompHackable>())
             return false;
 
@@ -104,7 +123,12 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         var compStunnable = thingDef.GetCompProperties<CompProperties_Stunnable>();
         bool empStunnable = compStunnable?.affectedDamageDefs?.Any(d => d == DamageDefOf.EMP) == true;
 
-        return hasPower && empStunnable;
+        reason = "";
+
+        if (!hasPower && !empStunnable)
+            reason = "no power and not stunnable by emp";
+
+        return hasPower || empStunnable;
     }
 
     private static bool ShouldMechBeHackable(PawnKindDef kindDef)
@@ -136,8 +160,23 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
 
     private static float GetTurretDefence(ThingDef thingDef)
     {
-        float cost = thingDef.CostList.Sum(x => x.count * x.thingDef.BaseMarketValue);
-        cost += thingDef.CostStuffCount * 2; //assuming cheap resource
+        float cost = 0;
+        float defaultCost = 100;
+
+        if (thingDef.CostList != null)
+        {
+            cost = thingDef.CostList.Sum(x => x.count * x.thingDef.BaseMarketValue);
+            cost += thingDef.CostStuffCount * 2; //assuming cheap resource
+        }
+        else if (thingDef.building.combatPower != 0)
+        {
+            cost = thingDef.building.combatPower * 2;
+        }
+        else
+        {
+            cost = defaultCost;
+            Log.Warning($"[Hacking Expansion] No way to determine hack cost for {thingDef.LabelCap}. Defaulting to {defaultCost} hack cost.");
+        }
 
         cost /= 4; //balancing
 
