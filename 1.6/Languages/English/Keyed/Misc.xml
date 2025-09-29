@@ -56,6 +56,7 @@
     <USH_HE_WakingUpProgress>Waking up: {TIME}</USH_HE_WakingUpProgress>
 
     <USH_HE_CannotUseNotHacker>Cannot use: No cyberlink</USH_HE_CannotUseNotHacker>
+    <USH_HE_MissingCyberlink>Missing cyberlink</USH_HE_MissingCyberlink>
     <USH_HE_RipperInstalled>Ripper installed</USH_HE_RipperInstalled>
     <USH_HE_ICEBreakerInstalled>black ICE broken</USH_HE_ICEBreakerInstalled>
 

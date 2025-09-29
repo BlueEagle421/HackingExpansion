@@ -53,6 +53,13 @@ public static class Patch_CompHackable_CanHackNow
             && __instance.parent.Faction == pawn.Faction)
         {
             __result = "USH_HE_BelongsToHacker".Translate();
+            return;
         }
+
+        if (__instance is CompTurretHackable && !pawn.IsHacker())
+            __result = "USH_HE_MissingCyberlink".Translate();
+
+        if (__instance is CompMechanoidHackable && !pawn.IsHacker())
+            __result = "USH_HE_MissingCyberlink".Translate();
     }
 }
