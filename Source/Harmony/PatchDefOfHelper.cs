@@ -128,6 +128,8 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         => new()
         {
             defence = GetTurretDefence(thingDef) * 60,
+            notHackedInspectString = "USH_HE_HackToDisable".Translate(),
+            effectHacking = USH_DefOf.HackingTerminal
         };
 
     private static float GetTurretDefence(ThingDef thingDef)
@@ -148,5 +150,7 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         => new()
         {
             defence = kindDef.combatPower * 60 * kindDef.race.race.baseBodySize,
+            notHackedInspectString = "USH_HE_HackToDisable".Translate(),
+            effectHacking = USH_DefOf.HackingTerminal
         };
 }

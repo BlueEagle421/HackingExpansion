@@ -39,4 +39,5 @@ public static class USH_DefOf
     public static SoundDef USH_CyberlinkInstalled;
     public static ThingDef USH_ExecDataCase;
     public static BodyPartDef Brain;
+    public static EffecterDef HackingTerminal;
 }
