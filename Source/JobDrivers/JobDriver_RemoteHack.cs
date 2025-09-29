@@ -102,6 +102,9 @@ public class JobDriver_RemoteHack : JobDriver
 
         hackToil.FailOn(() => CompHackable.IsHacked || CompHackable.LockedOut);
 
+        if (remoteHacking)
+            hackToil.FailOn(() => pawn.Position.DistanceToSquared(HackTarget.Position) > RadiusSquared);
+
         hackToil.defaultCompleteMode = ToilCompleteMode.Never;
         hackToil.activeSkill = () => SkillDefOf.Intellectual;
 
