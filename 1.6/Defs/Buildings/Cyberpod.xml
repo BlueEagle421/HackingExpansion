@@ -4,7 +4,7 @@
     <ThingDef ParentName="BuildingBase">
         <defName>USH_Cyberpod</defName>
         <label>cyberpod</label>
-        <description>A specialized capsule with built-in neural ports for use by hackers with cyberlinks. It can help establish very high synchronization levels with cyberspace, allowing long-range hacking; however, it is more sensitive to interference, reducing base hacking speed and stealth.</description>
+        <description>A specialized capsule with built-in neural ports for use by hackers with cyberlinks. It can help establish very high synchronization levels with cyberspace, allowing long-range hacking; however, it is more sensitive to interference, reducing base hacking speed and stealth.\n\nDespite unmatched range the link only allows sending simple instructions and can't transfer execs or crack black ICE.</description>
         <thingClass>USH_HE.Building_Cyberpod</thingClass>
         <containedPawnsSelectable>true</containedPawnsSelectable>
         <drawerType>RealtimeOnly</drawerType>

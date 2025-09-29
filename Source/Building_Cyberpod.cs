@@ -341,6 +341,10 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
         if (autohackCheck && !compHackable.Autohack && !_ignoreAutoHack)
             return false;
 
+        if (compHackable.parent.TryGetComp(out CompDataSourceProtected compProtected)
+            && compProtected.HacksetDef == USH_DefOf.USH_BlackICE)
+            return false;
+
         return true;
     }
 
