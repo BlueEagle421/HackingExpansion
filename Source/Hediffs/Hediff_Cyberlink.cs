@@ -11,7 +11,8 @@ public class Hediff_Cyberlink : HediffWithComps
 {
     public override IEnumerable<Gizmo> GetGizmos()
     {
-        yield return HackGizmo();
+        if (!pawn.Downed && pawn.IsPlayerControlled)
+            yield return HackGizmo();
 
         foreach (var gizmo in base.GetGizmos())
             yield return gizmo;
