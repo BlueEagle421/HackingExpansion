@@ -13,6 +13,8 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
 {
     private static readonly HashSet<string> _omittedDefNames = [];
 
+    private const float TICKS_PER_WORK = 60;
+
     static void Postfix(bool earlyTryMode)
     {
         if (earlyTryMode)
@@ -127,7 +129,7 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
     private static CompProperties_TurretHackable TurretPropsToAdd(ThingDef thingDef)
         => new()
         {
-            defence = GetTurretDefence(thingDef) * 60,
+            defence = GetTurretDefence(thingDef) * TICKS_PER_WORK,
             notHackedInspectString = "USH_HE_HackToDisable".Translate(),
             effectHacking = USH_DefOf.HackingTerminal
         };
@@ -149,8 +151,11 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
     private static CompProperties_MechanoidHackable MechPropsToAdd(PawnKindDef kindDef)
         => new()
         {
-            defence = kindDef.combatPower * 60 * kindDef.race.race.baseBodySize,
+            defence = GetMechDefence(kindDef) * TICKS_PER_WORK,
             notHackedInspectString = "USH_HE_HackToDisable".Translate(),
             effectHacking = USH_DefOf.HackingTerminal
         };
+
+    private static float GetMechDefence(PawnKindDef kindDef)
+        => kindDef.combatPower * kindDef.race.race.baseBodySize;
 }
