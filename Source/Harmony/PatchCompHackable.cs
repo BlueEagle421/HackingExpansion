@@ -49,9 +49,6 @@ public static class Patch_CompHackable_CanHackNow
 {
     static void Postfix(CompHackable __instance, ref AcceptanceReport __result, Pawn pawn)
     {
-        if (!__result.Accepted)
-            return;
-
         if (__instance?.parent?.Faction != null && pawn?.Faction != null
             && __instance.parent.Faction == pawn.Faction)
         {
