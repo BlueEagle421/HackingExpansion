@@ -7,7 +7,7 @@ namespace USH_HE;
 
 public class Ability_Zapcode : Ability_Cyber
 {
-    private const float HACK_PROGRESS_PERCENT = 0.25f;
+    private const float HACK_PROGRESS_PERCENT = 0.35f;
     private const float MAX_PROGRESS_TO_CAST = 0.25f;
 
     private List<CompHackable> _affectedComps = [];
@@ -19,12 +19,12 @@ public class Ability_Zapcode : Ability_Cyber
         foreach (GlobalTargetInfo target in targets)
             if (target.Thing.TryGetComp(out CompHackable compHackable))
                 AddHackProgress(compHackable);
-
     }
 
     private void AddHackProgress(CompHackable compHackable)
     {
         compHackable.Hack(compHackable.defence * HACK_PROGRESS_PERCENT, pawn);
+        pawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(JobDefOf.Hack, compHackable.parent));
 
         _affectedComps.Add(compHackable);
     }
@@ -47,6 +47,20 @@ public class Ability_Zapcode : Ability_Cyber
 
             return false;
         }
+
+        var report = pawn.CanHack(compHackable);
+        if (!report.Accepted)
+        {
+            if (showMessages)
+            {
+                Messages.Message(report.Reason,
+                    MessageTypeDefOf.RejectInput,
+                    false);
+            }
+
+            return false;
+        }
+
 
         if (compHackable.ProgressPercent > MAX_PROGRESS_TO_CAST)
         {

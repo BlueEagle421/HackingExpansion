@@ -168,7 +168,7 @@
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
         <defName>USH_Zapcode</defName>
         <label>zapcode</label>
-        <description>Penetrates the first layers of security systems. Automatically hacks 25% of the device, but only if it has not already been accessed by another hacker.</description>
+        <description>Penetrates the first layers of security systems. Automatically hacks 35% of the device, but only if it has less then 25% hacking progress.</description>
         <iconPath>Abilities/Zapcode</iconPath>
         <abilityClass>USH_HE.Ability_Zapcode</abilityClass>
         <castTime>90</castTime>
