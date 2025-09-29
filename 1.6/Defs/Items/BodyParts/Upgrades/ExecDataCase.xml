@@ -4,7 +4,7 @@
     <ThingDef ParentName="USH_AdvancedCyberlinkUpgradeBase">
         <defName>USH_ExecDataCase</defName>
         <label>exec data case</label>
-        <description>An implant that links exec data to the cyberlink with nanoconnectors, allowing the usage and training of execs.</description>
+        <description>An implant that links exec data to the cyberlink with nanoconnectors, allowing the usage and training of execs.\n\nExecs are trained during hacking.</description>
         <descriptionHyperlinks>
             <HediffDef>USH_InstalledExecDataCase</HediffDef>
         </descriptionHyperlinks>
