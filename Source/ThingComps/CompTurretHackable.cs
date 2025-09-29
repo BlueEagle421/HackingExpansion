@@ -50,6 +50,9 @@ public class CompTurretHackable : CompHackable
         if (hacker.jobs.curJob.def == JobDefOf.Hack)
             hacker.jobs.EndCurrentJob(Verse.AI.JobCondition.InterruptForced);
 
+        if (parent.TryGetComp(out CompCanBeDormant canDormant))
+            canDormant.WakeUp();
+
         CyberUtils.MakeHackingOutcomeEffect(parent, "USH_HE_Reconfigured".Translate());
     }
 
