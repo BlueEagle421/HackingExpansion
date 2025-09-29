@@ -93,37 +93,37 @@
             <li>
                 <minSeverity>1</minSeverity>
                 <statOffsets>
-                    <HackingSpeed>0.09</HackingSpeed>
+                    <HackingSpeed>0.14</HackingSpeed>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>2</minSeverity>
                 <statOffsets>
-                    <HackingSpeed>0.18</HackingSpeed>
+                    <HackingSpeed>0.28</HackingSpeed>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>3</minSeverity>
                 <statOffsets>
-                    <HackingSpeed>0.27</HackingSpeed>
+                    <HackingSpeed>0.42</HackingSpeed>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>4</minSeverity>
                 <statOffsets>
-                    <HackingSpeed>0.36</HackingSpeed>
+                    <HackingSpeed>0.56</HackingSpeed>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>5</minSeverity>
                 <statOffsets>
-                    <HackingSpeed>0.45</HackingSpeed>
+                    <HackingSpeed>0.70</HackingSpeed>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>6</minSeverity>
                 <statOffsets>
-                    <HackingSpeed>0.54</HackingSpeed>
+                    <HackingSpeed>0.84</HackingSpeed>
                 </statOffsets>
             </li>
         </stages>
