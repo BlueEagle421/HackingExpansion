@@ -166,7 +166,6 @@
                 <statOffsets>
                     <HackingSpeed>0.2</HackingSpeed>
                     <HackingStealth>25</HackingStealth>
-                    <USH_RemoteHackingDistance>3.9</USH_RemoteHackingDistance>
                 </statOffsets>
             </li>
         </stages>
