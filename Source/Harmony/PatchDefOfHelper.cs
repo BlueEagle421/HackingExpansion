@@ -171,7 +171,7 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         }
         else if (thingDef.building.combatPower != 0)
         {
-            cost = thingDef.building.combatPower * 2.5f;
+            cost = thingDef.building.combatPower * 2.5f; //look! that's a magic number! ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆
         }
         else
         {
