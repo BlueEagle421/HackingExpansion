@@ -147,6 +147,6 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
     private static CompProperties_MechanoidHackable MechPropsToAdd(PawnKindDef kindDef)
         => new()
         {
-            defence = kindDef.combatPower * 2 * 60 * kindDef.race.race.baseBodySize,
+            defence = kindDef.combatPower * 60 * kindDef.race.race.baseBodySize,
         };
 }
