@@ -8,8 +8,6 @@ namespace USH_HE;
 public class AbilityExtension_Cyber : DefModExtension
 {
     public bool doHackEffect = true;
-    public float marketValue;
-    public float learningPoints;
 }
 
 

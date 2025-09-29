@@ -260,7 +260,6 @@ public class CompDataSource : ThingComp
         public Texture2D Tex => _tex;
         private ThingDef _def;
         public ThingDef Def => _def;
-        private List<ResearchProjectDef> _projectDefs;
         private int _amountLeft;
         public int AmountLeft
         {
