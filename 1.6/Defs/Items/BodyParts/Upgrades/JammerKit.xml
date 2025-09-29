@@ -92,37 +92,37 @@
             <li>
                 <minSeverity>1</minSeverity>
                 <statOffsets>
-                    <HackingStealth>12</HackingStealth>
+                    <HackingStealth>16</HackingStealth>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>2</minSeverity>
                 <statOffsets>
-                    <HackingStealth>24</HackingStealth>
+                    <HackingStealth>32</HackingStealth>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>3</minSeverity>
                 <statOffsets>
-                    <HackingStealth>36</HackingStealth>
+                    <HackingStealth>48</HackingStealth>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>4</minSeverity>
                 <statOffsets>
-                    <HackingStealth>48</HackingStealth>
+                    <HackingStealth>64</HackingStealth>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>5</minSeverity>
                 <statOffsets>
-                    <HackingStealth>60</HackingStealth>
+                    <HackingStealth>80</HackingStealth>
                 </statOffsets>
             </li>
             <li>
                 <minSeverity>6</minSeverity>
                 <statOffsets>
-                    <HackingStealth>72</HackingStealth>
+                    <HackingStealth>96</HackingStealth>
                 </statOffsets>
             </li>
         </stages>
