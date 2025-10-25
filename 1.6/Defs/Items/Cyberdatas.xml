@@ -86,7 +86,7 @@
         <modExtensions Inherit="False">
             <li Class="USH_HE.ResearchPrerequisitesExtension">
                 <researchPrerequisites>
-                    <li>USH_AdvancedCybertech</li>
+                    <li>USH_ExecData</li>
                 </researchPrerequisites>
             </li>
         </modExtensions>

@@ -67,4 +67,26 @@
         </generalRules>
     </ResearchProjectDef>
 
+    <ResearchProjectDef>
+        <defName>USH_ExecData</defName>
+        <label>executables</label>
+        <description>Learn how to utilize broken exec data to develop powerful cyber abilities.</description>
+        <baseCost>2000</baseCost>
+        <techLevel>Spacer</techLevel>
+        <prerequisites>
+            <li>USH_AdvancedCybertech</li>
+        </prerequisites>
+        <researchViewX>9.00</researchViewX>
+        <researchViewY>5.40</researchViewY>
+        <generalRules>
+            <rulesStrings>
+                <li>subject->executables</li>
+
+                <li>subject_story->studied security software</li>
+
+                <li>subject_gerund->hacking electronics</li>
+            </rulesStrings>
+        </generalRules>
+    </ResearchProjectDef>
+
 </Defs>

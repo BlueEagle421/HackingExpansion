@@ -53,7 +53,7 @@
             <recipeUsers>
                 <li>TableMachining</li>
             </recipeUsers>
-            <researchPrerequisite>USH_AdvancedCybertech</researchPrerequisite>
+            <researchPrerequisite>USH_ExecData</researchPrerequisite>
             <skillRequirements>
                 <Intellectual>8</Intellectual>
             </skillRequirements>
