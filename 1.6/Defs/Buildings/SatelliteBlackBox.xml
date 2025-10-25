@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>USH_BlackBox</defName>
+        <label>satellite black box</label>
+        <description>A flight recorder from a surveillance satellite. Hack it to safely transmit its recordings to the compromised faction.</description>
+        <graphicData>
+            <texPath>Things/Building/BlackBox</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <size>(1,1)</size>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <fillPercent>0.4</fillPercent>
+        <statBases>
+            <MaxHitPoints>150</MaxHitPoints>
+            <WorkToBuild>1000</WorkToBuild>
+            <Flammability>0</Flammability>
+        </statBases>
+        <comps>
+            <li Class="USH_HE.CompProperties_BlackBoxHackable">
+                <defence>15000</defence>
+                <effectHacking>HackingTerminal</effectHacking>
+                <goodwillGainRange>8~25</goodwillGainRange>
+                <raidChance>1</raidChance>
+            </li>
+        </comps>
+        <pathCost>42</pathCost>
+    </ThingDef>
+
+    <ThingDef ParentName="SkyfallerBase" Name="ShipChunkIncomingBase">
+        <defName>USH_BlackBoxIncoming</defName>
+        <label>satellite black box (incoming)</label>
+        <size>(1, 1)</size>
+        <skyfaller>
+            <shadowSize>(2, 2)</shadowSize>
+            <explosionRadius>5</explosionRadius>
+            <explosionDamage>Flame</explosionDamage>
+            <cameraShake>1</cameraShake>
+            <rubbleShrapnelCountRange>
+                <min>100</min>
+                <max>300</max>
+            </rubbleShrapnelCountRange>
+        </skyfaller>
+    </ThingDef>
+
+</Defs>

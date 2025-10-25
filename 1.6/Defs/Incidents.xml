@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+
+    <IncidentDef>
+        <defName>USH_BlackBoxDrop</defName>
+        <label>ship chunk drop</label>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <workerClass>USH_HE.IncidentWorker_BlackBoxDrop</workerClass>
+        <category>USH_BlackBoxDrop</category>
+        <baseChance>3</baseChance>
+        <canOccurOnAllPlanetLayers>true</canOccurOnAllPlanetLayers>
+    </IncidentDef>
+
+    <IncidentCategoryDef>
+        <defName>USH_BlackBoxDrop</defName>
+    </IncidentCategoryDef>
+
+</Defs>

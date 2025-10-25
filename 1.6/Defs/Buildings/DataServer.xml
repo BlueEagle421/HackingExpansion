@@ -63,4 +63,66 @@
         <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
     </ThingDef>
 
+    <ThingDef ParentName="FurnitureBase">
+        <defName>USH_DataCenter</defName>
+        <label>data center</label>
+        <description>Increases research speed when placed near a research bench. One research bench can use only one data server.</description>
+        <graphicData>
+            <texPath>Things/Building/DataCenter</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+            <damageData>
+                <rectN>(0.03,0,0.94,1.3)</rectN>
+                <rectS>(0.03,0,0.94,1.3)</rectS>
+                <rectE>(0.03,0,0.65,1.3)</rectE>
+                <rectW>(0.32,0,0.65,1.3)</rectW>
+            </damageData>
+        </graphicData>
+        <size>(1,1)</size>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <castEdgeShadows>true</castEdgeShadows>
+        <fillPercent>0.4</fillPercent>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <statBases>
+            <MaxHitPoints>80</MaxHitPoints>
+            <WorkToBuild>1200</WorkToBuild>
+            <Flammability>1.0</Flammability>
+            <Mass>12</Mass>
+        </statBases>
+        <costList>
+            <Steel>90</Steel>
+            <USH_AdvancedCyberdata>2</USH_AdvancedCyberdata>
+            <ComponentSpacer>3</ComponentSpacer>
+        </costList>
+        <comps>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>150</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Facility">
+                <statOffsets>
+                    <ResearchSpeedFactor>0.08</ResearchSpeedFactor>
+                </statOffsets>
+                <maxSimultaneous>2</maxSimultaneous>
+                <maxDistance>6</maxDistance>
+            </li>
+        </comps>
+        <placeWorkers>
+            <li>PlaceWorker_ShowFacilitiesConnections</li>
+        </placeWorkers>
+        <building>
+            <paintable>true</paintable>
+        </building>
+        <researchPrerequisites>
+            <li>USH_CybertechMachinery</li>
+        </researchPrerequisites>
+        <designationCategory>Misc</designationCategory>
+        <defaultPlacingRot>South</defaultPlacingRot>
+        <uiIconScale>0.6</uiIconScale>
+        <pathCost>42</pathCost>
+        <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    </ThingDef>
+
 </Defs>

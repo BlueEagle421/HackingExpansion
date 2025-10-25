@@ -63,6 +63,9 @@
     <USH_HE_CyberspaceLetterLabel>He's beginning to believe...</USH_HE_CyberspaceLetterLabel>
     <USH_HE_CyberspaceLetter>{PAWN} with an installed cyberlink started hacking {BUILDING}, which is protected by {HACKSET}. It means that the hacker is now vulnerable to new cyberthreats and can trigger special security responses with a chance depending on the hacker’s stealth.\n\nColonists not connected to cyberspace by a link will not be affected, so you should always consider who is hacking devices with more advanced and possibly lethal security hacksets.\n\nAnd remember: there is no spoon.</USH_HE_CyberspaceLetter>
 
+    <USH_HE_BlackBoxLetterLabel>Satellite crash</USH_HE_BlackBoxLetterLabel>
+    <USH_HE_BlackBoxLetter>A surviallece satellite owned by {OWNER} crashed in a nearby orbit and it's flight recorder dropped nearby. It contains sensitive data about {COMPROMISED} faction.\n\nYou can hack it to gain goodwill with {COMPROMISED}, but this action might cause {OWNER} to raid you.</USH_HE_BlackBoxLetter>
+
     <USH_HE_RaidLetterLabel>Raid incoming!</USH_HE_RaidLetterLabel>
     <USH_HE_RaidLetter>It looks like the hacker who previously used the cyberdeck somehow angered {FACTION}, and they are now coming to this location. It’s possible that they’ve been trying to track down the hacker for months, or even longer.\n\nThey will arrive soon.</USH_HE_RaidLetter>
 
