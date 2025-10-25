@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="CrateBase">
+        <defName>USH_DataCenter</defName>
+        <label>data center</label>
+        <description>An abandoned, encrypted data storage. Hack it to extract preserved cyberdata.</description>
+        <graphicData>
+            <texPath>Things/Building/DataCenter</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+            <damageData>
+                <rectN>(0.03,0,0.94,1.3)</rectN>
+                <rectS>(0.03,0,0.94,1.3)</rectS>
+                <rectE>(0.03,0,0.65,1.3)</rectE>
+                <rectW>(0.32,0,0.65,1.3)</rectW>
+            </damageData>
+        </graphicData>
+        <defaultPlacingRot>North</defaultPlacingRot>
+        <size>(1, 1)</size>
+        <fillPercent>0.5</fillPercent>
+        <statBases>
+            <MaxHitPoints>200</MaxHitPoints>
+        </statBases>
+        <rotatable>false</rotatable>
+        <comps>
+            <li Class="CompProperties_Hackable">
+                <defence>39000</defence>
+                <effectHacking>HackingTerminal</effectHacking>
+                <lockoutDurationHoursRange>6~18</lockoutDurationHoursRange>
+                <showProgressAfterHackCompletion>false</showProgressAfterHackCompletion>
+                <notHackedInspectString>Hack to extract data.</notHackedInspectString>
+                <intellectualSkillPrerequisite>4</intellectualSkillPrerequisite>
+                <hackedMessage>{HACKER_labelShort} has finished hacking {SUBJECT_labelNoParenthesisDef}.</hackedMessage>
+            </li>
+            <li Class="CompProperties_Glower">
+                <glowRadius>3</glowRadius>
+                <glowColor>(53,203,237,0)</glowColor>
+            </li>
+            <li Class="CompProperties_LootSpawn">
+                <contents>USH_RewardDataCenter</contents>
+            </li>
+        </comps>
+        <tickerType>Normal</tickerType>
+    </ThingDef>
+
+    <ThingSetMakerDef>
+        <defName>USH_RewardDataCenter</defName>
+        <root Class="ThingSetMaker_Sum">
+            <resolveInOrder>true</resolveInOrder>
+            <options>
+                <li>
+                    <thingSetMaker Class="ThingSetMaker_RandomOption">
+                        <options>
+                            <li>
+                                <weight>1</weight>
+                                <thingSetMaker Class="ThingSetMaker_Count">
+                                    <fixedParams>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>USH_Cyberdata</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <countRange>6~10</countRange>
+                                    </fixedParams>
+                                </thingSetMaker>
+                            </li>
+                            <li>
+                                <weight>1</weight>
+                                <thingSetMaker Class="ThingSetMaker_Count">
+                                    <fixedParams>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>USH_AdvancedCyberdata</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <countRange>2~3</countRange>
+                                    </fixedParams>
+                                </thingSetMaker>
+                            </li>
+                            <li>
+                                <weight>0.5</weight>
+                                <thingSetMaker Class="ThingSetMaker_Count">
+                                    <fixedParams>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>USH_BrokenExecData</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <countRange>1</countRange>
+                                    </fixedParams>
+                                </thingSetMaker>
+                            </li>
+                        </options>
+                    </thingSetMaker>
+                </li>
+            </options>
+        </root>
+    </ThingSetMakerDef>
+
+</Defs>

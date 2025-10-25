@@ -42,4 +42,5 @@ public static class USH_DefOf
     public static EffecterDef HackingTerminal;
     public static ThingDef USH_BlackBox;
     public static ThingDef USH_BlackBoxIncoming;
+    public static ThingDef USH_DataCenter;
 }

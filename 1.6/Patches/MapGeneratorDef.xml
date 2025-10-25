@@ -8,4 +8,11 @@
         </value>
     </Operation>
 
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/MapGeneratorDef[@Name = "MapCommonBase" or @defName = "MapCommonBase"]/genSteps</xpath>
+        <value>
+            <li>USH_DataCenter</li>
+        </value>
+    </Operation>
+
 </Patch>
