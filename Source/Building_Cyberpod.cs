@@ -345,6 +345,9 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
             && compProtected.HacksetDef == USH_DefOf.USH_BlackICE)
             return false;
 
+        if (compHackable.parent.Fogged())
+            return false;
+
         return true;
     }
 
