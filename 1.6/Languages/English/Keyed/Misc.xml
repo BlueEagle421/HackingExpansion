@@ -36,12 +36,15 @@
 
     <USH_HE_HackPoints>Work amount</USH_HE_HackPoints>
     <USH_HE_DataRippingProgress>Data ripping progress</USH_HE_DataRippingProgress>
+    <USH_HE_BlackICEWarning>Device secured by black ICE was designated for data ripping</USH_HE_BlackICEWarning>
 
     <USH_HE_MentalStateReason>Caused by hacking {0}.</USH_HE_MentalStateReason>
     <USH_HE_OutcomeMessage>{HACKSET} has caused {OUTCOME} on {PAWN}.</USH_HE_OutcomeMessage>
 
     <USH_HE_SecurityHackset>Security hackset</USH_HE_SecurityHackset>
-    <USH_HE_SecurityHacksetDesc>What kind of hackset protects this device during hacking.</USH_HE_SecurityHacksetDesc>
+    <USH_HE_HacksetDormant>dormant</USH_HE_HacksetDormant>
+    <USH_HE_HacksetActive>active</USH_HE_HacksetActive>
+    <USH_HE_SecurityHacksetDesc>What kind of hackset protects this device during data ripping.</USH_HE_SecurityHacksetDesc>
     <USH_HE_HackActionsProbabilities>Hack actions with probabilities</USH_HE_HackActionsProbabilities>
     <USH_HE_HackActions>Hack actions</USH_HE_HackActions>
     <USH_HE_HackActionsHacksetDesc>What hack actions are contained in this type of hackset.</USH_HE_HackActionsHacksetDesc>

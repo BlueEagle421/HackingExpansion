@@ -21,7 +21,7 @@ public class CompDataSource : ThingComp
     private List<OutputData> _outputThings = [];
     private int _currentOutputIndex;
     private float _progress;
-    private bool _designatedForRipping, _isBeingRipped;
+    protected bool _designatedForRipping, _isBeingRipped;
     private static Texture2D IconRipData { get; } = ContentFinder<Texture2D>.Get("UI/Gizmos/RipData");
     private static Texture2D IconCancel { get; } = ContentFinder<Texture2D>.Get("UI/Designators/Cancel");
     private CompHackable _compHackable;
@@ -95,18 +95,26 @@ public class CompDataSource : ThingComp
 
     public virtual void Hack(float amount, Pawn hacker = null)
     {
-        if (_designatedForRipping)
-        {
-            _isBeingRipped = true;
-            _designatedForRipping = false;
-            UpdateDesignation();
-
-            CyberUtils.MakeHackingOutcomeEffect(parent, "USH_HE_RipperInstalled".Translate());
-        }
+        HackForRipping();
 
         HackForLearning(amount, hacker);
 
         HackForOutput(amount, hacker);
+    }
+
+    private void HackForRipping()
+    {
+        if (!_designatedForRipping)
+            return;
+
+        if (this is CompDataSourceProtected compProtected)
+            compProtected.IsHacksetActive = true;
+
+        _isBeingRipped = true;
+        _designatedForRipping = false;
+        UpdateDesignation();
+
+        CyberUtils.MakeHackingOutcomeEffect(parent, "USH_HE_RipperInstalled".Translate());
     }
 
     private void HackForLearning(float amount, Pawn hacker)
@@ -211,7 +219,7 @@ public class CompDataSource : ThingComp
         return command_Action;
     }
 
-    private void UpdateDesignation()
+    protected virtual void UpdateDesignation()
     {
         Designation designation = parent.Map.designationManager.DesignationOn(parent, USH_DefOf.USH_RipData);
 
@@ -241,26 +249,7 @@ public class CompDataSource : ThingComp
                     if (!resExt.IsUnlocked())
                         continue;
 
-                    string text = data.Def.LabelCap;
-                    text += $" ({"DurationLeft".Translate(data.AmountLeft)})"
-                        .Colorize(ColorLibrary.Grey);
-
-                    text += $"\n{"USH_HE_HackPoints".Translate()}: {data.HackCost.ToStringWorkAmount()}"
-                        .Colorize(ColorLibrary.Grey);
-
-                    int capturedIndex = i;
-
-                    var option = new FloatMenuOption(text, delegate
-                    {
-                        if (_currentOutputIndex == capturedIndex)
-                            return;
-
-                        _currentOutputIndex = capturedIndex;
-                        _progress = 0;
-
-                    }, data.Def);
-
-                    options.Add(option);
+                    options.Add(CreateOutputOption(data, i));
                 }
 
                 Find.WindowStack.Add(new FloatMenu(options));
@@ -268,6 +257,27 @@ public class CompDataSource : ThingComp
         };
 
         return command_Action;
+    }
+
+    private FloatMenuOption CreateOutputOption(OutputData data, int index)
+    {
+        string text = data.Def.LabelCap;
+        text += $" ({"DurationLeft".Translate(data.AmountLeft)})";
+
+        text += $"\n{"USH_HE_HackPoints".Translate()}: {data.HackCost.ToStringWorkAmount()}"
+            .Colorize(ColorLibrary.Grey);
+
+        int capturedIndex = index;
+
+        return new FloatMenuOption(text, delegate
+        {
+            if (_currentOutputIndex == capturedIndex)
+                return;
+
+            _currentOutputIndex = capturedIndex;
+            _progress = 0;
+
+        }, data.Def);
     }
 
     public override string CompInspectStringExtra()

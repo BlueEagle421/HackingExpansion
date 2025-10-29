@@ -22,6 +22,12 @@ public class CompDataSourceProtected : CompDataSource
     public HacksetDef HacksetDef => _hacksetDef;
 
     private bool _installedICEBreaker;
+    private bool _isActive;
+    public bool IsHacksetActive
+    {
+        get => _isActive;
+        set => _isActive = value;
+    }
 
     private WorldComponent_HacksetsLetter _worldComp;
     private WorldComponent_HacksetsLetter WorldComp
@@ -69,6 +75,9 @@ public class CompDataSourceProtected : CompDataSource
     private bool ShouldApplyOutcomeNow(float progressAmount, Pawn hacker = null)
     {
         if (_hacksetDef == null)
+            return false;
+
+        if (!_isActive)
             return false;
 
         if (hacker == null || !hacker.IsHacker())
@@ -184,7 +193,13 @@ public class CompDataSourceProtected : CompDataSource
             return sb.ToString().Trim();
 
         string hacksetText = _hacksetDef == null ? "None".Translate() : _hacksetDef.LabelCap.Colorize(Color.red);
-        sb.AppendLine("USH_HE_SecurityHackset".Translate() + ": " + hacksetText);
+
+        string statusText = _isActive
+            ? "USH_HE_HacksetActive".Translate()
+            : "USH_HE_HacksetDormant".Translate();
+
+        sb.AppendLine("USH_HE_SecurityHackset".Translate() + ": " + hacksetText + $" ({statusText})");
+
 
         if (_installedICEBreaker)
         {
@@ -202,11 +217,20 @@ public class CompDataSourceProtected : CompDataSource
         return sb.ToString().Trim();
     }
 
+    protected override void UpdateDesignation()
+    {
+        base.UpdateDesignation();
+
+        if (_designatedForRipping && _hacksetDef == USH_DefOf.USH_BlackICE)
+            Messages.Message("USH_HE_BlackICEWarning".Translate(), parent, MessageTypeDefOf.CautionInput, false);
+    }
+
     public override void PostExposeData()
     {
         base.PostExposeData();
 
         Scribe_Defs.Look(ref _hacksetDef, nameof(_hacksetDef));
         Scribe_Values.Look(ref _installedICEBreaker, nameof(_installedICEBreaker));
+        Scribe_Values.Look(ref _isActive, nameof(_isActive));
     }
 }
