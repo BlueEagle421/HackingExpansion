@@ -11,8 +11,6 @@
 
     <HediffDef Name="USH_ExecHediffBase" Abstract="true">
         <hediffClass>USH_HE.Hediff_LearningAbility</hediffClass>
-        <label>virtual data ripper</label>
-        <description>An implant which that allows hackers installing virtual data rippers in electronic devices.</description>
         <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
         <isBad>false</isBad>
         <priceImpact>true</priceImpact>
@@ -60,54 +58,6 @@
             <workAmount>540</workAmount>
         </recipeMaker>
     </ThingDef>
-
-    <!-- VIRTUAL DATA RIPPER -->
-
-    <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
-        <defName>USH_VirtualDataRipper</defName>
-        <label>virtual data ripper</label>
-        <description>Installs a data ripper on the targeted device, allowing cyberdata extraction.</description>
-        <iconPath>Abilities/VirtualDataRipper</iconPath>
-        <!-- <abilityClass>USH_HE.Ability_VirtualDataRipper</abilityClass> -->
-        <castTime>240</castTime>
-        <cooldownTime>12500</cooldownTime>
-        <targetMode>Thing</targetMode>
-        <modExtensions>
-            <li Class="USH_HE.AbilityExtension_Cyber">
-                <doHackEffect>false</doHackEffect>
-            </li>
-        </modExtensions>
-    </VEF.Abilities.AbilityDef>
-
-    <ThingDef ParentName="USH_ExecDataBase">
-        <defName>USH_ExecData_VirtualDataRipper</defName>
-        <label>exec data (virtual data ripper)</label>
-        <description>A diskette containing executable data. It needs to be connected to a data case and trained in cyberspace before usage.</description>
-        <descriptionHyperlinks>
-            <VEF.Abilities.AbilityDef>USH_VirtualDataRipper</VEF.Abilities.AbilityDef>
-        </descriptionHyperlinks>
-        <costList>
-            <USH_DataRipper>1</USH_DataRipper>
-        </costList>
-        <comps>
-            <li Class="CompProperties_UseEffectInstallImplant">
-                <hediffDef>USH_ExecDataHediff_VirtualDataRipper</hediffDef>
-                <bodyPart>Brain</bodyPart>
-            </li>
-        </comps>
-    </ThingDef>
-
-    <HediffDef ParentName="USH_ExecHediffBase">
-        <defName>USH_ExecDataHediff_VirtualDataRipper</defName>
-        <label>virtual data ripper</label>
-        <description>A diskette inserted into the neural case with a developing exec. Once fully learned it will allow usage of the virtual data ripper exec.</description>
-        <modExtensions>
-            <li Class="USH_HE.LearningAbilityExtension">
-                <learningPoints>120</learningPoints>
-                <abilityDef>USH_VirtualDataRipper</abilityDef>
-            </li>
-        </modExtensions>
-    </HediffDef>
 
     <!-- VIRTUAL ICE BREAKER -->
 

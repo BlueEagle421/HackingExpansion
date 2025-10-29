@@ -38,7 +38,7 @@
             <displayPriority>650</displayPriority>
         </recipeMaker>
         <costList>
-            <USH_DataRipper>1</USH_DataRipper>
+            <Uranium>15</Uranium>
             <USH_AdvancedCyberdata>1</USH_AdvancedCyberdata>
             <SubcoreRegular MayRequire="Ludeon.RimWorld.Biotech">1</SubcoreRegular>
         </costList>

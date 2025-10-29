@@ -4,7 +4,7 @@
     <ResearchProjectDef>
         <defName>USH_BasicCybertech</defName>
         <label>basic cybertech</label>
-        <description>Technology used for more efficient hacking. In order to obtain cyberdata you need to craft a data ripper.</description>
+        <description>Unlock cyberdata ripping and technology used for more efficient hacking.</description>
         <baseCost>800</baseCost>
         <techLevel>Industrial</techLevel>
         <prerequisites>

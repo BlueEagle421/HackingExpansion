@@ -38,10 +38,10 @@ public class JobDriver_InstallICEBreaker : JobDriver
 
         yield return toil;
 
-        yield return Toils_General.Do(InstallRipper);
+        yield return Toils_General.Do(Install);
     }
 
-    private void InstallRipper()
+    private void Install()
     {
         if (!Target.TryGetComp(out CompDataSourceProtected compDataSource))
             return;

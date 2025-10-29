@@ -36,7 +36,7 @@ public static class CyberLibrary
             canTargetPawns = false,
             canTargetItems = false,
             canTargetBuildings = true,
-            validator = RipperTargetValidator
+            validator = ICEBreakerTargetValidator
         };
     }
 
@@ -51,7 +51,7 @@ public static class CyberLibrary
         return true;
     }
 
-    private static bool RipperTargetValidator(TargetInfo target)
+    private static bool ICEBreakerTargetValidator(TargetInfo target)
     {
         if (!target.Thing.TryGetComp(out CompDataSource _))
             return false;

@@ -177,7 +177,7 @@ public class CompDataSource : ThingComp
         foreach (var gizmo in base.CompGetGizmosExtra())
             yield return gizmo;
 
-        if (!_isBeingRipped)
+        if (!_isBeingRipped && _outputThings.Exists(x => x.IsUnlocked()))
             yield return RipDataDesignationGizmo();
 
         if (CanOutput)
@@ -246,9 +246,8 @@ public class CompDataSource : ThingComp
                 for (int i = 0; i < _outputThings.Count; i++)
                 {
                     var data = _outputThings[i];
-                    var resExt = data.Def.GetModExtension<ResearchPrerequisitesExtension>();
 
-                    if (!resExt.IsUnlocked())
+                    if (!data.IsUnlocked())
                         continue;
 
                     options.Add(CreateOutputOption(data, i));
@@ -335,6 +334,16 @@ public class CompDataSource : ThingComp
         private ThingDef _def;
         public ThingDef Def => _def;
 
+        private ResearchPrerequisitesExtension _cachedExt;
+        public ResearchPrerequisitesExtension ResearchExt
+        {
+            get
+            {
+                _cachedExt ??= Def.GetModExtension<ResearchPrerequisitesExtension>();
+                return _cachedExt;
+            }
+        }
+
         private int _amountLeft;
         public int AmountLeft
         {
@@ -356,6 +365,14 @@ public class CompDataSource : ThingComp
             int maxInThisComp = (int)(compHackable.Props.defence / ext.hackWorkAmount);
 
             _amountLeft = Mathf.Min(maxInThisComp, targetCount);
+        }
+
+        public bool IsUnlocked()
+        {
+            if (ResearchExt == null)
+                return true;
+
+            return ResearchExt.IsUnlocked();
         }
 
         public void ExposeData()

@@ -4,10 +4,7 @@
     <ThingDef Name="USH_Cyberdata" ParentName="ResourceBase">
         <defName>USH_Cyberdata</defName>
         <label>cyberdata</label>
-        <description>A special device that can store instructions, code, drivers, malicious software, and other programs.\n\nIt can be extracted from various electronics using a dedicated ripper device.</description>
-        <descriptionHyperlinks>
-            <ThingDef>USH_DataRipper</ThingDef>
-        </descriptionHyperlinks>
+        <description>A special device that can store instructions, code, drivers, malicious software, and other programs.\n\nIt can be ripped from various electronics</description>
         <graphicData>
             <texPath>Things/Item/Cyberdata</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -37,11 +34,11 @@
                 <hackWorkAmount>1500</hackWorkAmount>
                 <maxPerDataSourceRange>8~16</maxPerDataSourceRange>
             </li>
-            <!-- <li Class="USH_HE.ResearchPrerequisitesExtension">
+            <li Class="USH_HE.ResearchPrerequisitesExtension">
                 <researchPrerequisites>
                     <li>USH_BasicCybertech</li>
                 </researchPrerequisites>
-            </li> -->
+            </li>
         </modExtensions>
     </ThingDef>
 

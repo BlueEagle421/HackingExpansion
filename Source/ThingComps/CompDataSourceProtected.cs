@@ -155,6 +155,16 @@ public class CompDataSourceProtected : CompDataSource
         Find.LetterStack.ReceiveLetter(label, content, LetterDefOf.NegativeEvent, new LookTargets(parent));
     }
 
+    public override void PostPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
+    {
+        base.PostPostApplyDamage(dinfo, totalDamageDealt);
+
+        if (totalDamageDealt <= 0)
+            return;
+
+        IsHacksetActive = true;
+    }
+
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats()
     {
         if (parent.Faction == Faction.OfPlayer)
