@@ -5,7 +5,7 @@ namespace USH_HE;
 
 public class GenStep_DataCenter : GenStep_Scatterer
 {
-    private const float STEP_CHANCE = 0.2f;
+    private const float STEP_CHANCE = 0.35f;
     private const float CRATE_SPAWN_CHANCE = 0.6f;
     private const int NEARBY_RADIUS = 3;
     private const int TERRAIN_SIZE = 30;
@@ -18,10 +18,10 @@ public class GenStep_DataCenter : GenStep_Scatterer
     protected override bool ShouldSkipMap(Map map)
     {
         if (map.IsPlayerHome)
-            return false;
+            return true;
 
         if (!Rand.Chance(STEP_CHANCE))
-            return false;
+            return true;
 
         return base.ShouldSkipMap(map);
     }
