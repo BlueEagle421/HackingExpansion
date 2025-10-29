@@ -7,6 +7,23 @@ namespace USH_HE;
 public class WorldComponent_HacksetsLetter(World world) : WorldComponent(world)
 {
     private bool _didLetter;
+    private bool _didRippingMessage;
+
+    public bool DidRippingMessage
+    {
+        get => _didRippingMessage;
+        set => _didRippingMessage = value;
+    }
+
+    public void TryToDoRippingMessage()
+    {
+        if (_didRippingMessage)
+            return;
+
+        Find.WindowStack.Add(new Dialog_MessageBox("USH_HE_RippingMessage".Translate()));
+
+        _didRippingMessage = true;
+    }
 
     public void TryToDoLetter(Pawn p, Thing building, HacksetDef hackset)
     {
@@ -37,5 +54,6 @@ public class WorldComponent_HacksetsLetter(World world) : WorldComponent(world)
         base.ExposeData();
 
         Scribe_Values.Look(ref _didLetter, nameof(_didLetter));
+        Scribe_Values.Look(ref _didRippingMessage, nameof(_didRippingMessage));
     }
 }

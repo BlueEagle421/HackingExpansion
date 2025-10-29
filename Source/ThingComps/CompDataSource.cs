@@ -206,7 +206,7 @@ public class CompDataSource : ThingComp
             {
                 var toPlay = _designatedForRipping
                     ? SoundDefOf.Designate_Cancel
-                    : SoundDefOf.Designate_DragStandard_Changed;
+                    : SoundDefOf.Tick_Low;
 
                 toPlay.PlayOneShotOnCamera();
 
@@ -221,6 +221,8 @@ public class CompDataSource : ThingComp
 
     protected virtual void UpdateDesignation()
     {
+        Find.World.GetComponent<WorldComponent_HacksetsLetter>().TryToDoRippingMessage();
+
         Designation designation = parent.Map.designationManager.DesignationOn(parent, USH_DefOf.USH_RipData);
 
         if (designation == null)
