@@ -34,7 +34,7 @@
     <USH_HE_HackToDisable>Hack to disable.</USH_HE_HackToDisable>
     <USH_HE_HackToReconfigure>Hack to reconfigure.</USH_HE_HackToReconfigure>
 
-    <USH_HE_HackPoints>hacking work amount</USH_HE_HackPoints>
+    <USH_HE_HackPoints>Work amount</USH_HE_HackPoints>
     <USH_HE_DataRippingProgress>Data ripping progress</USH_HE_DataRippingProgress>
 
     <USH_HE_MentalStateReason>Caused by hacking {0}.</USH_HE_MentalStateReason>

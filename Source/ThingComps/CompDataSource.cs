@@ -242,10 +242,15 @@ public class CompDataSource : ThingComp
                         continue;
 
                     string text = data.Def.LabelCap;
-                    text += $" ({data.HackCost.ToStringWorkAmount()} {"USH_HE_HackPoints".Translate()})".Colorize(CyberUtils.HackColor);
+                    text += $" ({"DurationLeft".Translate(data.AmountLeft)})"
+                        .Colorize(ColorLibrary.Grey);
+
+                    text += $"\n{"USH_HE_HackPoints".Translate()}: {data.HackCost.ToStringWorkAmount()}"
+                        .Colorize(ColorLibrary.Grey);
 
                     int capturedIndex = i;
-                    options.Add(new FloatMenuOption(text, delegate
+
+                    var option = new FloatMenuOption(text, delegate
                     {
                         if (_currentOutputIndex == capturedIndex)
                             return;
@@ -253,7 +258,9 @@ public class CompDataSource : ThingComp
                         _currentOutputIndex = capturedIndex;
                         _progress = 0;
 
-                    }));
+                    }, data.Def);
+
+                    options.Add(option);
                 }
 
                 Find.WindowStack.Add(new FloatMenu(options));
