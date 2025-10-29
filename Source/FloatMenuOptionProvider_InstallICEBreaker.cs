@@ -27,7 +27,7 @@ public class FloatMenuOptionProvider_InstallICEBreaker : FloatMenuOptionProvider
 
     private static void BeginTargeting(Pawn p, CompICEBreaker compICEBreaker)
     {
-        Find.Targeter.BeginTargeting(CyberLibrary.RipperTargetingParams, delegate (LocalTargetInfo target)
+        Find.Targeter.BeginTargeting(CyberLibrary.ICEBreakerTargetingParams, delegate (LocalTargetInfo target)
         {
             GiveJobToPawn(p, target.Thing, compICEBreaker.parent);
         }, null, null, null, null, null, playSoundOnAction: true,

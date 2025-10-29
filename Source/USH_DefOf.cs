@@ -10,9 +10,7 @@ public static class USH_DefOf
 
     public static StatCategoryDef USH_Hacker;
     public static StatDef USH_RemoteHackingDistance;
-    public static JobDef USH_InstallDataRipper;
     public static JobDef USH_InstallICEBreaker;
-    public static JobDef USH_InstallVirtualDataRipper;
     public static EffecterDef USH_RippingData;
     public static EffecterDef USH_HackingOutcome;
     public static SoundDef USH_DataRipped;
@@ -43,4 +41,5 @@ public static class USH_DefOf
     public static ThingDef USH_BlackBox;
     public static ThingDef USH_BlackBoxIncoming;
     public static ThingDef USH_DataCenter;
+    public static DesignationDef USH_RipData;
 }

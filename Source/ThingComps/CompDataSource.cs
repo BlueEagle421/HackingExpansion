@@ -15,11 +15,15 @@ public class CompProperties_DataSource : CompProperties
         => compClass = typeof(CompDataSource);
 }
 
+[StaticConstructorOnStartup]
 public class CompDataSource : ThingComp
 {
-    private List<OutputData> _installedOutputThings = [];
+    private List<OutputData> _outputThings = [];
     private int _currentOutputIndex;
     private float _progress;
+    private bool _designatedForRipping, _isBeingRipped;
+    private static Texture2D IconRipData { get; } = ContentFinder<Texture2D>.Get("UI/Gizmos/RipData");
+    private static Texture2D IconCancel { get; } = ContentFinder<Texture2D>.Get("UI/Designators/Cancel");
     private CompHackable _compHackable;
     protected CompHackable CompHackable
     {
@@ -30,8 +34,8 @@ public class CompDataSource : ThingComp
         }
     }
 
-    public bool IsReadyToOutput
-        => _installedOutputThings.Count > 0
+    public bool CanOutput
+        => _isBeingRipped
         && !CompHackable.IsHacked;
 
     private OutputData CurrentOutputData
@@ -40,7 +44,7 @@ public class CompDataSource : ThingComp
         {
             try
             {
-                return _installedOutputThings[_currentOutputIndex];
+                return _outputThings[_currentOutputIndex];
             }
             catch
             {
@@ -49,34 +53,13 @@ public class CompDataSource : ThingComp
         }
     }
 
-    public AcceptanceReport CanAcceptDataRipper(IDataRipper dataRipper)
-        => CanAcceptDataRipper(dataRipper.RippableThings);
-
-    public AcceptanceReport CanAcceptDataRipper(IEnumerable<ThingDef> rippableThings)
+    public override void PostSpawnSetup(bool respawningAfterLoad)
     {
-        var installedDefs = new HashSet<ThingDef>(
-            _installedOutputThings.Select(x => x.Def)
-        );
+        base.PostSpawnSetup(respawningAfterLoad);
 
-        bool hasNew = rippableThings
-            .Any(td => td != null && !installedDefs.Contains(td));
-
-        if (!hasNew)
-            return "USH_HE_NoNewData".Translate();
-
-        return true;
-    }
-
-    public void AddDataRipper(IDataRipper dataRipper)
-        => AddDataRipper(dataRipper.RippableThings);
-
-    public void AddDataRipper(IEnumerable<ThingDef> rippableThings)
-    {
-        CyberUtils.MakeHackingOutcomeEffect(parent, "USH_HE_RipperInstalled".Translate());
-
-        foreach (var thingDef in rippableThings)
-            if (!_installedOutputThings.Select(x => x.Def).Contains(thingDef))
-                _installedOutputThings.Add(new(thingDef, CompHackable));
+        if (_outputThings == null || !_outputThings.Any())
+            foreach (var entry in CyberUtils.AllCyberDataDefs)
+                _outputThings.Add(new(entry, CompHackable));
     }
 
     public virtual void ProcessHacked(Pawn hacker, bool suppressMessages)
@@ -86,7 +69,7 @@ public class CompDataSource : ThingComp
 
     private void HandleBrokenExecSpawn(Pawn hacker)
     {
-        if (!_installedOutputThings.Any())
+        if (!CanOutput)
             return;
 
         if (this is not CompDataSourceProtected compProtected)
@@ -112,6 +95,15 @@ public class CompDataSource : ThingComp
 
     public virtual void Hack(float amount, Pawn hacker = null)
     {
+        if (_designatedForRipping)
+        {
+            _isBeingRipped = true;
+            _designatedForRipping = false;
+            UpdateDesignation();
+
+            CyberUtils.MakeHackingOutcomeEffect(parent, "USH_HE_RipperInstalled".Translate());
+        }
+
         HackForLearning(amount, hacker);
 
         HackForOutput(amount, hacker);
@@ -131,7 +123,7 @@ public class CompDataSource : ThingComp
 
     private void HackForOutput(float amount, Pawn hacker)
     {
-        if (!IsReadyToOutput)
+        if (!CanOutput)
             return;
 
         if (CurrentOutputData.AmountLeft <= 0)
@@ -177,8 +169,56 @@ public class CompDataSource : ThingComp
         foreach (var gizmo in base.CompGetGizmosExtra())
             yield return gizmo;
 
-        if (IsReadyToOutput)
+        if (!_isBeingRipped)
+            yield return RipDataDesignationGizmo();
+
+        if (CanOutput)
             yield return SelectOutputGizmo();
+    }
+
+    private Gizmo RipDataDesignationGizmo()
+    {
+        Command_Action command_Action = new()
+        {
+
+            defaultLabel = _designatedForRipping
+                ? "USH_HE_CommandCancelRipDesignation".Translate()
+                : "USH_HE_CommandRipDesignation".Translate(),
+
+            defaultDesc = _designatedForRipping
+                ? "USH_HE_CommandCancelRipDesignationDesc".Translate()
+                : "USH_HE_CommandRipDesignationDesc".Translate(),
+
+            icon = _designatedForRipping
+                ? IconCancel
+                : IconRipData,
+
+            groupable = false,
+            action = delegate
+            {
+                var toPlay = _designatedForRipping
+                    ? SoundDefOf.Designate_Cancel
+                    : SoundDefOf.Designate_DragStandard_Changed;
+
+                toPlay.PlayOneShotOnCamera();
+
+                _designatedForRipping = !_designatedForRipping;
+                UpdateDesignation();
+
+            }
+        };
+
+        return command_Action;
+    }
+
+    private void UpdateDesignation()
+    {
+        Designation designation = parent.Map.designationManager.DesignationOn(parent, USH_DefOf.USH_RipData);
+
+        if (designation == null)
+            parent.Map.designationManager.AddDesignation(new Designation(parent, USH_DefOf.USH_RipData));
+        else
+            designation.Delete();
     }
 
     private Gizmo SelectOutputGizmo()
@@ -193,9 +233,9 @@ public class CompDataSource : ThingComp
             {
                 List<FloatMenuOption> options = [];
 
-                for (int i = 0; i < _installedOutputThings.Count; i++)
+                for (int i = 0; i < _outputThings.Count; i++)
                 {
-                    var data = _installedOutputThings[i];
+                    var data = _outputThings[i];
                     var resExt = data.Def.GetModExtension<ResearchPrerequisitesExtension>();
 
                     if (!resExt.IsUnlocked())
@@ -227,16 +267,19 @@ public class CompDataSource : ThingComp
     {
         StringBuilder sb = new(base.CompInspectStringExtra());
 
-        if (IsReadyToOutput)
+        if (CanOutput)
         {
             string progressText = _progress.ToStringWorkAmount();
             string costText = CurrentOutputData.HackCost.ToStringWorkAmount();
+            string progressInfo = $"{progressText} / {costText}";
 
-            sb.AppendLine($"{"USH_HE_DataRippingProgress".Translate()}: {progressText} / {costText}");
+            sb.AppendLine($"{"USH_HE_DataRippingProgress".Translate()}: {progressInfo}"
+                .Colorize(ColorLibrary.RedReadable));
+
+            sb.AppendLine(("DurationLeft".Translate(CurrentOutputData.Def.LabelCap) + ": "
+                + CurrentOutputData.AmountLeft)
+                .Colorize(ColorLibrary.RedReadable));
         }
-
-        if (CurrentOutputData != null && !CompHackable.IsHacked)
-            sb.AppendLine("Data amount left: " + CurrentOutputData.AmountLeft);
 
         return sb.ToString().Trim();
     }
@@ -245,11 +288,13 @@ public class CompDataSource : ThingComp
     {
         base.PostExposeData();
 
-        Scribe_Collections.Look(ref _installedOutputThings, nameof(_installedOutputThings), LookMode.Deep);
+        Scribe_Collections.Look(ref _outputThings, nameof(_outputThings), LookMode.Deep);
 
-        _installedOutputThings ??= [];
+        _outputThings ??= [];
 
         Scribe_Values.Look(ref _currentOutputIndex, nameof(_currentOutputIndex));
+        Scribe_Values.Look(ref _designatedForRipping, "_designatedForRipping");
+        Scribe_Values.Look(ref _isBeingRipped, "_isBeingRipped");
     }
 
     private class OutputData : IExposable
@@ -257,9 +302,20 @@ public class CompDataSource : ThingComp
         private float _hackCost;
         public float HackCost => _hackCost;
         private Texture2D _tex;
-        public Texture2D Tex => _tex;
+        public Texture2D Tex
+        {
+            get
+            {
+                if (_def != null)
+                    _tex ??= ContentFinder<Texture2D>.Get(_def.graphic.path);
+
+                return _tex;
+            }
+        }
+
         private ThingDef _def;
         public ThingDef Def => _def;
+
         private int _amountLeft;
         public int AmountLeft
         {
@@ -268,13 +324,13 @@ public class CompDataSource : ThingComp
         }
 
         public OutputData() { }
+
         public OutputData(ThingDef thingDef, CompHackable compHackable)
         {
             var ext = thingDef.GetModExtension<RippableExtension>()
                 ?? throw new Exception($"{thingDef.defName} has no {nameof(RippableExtension)} def extension");
 
             _hackCost = ext.hackWorkAmount;
-            _tex = ContentFinder<Texture2D>.Get(thingDef.graphic.path);
             _def = thingDef;
 
             int targetCount = ext.maxPerDataSourceRange.RandomInRange;
@@ -290,14 +346,8 @@ public class CompDataSource : ThingComp
             Scribe_Values.Look(ref _hackCost, nameof(_hackCost));
             Scribe_Values.Look(ref _amountLeft, nameof(_amountLeft));
 
-            if (_def != null)
-            {
-                var ext = _def.GetModExtension<RippableExtension>();
-                if (ext != null)
-                    _hackCost = ext.hackWorkAmount;
-
-                _tex = ContentFinder<Texture2D>.Get(_def.graphic.path);
-            }
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+                _tex = null;
         }
     }
 }

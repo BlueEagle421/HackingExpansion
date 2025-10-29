@@ -8,7 +8,7 @@ namespace USH_HE;
 public static class CyberLibrary
 {
     public static TargetingParameters HackTargetingParams;
-    public static TargetingParameters RipperTargetingParams;
+    public static TargetingParameters ICEBreakerTargetingParams;
 
     private static Texture2D _cachedHackTex;
     public static Texture2D TargetHackTex
@@ -31,7 +31,7 @@ public static class CyberLibrary
             validator = HackTargetValidator
         };
 
-        RipperTargetingParams = new()
+        ICEBreakerTargetingParams = new()
         {
             canTargetPawns = false,
             canTargetItems = false,

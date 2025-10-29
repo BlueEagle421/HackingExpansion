@@ -18,6 +18,12 @@
     <USH_HE_CommandChooseDataOutput>Choose data ripping output</USH_HE_CommandChooseDataOutput>
     <USH_HE_CommandChooseDataOutputDesc>Select what should be outputted as a result of hacking this device.</USH_HE_CommandChooseDataOutputDesc>
 
+    <USH_HE_CommandRipDesignation>Mark for data ripping</USH_HE_CommandRipDesignation>
+    <USH_HE_CommandRipDesignationDesc>Mark the device for cyberdata extraction. Once ripped, the device's internal security systems will activate. The process initiates automatically during hacking.</USH_HE_CommandRipDesignationDesc>
+
+    <USH_HE_CommandCancelRipDesignation>Cancel data ripping</USH_HE_CommandCancelRipDesignation>
+    <USH_HE_CommandCancelRipDesignationDesc>Cancel data ripping designation.</USH_HE_CommandCancelRipDesignationDesc>
+
     <USH_HE_OrderHackTarget>Hack target</USH_HE_OrderHackTarget>
     <USH_HE_OrderHackTargetDesc>Select a target to be hacked by this hacker.</USH_HE_OrderHackTargetDesc>
     <USH_HE_AlreadyHacked>Already hacked</USH_HE_AlreadyHacked>
@@ -57,7 +63,7 @@
 
     <USH_HE_CannotUseNotHacker>Cannot use: No cyberlink</USH_HE_CannotUseNotHacker>
     <USH_HE_MissingCyberlink>Missing cyberlink</USH_HE_MissingCyberlink>
-    <USH_HE_RipperInstalled>Ripper installed</USH_HE_RipperInstalled>
+    <USH_HE_RipperInstalled>Device ripped</USH_HE_RipperInstalled>
     <USH_HE_ICEBreakerInstalled>black ICE broken</USH_HE_ICEBreakerInstalled>
 
     <USH_HE_CyberspaceLetterLabel>He's beginning to believe...</USH_HE_CyberspaceLetterLabel>

@@ -21,6 +21,17 @@ public static class CyberUtils
             return _cachedCyberlinkHediffs;
         }
     }
+    private static List<ThingDef> _cachedCyberDatas;
+    public static List<ThingDef> AllCyberDataDefs
+    {
+        get
+        {
+            _cachedCyberDatas ??= [.. DefDatabase<ThingDef>.AllDefsListForReading
+                .Where(x => x.HasModExtension<RippableExtension>())];
+
+            return _cachedCyberDatas;
+        }
+    }
 
     public static Color HackColor
         => Color.green;
