@@ -16,7 +16,7 @@
             <Plasteel>12</Plasteel>
         </costList>
         <recipeMaker>
-            <researchPrerequisite>USH_AdvancedCybertech</researchPrerequisite>
+            <researchPrerequisite>USH_ExecData</researchPrerequisite>
         </recipeMaker>
         <comps>
             <li Class="CompProperties_Usable">
