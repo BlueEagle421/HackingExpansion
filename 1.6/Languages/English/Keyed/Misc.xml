@@ -78,6 +78,7 @@
 
     <USH_HE_RaidLetterLabel>Raid incoming!</USH_HE_RaidLetterLabel>
     <USH_HE_RaidLetter>It looks like the hacker who previously used the cyberdeck somehow angered {FACTION}, and they are now coming to this location. It’s possible that they’ve been trying to track down the hacker for months, or even longer.\n\nThey will arrive soon.</USH_HE_RaidLetter>
+    <USH_HE_RaidBlackBoxLetter>The {FACTION} detected the recent data transfer from their satellite black box and are now coming to your location.\n\nThey will arrive soon.</USH_HE_RaidBlackBoxLetter>
 
     <USH_HE_AbilityLearnedLetterLabel>{0} learned</USH_HE_AbilityLearnedLetterLabel>
     <USH_HE_AbilityLearnedLetter>After intensive {0} exec training it became usable by {PAWN}.</USH_HE_AbilityLearnedLetter>

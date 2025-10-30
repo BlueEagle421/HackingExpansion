@@ -37,7 +37,7 @@ public class CompAncientCyberdeck : CompHackable
 
         string content = "USH_HE_RaidLetter".Translate(faction.Named("FACTION"));
 
-        Find.LetterStack.ReceiveLetter(label, content, LetterDefOf.ThreatBig);
+        Find.LetterStack.ReceiveLetter(label, content, LetterDefOf.ThreatSmall);
     }
 
     private bool TryFindRandomEnemyFaction(out Faction faction)

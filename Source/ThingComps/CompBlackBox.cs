@@ -40,7 +40,19 @@ public class CompBlackBox : CompHackable
         _compromisedFaction.TryAffectGoodwillWith(hacker.Faction, _goodwillGain);
 
         if (Rand.Chance(Props.raidChance))
+        {
+            SendLetter(_ownerFaction);
             DelayedRaidUtility.TriggerDelayedRaid(_ownerFaction, parent.Map, _raidDelayTicksRange.RandomInRange);
+        }
+    }
+
+    private void SendLetter(Faction faction)
+    {
+        string label = "USH_HE_RaidLetterLabel".Translate();
+
+        string content = "USH_HE_RaidBlackBoxLetter".Translate(faction.Named("FACTION"));
+
+        Find.LetterStack.ReceiveLetter(label, content, LetterDefOf.ThreatSmall);
     }
 
     public override void PostExposeData()
