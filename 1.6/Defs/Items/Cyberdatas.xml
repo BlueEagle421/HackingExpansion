@@ -4,7 +4,7 @@
     <StatDef>
         <defName>USH_ResearchValue</defName>
         <label>research points value</label>
-        <description>How many research points will be distributed after utilizing this cyberdata on an active project.</description>
+        <description>How many research points will be distributed after utilizing this item on an active project.</description>
         <category>USH_Hacker</category>
         <defaultBaseValue>0</defaultBaseValue>
         <minValue>0</minValue>
@@ -17,7 +17,7 @@
     <StatDef>
         <defName>USH_RippingWorkAmount</defName>
         <label>Ripping work amount</label>
-        <description>How much hacking work must be done on a device to acquire this cyberdata.</description>
+        <description>How much hacking work must be done on a device to acquire this item.</description>
         <category>USH_Hacker</category>
         <defaultBaseValue>0</defaultBaseValue>
         <minValue>0</minValue>
