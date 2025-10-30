@@ -127,11 +127,11 @@
         </graphicData>
         <statBases>
             <MarketValue>30</MarketValue>
-            <USH_ResearchValue>250</USH_ResearchValue>
+            <USH_ResearchValue>150</USH_ResearchValue>
         </statBases>
         <comps>
             <li Class="USH_HE.CompProperties_ResearchGiver">
-                <points>250</points>
+                <points>150</points>
             </li>
         </comps>
         <modExtensions>
