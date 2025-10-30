@@ -37,6 +37,11 @@
         <statBases>
             <MarketValue>50</MarketValue>
         </statBases>
+        <comps>
+            <li Class="USH_HE.CompProperties_ResearchGiver">
+                <points>15</points>
+            </li>
+        </comps>
         <modExtensions>
             <li Class="USH_HE.RippableExtension">
                 <hackWorkAmount>1500</hackWorkAmount>
@@ -60,6 +65,11 @@
         <statBases>
             <MarketValue>170</MarketValue>
         </statBases>
+        <comps>
+            <li Class="USH_HE.CompProperties_ResearchGiver">
+                <points>100</points>
+            </li>
+        </comps>
         <modExtensions>
             <li Class="USH_HE.RippableExtension">
                 <hackWorkAmount>13500</hackWorkAmount>
@@ -88,6 +98,11 @@
         <statBases>
             <MarketValue>30</MarketValue>
         </statBases>
+        <comps>
+            <li Class="USH_HE.CompProperties_ResearchGiver">
+                <points>250</points>
+            </li>
+        </comps>
         <modExtensions>
             <li Class="USH_HE.ResearchPrerequisitesExtension">
                 <researchPrerequisites>

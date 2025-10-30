@@ -8,4 +8,11 @@
         <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
     </JobDef>
 
+    <JobDef>
+        <defName>USH_ApplyResearchGiver</defName>
+        <driverClass>USH_HE.JobDriver_ApplyResearchGiver</driverClass>
+        <reportString>utilizing TargetB.</reportString>
+        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+
 </Defs>

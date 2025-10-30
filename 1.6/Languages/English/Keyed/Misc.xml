@@ -60,6 +60,11 @@
     <USH_HE_CommandStopWaking>Cancel waking up</USH_HE_CommandStopWaking>
     <USH_HE_CommandStopWakingDesc>Cancel waking up procedure.</USH_HE_CommandStopWakingDesc>
 
+    <USH_UtilizeCyberdata>Utilize {0}</USH_UtilizeCyberdata>
+    <USH_UtilizeCyberdataPoints>Utilize {0} (for {1} points)</USH_UtilizeCyberdataPoints>
+    <USH_MessageNoResearchBench>Cannot utilize: No reachable, un-reserved research bench available.</USH_MessageNoResearchBench>
+    <USH_NoResearchProject>No active research project</USH_NoResearchProject>
+
     <USH_HE_Hacking>Hacking {THING} ({PROGRESS})</USH_HE_Hacking>
     <USH_HE_WakingUpProgress>Waking up: {TIME}</USH_HE_WakingUpProgress>
 

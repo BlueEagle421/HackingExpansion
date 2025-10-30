@@ -41,4 +41,5 @@ public static class USH_DefOf
     public static ThingDef USH_BlackBoxIncoming;
     public static ThingDef USH_DataCenter;
     public static DesignationDef USH_RipData;
+    public static JobDef USH_ApplyResearchGiver;
 }
