@@ -59,6 +59,24 @@
         </recipeMaker>
     </ThingDef>
 
+    <!-- VIRTUAL DATA RIPPER -->
+
+    <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
+        <defName>USH_VirtualDataRipper</defName>
+        <label>virtual data ripper</label>
+        <description>This ability is outdated. Use data ripping gizmo instead.</description>
+        <iconPath>Abilities/VirtualDataRipper</iconPath>
+        <abilityClass>USH_HE.Ability_VirtualDataRipper</abilityClass>
+        <castTime>240</castTime>
+        <cooldownTime>12500</cooldownTime>
+        <targetMode>Thing</targetMode>
+        <modExtensions>
+            <li Class="USH_HE.AbilityExtension_Cyber">
+                <doHackEffect>false</doHackEffect>
+            </li>
+        </modExtensions>
+    </VEF.Abilities.AbilityDef>
+
     <!-- VIRTUAL ICE BREAKER -->
 
     <VEF.Abilities.AbilityDef ParentName="USH_ExecBase">
