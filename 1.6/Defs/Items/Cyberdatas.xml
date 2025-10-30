@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 
-    <ThingDef Name="USH_Cyberdata" ParentName="ResourceBase">
-        <defName>USH_Cyberdata</defName>
-        <label>cyberdata</label>
-        <description>A special device that can store instructions, code, drivers, malicious software, and other programs.\n\nIt can be ripped from various electronics</description>
+    <ThingDef Name="USH_CyberdataBase" ParentName="ResourceBase" Abstract="True">
         <graphicData>
-            <texPath>Things/Item/Cyberdata</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <soundInteract>Metal_Drop</soundInteract>
@@ -18,7 +14,6 @@
             <Mass>0.8</Mass>
             <Flammability>0.6</Flammability>
             <DeteriorationRate>2.0</DeteriorationRate>
-            <MarketValue>50</MarketValue>
         </statBases>
         <intricate>true</intricate>
         <thingCategories>
@@ -29,6 +24,19 @@
         </tradeTags>
         <tradeability>Sellable</tradeability>
         <allowedArchonexusCount>5</allowedArchonexusCount>
+    </ThingDef>
+
+    <ThingDef ParentName="USH_CyberdataBase">
+        <defName>USH_Cyberdata</defName>
+        <label>cyberdata</label>
+        <description>A special device that can store instructions, code, drivers, malicious software, and other programs.\n\nIt can be ripped from various electronics</description>
+        <graphicData>
+            <texPath>Things/Item/Cyberdata</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>50</MarketValue>
+        </statBases>
         <modExtensions>
             <li Class="USH_HE.RippableExtension">
                 <hackWorkAmount>1500</hackWorkAmount>
@@ -42,7 +50,7 @@
         </modExtensions>
     </ThingDef>
 
-    <ThingDef ParentName="USH_Cyberdata">
+    <ThingDef ParentName="USH_CyberdataBase">
         <defName>USH_AdvancedCyberdata</defName>
         <label>advanced cyberdata</label>
         <description>A spacer device with remarkable storage capacity and an onboard data analysis module that organizes and summarizes collected knowledge.\n\nIt can be extracted from various electronics using a dedicated ripper device.</description>
@@ -52,7 +60,7 @@
         <statBases>
             <MarketValue>170</MarketValue>
         </statBases>
-        <modExtensions Inherit="False">
+        <modExtensions>
             <li Class="USH_HE.RippableExtension">
                 <hackWorkAmount>13500</hackWorkAmount>
                 <maxPerDataSourceRange>2~5</maxPerDataSourceRange>
@@ -65,7 +73,7 @@
         </modExtensions>
     </ThingDef>
 
-    <ThingDef ParentName="USH_Cyberdata">
+    <ThingDef ParentName="USH_CyberdataBase">
         <defName>USH_BrokenExecData</defName>
         <label>broken exec data</label>
         <description>A spacer-tech diskette that once contained a powerful executable. It can be salvaged for its components or restored and used as a holding cell for a new exec.\n\nIt drops from ripped, hackable devices secured by ICE or ICE variants.</description>
@@ -80,7 +88,7 @@
         <statBases>
             <MarketValue>30</MarketValue>
         </statBases>
-        <modExtensions Inherit="False">
+        <modExtensions>
             <li Class="USH_HE.ResearchPrerequisitesExtension">
                 <researchPrerequisites>
                     <li>USH_ExecData</li>

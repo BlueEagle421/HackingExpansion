@@ -18,13 +18,10 @@
         <duplicationAllowed>false</duplicationAllowed>
     </HediffDef>
 
-    <ThingDef ParentName="USH_Cyberdata" Name="USH_ExecDataBase" Abstract="true">
+    <ThingDef ParentName="USH_CyberdataBase" Name="USH_ExecDataBase" Abstract="true">
         <graphicData>
             <texPath>Things/Item/ExecData</texPath>
         </graphicData>
-        <statBases>
-            <MarketValue>100</MarketValue>
-        </statBases>
         <modExtensions Inherit="False"></modExtensions>
         <comps>
             <li Class="CompProperties_Forbiddable" />
