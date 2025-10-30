@@ -177,7 +177,9 @@ public class CompDataSource : ThingComp
         foreach (var gizmo in base.CompGetGizmosExtra())
             yield return gizmo;
 
-        if (!_isBeingRipped && _outputThings.Exists(x => x.IsUnlocked()))
+        if (!_isBeingRipped
+            && _outputThings.Exists(x => x.IsUnlocked())
+            && parent.Faction != Faction.OfPlayer)
             yield return RipDataDesignationGizmo();
 
         if (CanOutput)
@@ -201,7 +203,7 @@ public class CompDataSource : ThingComp
                 ? IconCancel
                 : IconRipData,
 
-            groupable = false,
+            groupable = true,
             action = delegate
             {
                 var toPlay = _designatedForRipping
