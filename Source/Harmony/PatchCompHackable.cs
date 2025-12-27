@@ -8,7 +8,7 @@ namespace USH_HE;
 [HarmonyPatch(typeof(CompHackable), nameof(CompHackable.Hack))]
 public static class Patch_CompHackable_Hack
 {
-    private static readonly ConditionalWeakTable<CompHackable, CompDataSource> _cache = [];
+    private static readonly ConditionalWeakTable<CompHackable, CompDataSource> _cache = new();
 
     static void Postfix(CompHackable __instance, float amount, Pawn hacker = null)
     {
