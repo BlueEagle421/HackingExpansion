@@ -69,7 +69,7 @@ public class CompDataSource : ThingComp
 
     private void HandleBrokenExecSpawn(Pawn hacker)
     {
-        if (!CanOutput)
+        if (!_isBeingRipped)
             return;
 
         if (this is not CompDataSourceProtected compProtected)
