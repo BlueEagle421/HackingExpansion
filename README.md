@@ -10,6 +10,12 @@
 </p>
 
 <p align="center">
+  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3573344880">
+    📥 Download on Steam
+  </a>
+</p>
+
+<p align="center">
   <a href="https://deepwiki.com/BlueEagle421/HackingExpansion">
     📘 View the Full Documentation Wiki
   </a>
