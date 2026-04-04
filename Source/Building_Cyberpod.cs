@@ -68,6 +68,7 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
     private MapComponent_CyberpodManager Manager => Map?.GetComponent<MapComponent_CyberpodManager>();
 
     private CompPowerTrader _compPower;
+    private CompRefuelable _compRefuelable;
     private CompBreakdownable _compBreakdownable;
     private CompStunnable _compStunnable;
     private CompAffectedByFacilities _compFacilities;
@@ -138,6 +139,7 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
         base.SpawnSetup(map, respawningAfterLoad);
 
         _compPower = GetComp<CompPowerTrader>();
+        _compRefuelable = GetComp<CompRefuelable>();
         _compBreakdownable = GetComp<CompBreakdownable>();
         _compStunnable = GetComp<CompStunnable>();
         _compFacilities = GetComp<CompAffectedByFacilities>();
@@ -202,8 +204,13 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
         float amount = Hacker.GetStatValue(StatDefOf.HackingSpeed);
         amount *= this.GetStatValue(USH_DefOf.USH_HackingSpeedMultiplier);
 
-        _currentlyHacking.Hack(amount, Hacker);
+        float workPerTick = amount;
+        float fuelPerTick = amount / 60f;
+
+        _currentlyHacking.Hack(workPerTick, Hacker);
         Hacker.skills.Learn(SkillDefOf.Intellectual, 0.1f);
+
+        _compRefuelable.ConsumeFuel(fuelPerTick);
 
         if (_currentlyHacking.IsHacked)
             HackingCompleted();
@@ -262,6 +269,9 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
             return false;
 
         if (_compStunnable.StunHandler.Stunned)
+            return false;
+
+        if (!_compRefuelable.HasFuel)
             return false;
 
         return true;
@@ -449,6 +459,7 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
             icon = IconHack,
             groupable = false,
             shrinkable = true,
+            Disabled = !CanHackNow(),
             action = () =>
             {
                 SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();

@@ -72,6 +72,24 @@
             </li>
             <li Class="CompProperties_Flickable" />
             <li Class="CompProperties_Breakdownable" />
+            <li Class="CompProperties_Refuelable">
+                <!-- <fuelLabel>Hack points</fuelLabel> -->
+                <fuelGizmoLabel>Hack points</fuelGizmoLabel>
+                <outOfFuelMessage>Out of hack points</outOfFuelMessage>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>USH_Cyberdata</li>
+                    </thingDefs>
+                </fuelFilter>
+                <fuelCapacity>400</fuelCapacity>
+                <fuelMultiplier>40</fuelMultiplier>
+                <initialFuelPercent>1</initialFuelPercent>
+                <autoRefuelPercent>0.5</autoRefuelPercent>
+                <showFuelGizmo>true</showFuelGizmo>
+                <minimumFueledThreshold>1</minimumFueledThreshold>
+                <factorByDifficulty>true</factorByDifficulty>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+            </li>
             <li Class="CompProperties_Explosive">
                 <explosiveRadius>2.66</explosiveRadius>
                 <explosiveDamageType>Flame</explosiveDamageType>
