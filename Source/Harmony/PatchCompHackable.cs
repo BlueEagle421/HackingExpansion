@@ -110,6 +110,12 @@ public static class HackValidationUtility
             return true;
         }
 
+        if (pawn.CanHackRemotely() && !JobDriver_RemoteHack.TryFindRemoteHackCell(pawn, comp.parent, out _))
+        {
+            result = "NoPath".Translate();
+            return true;
+        }
+
         return false;
     }
 }

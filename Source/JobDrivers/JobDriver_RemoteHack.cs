@@ -53,7 +53,9 @@ public class JobDriver_RemoteHack : JobDriver
         {
             if (!IsTargetInRange())
             {
-                gotoToil = Toils_Goto.GotoCell(FindNearestCellToTarget(), PathEndMode.OnCell);
+                TryFindRemoteHackCell(pawn, HackTarget, out IntVec3 cell);
+
+                gotoToil = Toils_Goto.GotoCell(cell, PathEndMode.OnCell);
 
                 gotoToil.tickAction = () =>
                 {
@@ -129,16 +131,15 @@ public class JobDriver_RemoteHack : JobDriver
         yield return hackToil;
     }
 
-    private IntVec3 FindNearestCellToTarget()
+    public static bool TryFindRemoteHackCell(Pawn pawn, Thing target, out IntVec3 result)
     {
         IntVec3 bestCell = IntVec3.Invalid;
-        float bestCost = float.MaxValue;
+        float bestScore = float.MaxValue;
 
-        int radius = Mathf.CeilToInt(pawn.GetStatValue(USH_DefOf.USH_RemoteHackingDistance));
+        float radius = pawn.GetStatValue(USH_DefOf.USH_RemoteHackingDistance);
         var map = pawn.Map;
-        var traverseParms = TraverseParms.For(TraverseMode.PassDoors);
 
-        foreach (IntVec3 cell in GenRadial.RadialCellsAround(HackTarget.Position, radius - 1, true))
+        foreach (IntVec3 cell in GenRadial.RadialCellsAround(target.Position, radius, true))
         {
             if (!cell.InBounds(map) || !cell.Standable(map))
                 continue;
@@ -146,26 +147,24 @@ public class JobDriver_RemoteHack : JobDriver
             if (!pawn.CanReach(cell, PathEndMode.OnCell, Danger.None))
                 continue;
 
-            var path = pawn.Map.pathFinder.FindPathNow(pawn.Position, cell, traverseParms);
-            if (!path.Found)
-                continue;
+            float score = pawn.Position.DistanceToSquared(cell);
 
-            float cost = path.TotalCost;
-            path.ReleaseToPool();
-
-            if (cost < bestCost)
+            if (score < bestScore)
             {
-                bestCost = cost;
+                bestScore = score;
                 bestCell = cell;
             }
         }
 
         if (!bestCell.IsValid)
-            bestCell = CellFinder.RandomClosewalkCellNear(HackTarget.Position, map, 1);
+        {
+            result = IntVec3.Invalid;
+            return false;
+        }
 
-        return bestCell;
+        result = bestCell;
+        return true;
     }
-
     private bool IsTargetInRange()
     {
         return pawn.Position.DistanceToSquared(HackTarget.Position) <= RadiusSquared;
