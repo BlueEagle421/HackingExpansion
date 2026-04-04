@@ -47,7 +47,7 @@ public class JobDriver_RemoteHack : JobDriver
             ? PathEndMode.InteractionCell
             : PathEndMode.ClosestTouch;
 
-        Toil gotoToil = Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.ClosestTouch);
+        Toil gotoToil = Toils_Goto.GotoThing(TargetIndex.A, pathEndMode);
 
         if (remoteHacking)
         {

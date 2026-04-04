@@ -192,12 +192,15 @@ public class CompDataSource : ThingComp
             yield break;
 
         if (!_isBeingRipped
-            && _outputThings.Exists(x => x.IsUnlocked()))
+            && AnyOutputUnlocked)
             yield return RipDataDesignationGizmo();
 
         if (CanOutput)
             yield return SelectOutputGizmo();
     }
+
+    protected bool AnyOutputUnlocked
+        => _outputThings.Exists(x => x.IsUnlocked());
 
     private Gizmo RipDataDesignationGizmo()
     {

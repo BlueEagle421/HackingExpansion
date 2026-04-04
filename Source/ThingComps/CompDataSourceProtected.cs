@@ -44,6 +44,12 @@ public class CompDataSourceProtected : CompDataSource
         base.PostSpawnSetup(respawningAfterLoad);
 
         _hacksetDef ??= CompHackable.GetHacksetDef();
+
+        if (IsLowThreat() && AnyOutputUnlocked)
+        {
+            _designatedForRipping = true;
+            UpdateDesignation();
+        }
     }
 
     public override void Hack(float amount, Pawn hacker = null)
@@ -122,6 +128,20 @@ public class CompDataSourceProtected : CompDataSource
             return "USH_HE_NeedsBlackICE".Translate();
 
         return true;
+    }
+
+    public bool IsLowThreat()
+    {
+        if (_hacksetDef == null)
+            return true;
+
+        if (_hacksetDef == USH_DefOf.USH_OutdatedFirewall)
+            return true;
+
+        if (_hacksetDef == USH_DefOf.USH_ICE)
+            return true;
+
+        return false;
     }
 
     public void AddICEBreaker(CompICEBreaker compICEBreaker)
