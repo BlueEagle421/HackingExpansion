@@ -195,5 +195,5 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         };
 
     private static float GetMechDefence(PawnKindDef kindDef)
-        => kindDef.combatPower * kindDef.race.race.baseBodySize;
+        => kindDef.combatPower * kindDef.race.race.baseBodySize + 80; //look! so much magic in these numbers! ⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆
 }

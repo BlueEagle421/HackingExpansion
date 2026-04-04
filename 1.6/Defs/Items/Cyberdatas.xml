@@ -102,7 +102,7 @@
         </comps>
         <modExtensions>
             <li Class="USH_HE.RippableExtension">
-                <hackWorkAmount>15000</hackWorkAmount>
+                <hackWorkAmount>14000</hackWorkAmount>
                 <maxPerDataSourceRange>2~5</maxPerDataSourceRange>
             </li>
             <li Class="USH_HE.ResearchPrerequisitesExtension">
