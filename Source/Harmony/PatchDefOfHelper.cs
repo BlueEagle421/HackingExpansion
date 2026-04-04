@@ -147,6 +147,9 @@ public static class Patch_DefOfHelper_RebindAllDefOfs
         if (!raceProps.IsMechanoid && !raceProps.IsDrone)
             return false;
 
+        if (kindDef.defName.Contains("DankPyon_Golem"))
+            return false;
+
         return true;
     }
 
