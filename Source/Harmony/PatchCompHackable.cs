@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.CompilerServices;
 using HarmonyLib;
 using RimWorld;
@@ -57,9 +58,45 @@ public static class Patch_CompHackable_CanHackNow
         }
 
         if (__instance is CompTurretHackable && !pawn.IsHacker())
+        {
             __result = "USH_HE_MissingCyberlink".Translate();
+            return;
+        }
 
         if (__instance is CompMechanoidHackable && !pawn.IsHacker())
+        {
             __result = "USH_HE_MissingCyberlink".Translate();
+            return;
+        }
+
+        if (__instance.IsHacked)
+        {
+            __result = "USH_HE_AlreadyHacked".Translate();
+            return;
+        }
+
+        if (__result.Reason != null && __result.Reason == "NoPath".Translate().CapitalizeFirst() && pawn.CanHackRemotely())
+        {
+            __result = true;
+            return;
+        }
+    }
+}
+
+[HarmonyPatch]
+public static class Patch_CompHackable_ValidateHacker
+{
+    static System.Reflection.MethodBase TargetMethod()
+    {
+        return AccessTools.Method(typeof(CompHackable), "ValidateHacker", [typeof(LocalTargetInfo)]);
+    }
+
+    static void Postfix(CompHackable __instance, ref AcceptanceReport __result, LocalTargetInfo target)
+    {
+        if (__result.Reason != null && __result.Reason == "NoPath".Translate())
+        {
+            if (target.Thing is Pawn pawn && pawn.CanHackRemotely())
+                __result = true;
+        }
     }
 }

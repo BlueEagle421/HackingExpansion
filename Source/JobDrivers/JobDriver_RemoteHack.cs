@@ -46,18 +46,21 @@ public class JobDriver_RemoteHack : JobDriver
             ? PathEndMode.InteractionCell
             : PathEndMode.ClosestTouch;
 
-        var gotoToil = Toils_Goto.GotoThing(TargetIndex.A, pathEndMode);
+        Toil gotoToil;
 
         if (remoteHacking)
-            gotoToil.tickAction = () =>
+        {
+            gotoToil = ToilMaker.MakeToil("RemoteHack_Goto");
+            gotoToil.initAction = () =>
             {
-                if (pawn.Position.DistanceToSquared(HackTarget.Position) <= RadiusSquared)
-                {
-                    pawn.pather.StopDead();
-                    ReadyForNextToil();
-                }
+                ReadyForNextToil();
             };
-
+            gotoToil.defaultCompleteMode = ToilCompleteMode.Instant;
+        }
+        else
+        {
+            gotoToil = Toils_Goto.GotoThing(TargetIndex.A, pathEndMode);
+        }
 
         yield return gotoToil;
 

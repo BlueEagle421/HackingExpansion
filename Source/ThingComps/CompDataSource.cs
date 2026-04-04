@@ -172,14 +172,24 @@ public class CompDataSource : ThingComp
         return pos;
     }
 
+    private bool ShowInformation()
+    {
+        if (parent.Faction == Faction.OfPlayer)
+            return false;
+
+        return true;
+    }
+
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
         foreach (var gizmo in base.CompGetGizmosExtra())
             yield return gizmo;
 
+        if (!ShowInformation())
+            yield break;
+
         if (!_isBeingRipped
-            && _outputThings.Exists(x => x.IsUnlocked())
-            && parent.Faction != Faction.OfPlayer)
+            && _outputThings.Exists(x => x.IsUnlocked()))
             yield return RipDataDesignationGizmo();
 
         if (CanOutput)
@@ -287,7 +297,7 @@ public class CompDataSource : ThingComp
     {
         StringBuilder sb = new(base.CompInspectStringExtra());
 
-        if (CanOutput)
+        if (CanOutput && ShowInformation())
         {
             string progressText = _progress.ToStringWorkAmount();
             string costText = CurrentOutputData.HackCost.ToStringWorkAmount();

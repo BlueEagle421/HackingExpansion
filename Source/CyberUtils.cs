@@ -76,15 +76,7 @@ public static class CyberUtils
         if (compHackable == null)
             return false;
 
-        if (compHackable.IsHacked)
-            return "USH_HE_AlreadyHacked".Translate();
-
-        var compReport = compHackable.CanHackNow(hacker);
-
-        if (compReport.Reason != "NoPath".Translate().CapitalizeFirst())
-            return compReport;
-
-        return true;
+        return compHackable.CanHackNow(hacker);
     }
 
     public static HacksetDef GetHacksetDef(this CompHackable compHackable)

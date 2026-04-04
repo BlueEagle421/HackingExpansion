@@ -67,7 +67,7 @@ public class Hediff_Cyberlink : HediffWithComps
                 {
                     var reportMsg = hackReport.Reason.CapitalizeFirst().Colorize(ColorLibrary.RedReadable);
                     mouseCommand = "CannotChooseHacker".Translate() + ": " + reportMsg;
-                    Widgets.MouseAttachedLabel(mouseCommand);
+                    Widgets.MouseAttachedLabel(mouseCommand, 0, 0, ColorLibrary.RedReadable);
                     return;
                 }
 
