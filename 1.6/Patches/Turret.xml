@@ -9,4 +9,11 @@
         </value>
     </Operation>
 
+    <Operation Class="PatchOperationReplace">
+        <xpath>*/ThingDef[defName="Turret_AncientArmoredTurret"]/comps/li[@Class="CompProperties_Hackable"]/defence</xpath>
+        <value>
+            <defence>15000</defence>
+        </value>
+    </Operation>
+
 </Patch>

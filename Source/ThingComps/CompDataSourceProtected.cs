@@ -45,7 +45,7 @@ public class CompDataSourceProtected : CompDataSource
 
         _hacksetDef ??= CompHackable.GetHacksetDef();
 
-        if (IsLowThreat() && AnyOutputUnlocked)
+        if (IsLowThreat() && AnyOutputUnlocked && parent.Faction != Faction.OfPlayer)
         {
             _designatedForRipping = true;
             UpdateDesignation();
