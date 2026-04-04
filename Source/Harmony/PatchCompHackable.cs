@@ -50,35 +50,14 @@ public static class Patch_CompHackable_CanHackNow
 {
     static void Postfix(CompHackable __instance, ref AcceptanceReport __result, Pawn pawn)
     {
-        if (__instance?.parent?.Faction != null && pawn?.Faction != null
-            && __instance.parent.Faction == pawn.Faction)
-        {
-            __result = "USH_HE_BelongsToHacker".Translate();
+        if (HackValidationUtility.TryApplyCommonChecks(__instance, pawn, ref __result))
             return;
-        }
 
-        if (__instance is CompTurretHackable && !pawn.IsHacker())
-        {
-            __result = "USH_HE_MissingCyberlink".Translate();
-            return;
-        }
-
-        if (__instance is CompMechanoidHackable && !pawn.IsHacker())
-        {
-            __result = "USH_HE_MissingCyberlink".Translate();
-            return;
-        }
-
-        if (__instance.IsHacked)
-        {
-            __result = "USH_HE_AlreadyHacked".Translate();
-            return;
-        }
-
-        if (__result.Reason != null && __result.Reason == "NoPath".Translate().CapitalizeFirst() && pawn.CanHackRemotely())
+        if (__result.Reason != null &&
+            __result.Reason == "NoPath".Translate().CapitalizeFirst() &&
+            pawn.CanHackRemotely())
         {
             __result = true;
-            return;
         }
     }
 }
@@ -94,26 +73,43 @@ public static class Patch_CompHackable_ValidateHacker
     static void Postfix(CompHackable __instance, ref AcceptanceReport __result, LocalTargetInfo target)
     {
         if (target.Thing is not Pawn pawn)
-        {
             return;
+
+        if (HackValidationUtility.TryApplyCommonChecks(__instance, pawn, ref __result))
+            return;
+
+        if (__result.Reason != null &&
+            __result.Reason == "NoPath".Translate() &&
+            pawn.CanHackRemotely())
+        {
+            __result = true;
+        }
+    }
+}
+
+public static class HackValidationUtility
+{
+    public static bool TryApplyCommonChecks(CompHackable comp, Pawn pawn, ref AcceptanceReport result)
+    {
+        if (comp?.parent?.Faction != null && pawn?.Faction != null &&
+            comp.parent.Faction == pawn.Faction)
+        {
+            result = "USH_HE_BelongsToHacker".Translate();
+            return true;
         }
 
-        if (__instance is CompTurretHackable && !pawn.IsHacker())
+        if ((comp is CompTurretHackable || comp is CompMechanoidHackable) && !pawn.IsHacker())
         {
-            __result = "USH_HE_MissingCyberlink".Translate();
-            return;
+            result = "USH_HE_MissingCyberlink".Translate();
+            return true;
         }
 
-        if (__instance is CompMechanoidHackable && !pawn.IsHacker())
+        if (comp.IsHacked)
         {
-            __result = "USH_HE_MissingCyberlink".Translate();
-            return;
+            result = "USH_HE_AlreadyHacked".Translate();
+            return true;
         }
 
-        if (__result.Reason != null && __result.Reason == "NoPath".Translate())
-        {
-            if (pawn.CanHackRemotely())
-                __result = true;
-        }
+        return false;
     }
 }
