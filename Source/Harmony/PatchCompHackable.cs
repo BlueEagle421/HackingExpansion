@@ -93,9 +93,26 @@ public static class Patch_CompHackable_ValidateHacker
 
     static void Postfix(CompHackable __instance, ref AcceptanceReport __result, LocalTargetInfo target)
     {
+        if (target.Thing is not Pawn pawn)
+        {
+            return;
+        }
+
+        if (__instance is CompTurretHackable && !pawn.IsHacker())
+        {
+            __result = "USH_HE_MissingCyberlink".Translate();
+            return;
+        }
+
+        if (__instance is CompMechanoidHackable && !pawn.IsHacker())
+        {
+            __result = "USH_HE_MissingCyberlink".Translate();
+            return;
+        }
+
         if (__result.Reason != null && __result.Reason == "NoPath".Translate())
         {
-            if (target.Thing is Pawn pawn && pawn.CanHackRemotely())
+            if (pawn.CanHackRemotely())
                 __result = true;
         }
     }

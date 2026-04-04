@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 using Verse.Sound;
@@ -46,20 +47,34 @@ public class JobDriver_RemoteHack : JobDriver
             ? PathEndMode.InteractionCell
             : PathEndMode.ClosestTouch;
 
-        Toil gotoToil;
+        Toil gotoToil = Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.ClosestTouch);
 
         if (remoteHacking)
         {
-            gotoToil = ToilMaker.MakeToil("RemoteHack_Goto");
-            gotoToil.initAction = () =>
+            if (!IsTargetInRange())
             {
-                ReadyForNextToil();
-            };
-            gotoToil.defaultCompleteMode = ToilCompleteMode.Instant;
-        }
-        else
-        {
-            gotoToil = Toils_Goto.GotoThing(TargetIndex.A, pathEndMode);
+                gotoToil = Toils_Goto.GotoCell(FindNearestCellToTarget(), PathEndMode.OnCell);
+
+                gotoToil.tickAction = () =>
+                {
+                    if (IsTargetInRange())
+                    {
+                        pawn.pather.StopDead();
+                        ReadyForNextToil();
+                    }
+                };
+            }
+            else
+            {
+                gotoToil = ToilMaker.MakeToil("RemoteHack_Goto");
+                gotoToil.initAction = () =>
+                {
+                    pawn.pather.StopDead();
+                    ReadyForNextToil();
+                };
+
+                gotoToil.defaultCompleteMode = ToilCompleteMode.Instant;
+            }
         }
 
         yield return gotoToil;
@@ -106,11 +121,53 @@ public class JobDriver_RemoteHack : JobDriver
         hackToil.FailOn(() => CompHackable.IsHacked || CompHackable.LockedOut);
 
         if (remoteHacking)
-            hackToil.FailOn(() => pawn.Position.DistanceToSquared(HackTarget.Position) > RadiusSquared);
+            hackToil.FailOn(() => !IsTargetInRange());
 
         hackToil.defaultCompleteMode = ToilCompleteMode.Never;
         hackToil.activeSkill = () => SkillDefOf.Intellectual;
 
         yield return hackToil;
+    }
+
+    private IntVec3 FindNearestCellToTarget()
+    {
+        IntVec3 bestCell = IntVec3.Invalid;
+        float bestCost = float.MaxValue;
+
+        int radius = Mathf.CeilToInt(pawn.GetStatValue(USH_DefOf.USH_RemoteHackingDistance));
+        var map = pawn.Map;
+        var traverseParms = TraverseParms.For(TraverseMode.PassDoors);
+
+        foreach (IntVec3 cell in GenRadial.RadialCellsAround(HackTarget.Position, radius - 1, true))
+        {
+            if (!cell.InBounds(map) || !cell.Standable(map))
+                continue;
+
+            if (!pawn.CanReach(cell, PathEndMode.OnCell, Danger.None))
+                continue;
+
+            var path = pawn.Map.pathFinder.FindPathNow(pawn.Position, cell, traverseParms);
+            if (!path.Found)
+                continue;
+
+            float cost = path.TotalCost;
+            path.ReleaseToPool();
+
+            if (cost < bestCost)
+            {
+                bestCost = cost;
+                bestCell = cell;
+            }
+        }
+
+        if (!bestCell.IsValid)
+            bestCell = CellFinder.RandomClosewalkCellNear(HackTarget.Position, map, 1);
+
+        return bestCell;
+    }
+
+    private bool IsTargetInRange()
+    {
+        return pawn.Position.DistanceToSquared(HackTarget.Position) <= RadiusSquared;
     }
 }

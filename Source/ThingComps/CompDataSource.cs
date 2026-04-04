@@ -174,6 +174,9 @@ public class CompDataSource : ThingComp
 
     private bool ShowInformation()
     {
+        if (CompHackable.IsHacked)
+            return false;
+
         if (parent.Faction == Faction.OfPlayer)
             return false;
 
