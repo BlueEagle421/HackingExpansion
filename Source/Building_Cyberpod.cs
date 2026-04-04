@@ -83,7 +83,8 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
     private static Texture2D IconStartWaking { get; } = ContentFinder<Texture2D>.Get("UI/Gizmos/StartWakingUp");
     private static Texture2D IconStopWaking { get; } = ContentFinder<Texture2D>.Get("UI/Gizmos/StopWakingUp");
 
-    [Unsaved(false)] private Effecter _barEffecter;
+    [Unsaved(false)] private Effecter _hackBarEffecter;
+    [Unsaved(false)] private Effecter _wakingBarEffecter;
     [Unsaved(false)] private Effecter _hackEffecter;
     [Unsaved(false)] private Effecter _propsEffecter;
     private Sustainer _soundSustainer;
@@ -179,6 +180,8 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
 
         _wakeUpTicksPassed++;
 
+        SustainWakingUpProgressBar();
+
         if (_wakeUpTicksPassed >= WAKING_UP_TICK_DURATION)
             EjectContents();
     }
@@ -193,7 +196,7 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
 
         SustainHackEffect();
         SustainPropsEffect();
-        SustainProgressBar();
+        SustainHackProgressBar();
         SustainSound();
 
         Hack();
@@ -235,12 +238,24 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
         _propsEffecter?.EffectTick(this, new TargetInfo(pos, Map));
     }
 
-    private void SustainProgressBar()
+    private void SustainWakingUpProgressBar()
     {
-        _barEffecter ??= EffecterDefOf.ProgressBar.Spawn();
-        _barEffecter?.EffectTick(this, TargetInfo.Invalid);
+        _wakingBarEffecter ??= EffecterDefOf.ProgressBar.Spawn();
+        _wakingBarEffecter?.EffectTick(this, TargetInfo.Invalid);
 
-        MoteProgressBar mote = ((SubEffecter_ProgressBar)_barEffecter.children[0]).mote;
+        MoteProgressBar mote = ((SubEffecter_ProgressBar)_wakingBarEffecter.children[0]).mote;
+
+        float progress = (float)_wakeUpTicksPassed / WAKING_UP_TICK_DURATION;
+        mote.progress = Mathf.Clamp01(progress);
+
+        mote.offsetZ = -0.5f;
+    }
+    private void SustainHackProgressBar()
+    {
+        _hackBarEffecter ??= EffecterDefOf.ProgressBar.Spawn();
+        _hackBarEffecter?.EffectTick(this, TargetInfo.Invalid);
+
+        MoteProgressBar mote = ((SubEffecter_ProgressBar)_hackBarEffecter.children[0]).mote;
         mote.progress = _currentlyHacking.ProgressPercent;
         mote.offsetZ = -0.5f;
     }
@@ -299,6 +314,9 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
                 .PlayOneShot(SoundInfo.InMap(new TargetInfo(Position, Map)));
 
         _isWakingUp = false;
+
+        _wakingBarEffecter?.Cleanup();
+        _wakingBarEffecter = null;
 
         base.EjectContents();
     }
@@ -382,8 +400,11 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
         _propsEffecter?.Cleanup();
         _propsEffecter = null;
 
-        _barEffecter?.Cleanup();
-        _barEffecter = null;
+        _hackBarEffecter?.Cleanup();
+        _hackBarEffecter = null;
+
+        _wakingBarEffecter?.Cleanup();
+        _wakingBarEffecter = null;
 
         _soundSustainer?.End();
         _soundSustainer = null;
@@ -448,6 +469,9 @@ public class Building_Cyberpod : Building_Casket, ISuspendableThingHolder
                 SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
                 _isWakingUp = false;
                 _wakeUpTicksPassed = 0;
+
+                _wakingBarEffecter?.Cleanup();
+                _wakingBarEffecter = null;
             },
         };
 
