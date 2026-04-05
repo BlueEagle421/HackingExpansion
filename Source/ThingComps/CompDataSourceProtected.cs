@@ -45,11 +45,25 @@ public class CompDataSourceProtected : CompDataSource
 
         _hacksetDef ??= CompHackable.GetHacksetDef();
 
-        if (IsLowThreat() && AnyOutputUnlocked && parent.Faction != Faction.OfPlayer)
-        {
-            _designatedForRipping = true;
-            UpdateDesignation();
-        }
+        AutoMarkForDataRipping();
+    }
+
+    private void AutoMarkForDataRipping()
+    {
+        if (!HE_Mod.Settings.AutoRipData.Value)
+            return;
+
+        if (!IsLowThreat())
+            return;
+
+        if (!AnyOutputUnlocked)
+            return;
+
+        if (parent.Faction == Faction.OfPlayer)
+            return;
+
+        _designatedForRipping = true;
+        UpdateDesignation();
     }
 
     public override void Hack(float amount, Pawn hacker = null)

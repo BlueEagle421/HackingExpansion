@@ -5,6 +5,7 @@ namespace USH_HE;
 
 public class HE_Settings : ModSettings
 {
+    public Setting<bool> AutoRipData = new(true);
     public Setting<bool> EnableMechHacking = new(true);
     public Setting<bool> EnableTurretsHacking = new(true);
 
@@ -14,6 +15,7 @@ public class HE_Settings : ModSettings
 
     public void ResetAll()
     {
+        AutoRipData.ToDefault();
         EnableMechHacking.ToDefault();
         EnableTurretsHacking.ToDefault();
     }
@@ -21,6 +23,7 @@ public class HE_Settings : ModSettings
     public override void ExposeData()
     {
         base.ExposeData();
+        AutoRipData.ExposeData(nameof(AutoRipData));
         EnableMechHacking.ExposeData(nameof(EnableMechHacking));
         EnableTurretsHacking.ExposeData(nameof(EnableTurretsHacking));
     }
@@ -36,6 +39,10 @@ public class HE_Settings : ModSettings
         Listing_Standard listingStandard = new();
         listingStandard.Begin(new Rect(0f, 0f, scrollViewTotal.width, 9999f));
 
+
+        //EnableAutoRipData
+        listingStandard.CheckboxLabeled("USH_GE_AutoRipDataSetting".Translate().Colorize(ColorLibrary.LimeGreen), ref AutoRipData.Value);
+        listingStandard.Label("USH_GE_AutoRipDataSettingDesc".Translate());
 
         //EnableMechHacking
         listingStandard.CheckboxLabeled("USH_GE_EnableMechSetting".Translate().Colorize(ColorLibrary.LimeGreen), ref EnableMechHacking.Value);
