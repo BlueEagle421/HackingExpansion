@@ -133,6 +133,11 @@ public class JobDriver_RemoteHack : JobDriver
 
     public static bool TryFindRemoteHackCell(Pawn pawn, Thing target, out IntVec3 result)
     {
+        result = IntVec3.Invalid;
+
+        if (pawn == null || pawn.Map == null || target == null)
+            return false;
+
         IntVec3 bestCell = IntVec3.Invalid;
         float bestScore = float.MaxValue;
 

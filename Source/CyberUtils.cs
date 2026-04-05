@@ -55,6 +55,19 @@ public static class CyberUtils
         return false;
     }
 
+    public static bool DiscardedByNoPath(this AcceptanceReport report)
+    {
+        string noPath = "NoPath".Translate();
+
+        if (report.Reason == noPath)
+            return true;
+
+        if (report.Reason == noPath.CapitalizeFirst())
+            return true;
+
+        return false;
+    }
+
     public static AcceptanceReport CanHack(this Pawn hacker, LocalTargetInfo t)
     {
         if (t.Thing is null)

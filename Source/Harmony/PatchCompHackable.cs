@@ -1,4 +1,3 @@
-using System;
 using System.Runtime.CompilerServices;
 using HarmonyLib;
 using RimWorld;
@@ -53,12 +52,8 @@ public static class Patch_CompHackable_CanHackNow
         if (HackValidationUtility.TryApplyCommonChecks(__instance, pawn, ref __result))
             return;
 
-        if (__result.Reason != null &&
-            __result.Reason == "NoPath".Translate().CapitalizeFirst() &&
-            pawn.CanHackRemotely())
-        {
+        if (__result.DiscardedByNoPath() && (pawn.CanHackRemotely() || pawn.TryGetHoldingCyberpod(out _)))
             __result = true;
-        }
     }
 }
 
@@ -78,12 +73,8 @@ public static class Patch_CompHackable_ValidateHacker
         if (HackValidationUtility.TryApplyCommonChecks(__instance, pawn, ref __result))
             return;
 
-        if (__result.Reason != null &&
-            __result.Reason == "NoPath".Translate() &&
-            pawn.CanHackRemotely())
-        {
+        if (__result.DiscardedByNoPath() && (pawn.CanHackRemotely() || pawn.TryGetHoldingCyberpod(out _)))
             __result = true;
-        }
     }
 }
 
@@ -110,7 +101,9 @@ public static class HackValidationUtility
             return true;
         }
 
-        if (pawn.CanHackRemotely() && !JobDriver_RemoteHack.TryFindRemoteHackCell(pawn, comp.parent, out _))
+        if (pawn.CanHackRemotely()
+        && !JobDriver_RemoteHack.TryFindRemoteHackCell(pawn, comp.parent, out _)
+        && !pawn.TryGetHoldingCyberpod(out _))
         {
             result = "NoPath".Translate();
             return true;
