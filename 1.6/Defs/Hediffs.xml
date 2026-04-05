@@ -76,6 +76,11 @@
         <description>A significant loss of synchronization between the mech and it's hivemind.</description>
         <stages>
             <li>
+                <statFactors>
+                    <IncomingDamageFactor>1.1</IncomingDamageFactor>
+                    <MeleeCooldownFactor>0.5</MeleeCooldownFactor>
+                    <ShootingAccuracyPawn>0.5</ShootingAccuracyPawn>
+                </statFactors>
                 <capMods>
                     <li>
                         <capacity>Consciousness</capacity>
@@ -83,7 +88,7 @@
                     </li>
                     <li>
                         <capacity>Moving</capacity>
-                        <postFactor>0.9</postFactor>
+                        <postFactor>0.4</postFactor>
                     </li>
                 </capMods>
             </li>
