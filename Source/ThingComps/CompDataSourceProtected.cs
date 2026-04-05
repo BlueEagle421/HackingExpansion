@@ -45,7 +45,14 @@ public class CompDataSourceProtected : CompDataSource
 
         _hacksetDef ??= CompHackable.GetHacksetDef();
 
-        AutoMarkForDataRipping();
+        if (!respawningAfterLoad)
+        {
+            LongEventHandler.ExecuteWhenFinished(() =>
+            {
+                if (parent.Spawned)
+                    AutoMarkForDataRipping();
+            });
+        }
     }
 
     private void AutoMarkForDataRipping()
